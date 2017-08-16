@@ -1,0 +1,2 @@
+M-$: spellcheck word under point
+C-s C-w: search for word under point
