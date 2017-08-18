@@ -383,7 +383,6 @@
     ))
 
 (global-set-key (kbd "C-c b") 'w3mext-open-link-or-image-or-url)
-(setq browse-url-browser-function 'browse-url-default-macosx-browser)
 
 ;; delete current file and kill buffer
 

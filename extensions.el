@@ -13,6 +13,7 @@
 (setq read-buffer-completion-ignore-case 'true) ; ignore case for buffer names
 
 (global-auto-revert-mode t)
+(setq browse-url-browser-function 'browse-url-chromium)
 
 ;; packages
 (when (>= 24 emacs-major-version)
