@@ -35,26 +35,58 @@
 
 (define-key global-map (kbd "C-c c") 'org-capture)
 
-(let ((todo-dir "~/todo/"))
-  (setq org-agenda-files (my-filter 'file-exists-p (list todo-dir)))
-  (setq org-default-notes-file (concat todo-dir "todo.org"))
-  (setq org-capture-templates
-        '(("i" "Inbox" entry (file+headline org-default-notes-file "Inbox")
-           "* %? \n %t")
-          ("e" "emacs" entry (file+headline (concat todo-dir "emacs.org") "To do")
-           "* %? \n %t")
-          ("c" "Code" entry (file+headline org-default-notes-file "Code")
-           "* TODO %? \n %t %f")
-          ("l" "Lookup" entry (file+headline org-default-notes-file "Look Up")
-           "* %? \n %t")
-          ("t" "To do" entry (file+headline org-default-notes-file "Inbox")
-           "* TODO %? \n %t %f")
-          ("a" "Article" entry (file+headline org-default-notes-file "Article")
-           "* %? \n %T")
-          ("b" "Book" entry (file+headline (concat todo-dir "books.org") "Inbox")
-           "* %?"))))
+(setq todo-dir "~/todo/")
+
+(setq org-agenda-files (my-filter 'file-exists-p (list todo-dir)))
+(setq org-default-notes-file (concat todo-dir "todo.org"))
+(setq org-capture-templates
+      '(("i" "Inbox" entry (file+headline org-default-notes-file "Inbox")
+         "* %? \n %t")
+        ("e" "emacs" entry (file+headline (concat todo-dir "emacs.org") "To do")
+         "* %? \n %t")
+        ("c" "Code" entry (file+headline org-default-notes-file "Code")
+         "* TODO %? \n %t %f")
+        ("l" "Lookup" entry (file+headline org-default-notes-file "Look Up")
+         "* %? \n %t")
+        ("t" "To do" entry (file+headline org-default-notes-file "Inbox")
+         "* TODO %? \n %t %f")
+        ("a" "Article" entry (file+headline org-default-notes-file "Article")
+         "* %? \n %T")
+        ("b" "Book" entry (file+headline (concat todo-dir "books.org") "Inbox")
+         "* %?")))
+
+(defun goto-todo-file (file)
+  (find-file (concat todo-dir file ".org")))
+
+(defun goto-log ()
+  (interactive)
+  (goto-todo-file "log"))
+
+(defun goto-todo ()
+  (interactive)
+  (goto-todo-file "todo"))
+
+(defun goto-work-todo ()
+  (interactive)
+  (goto-todo-file "work"))
+
+(defun goto-today ()
+  (interactive)
+  (goto-todo-file "today"))
+
 
 ;; todo: figure out how this works, add more words
 (setq org-todo-keyword-faces
            '(("TODO" . org-warning) ("STARTED" . "yellow")
              ("CANCELED" . (:foreground "blue" :weight bold))))
+
+(defun note-file ()
+  (concat "~/notes/daily/"  (todays-date) ".txt"))
+
+(defun goto-quotes ()
+    (interactive)
+    (find-file "~/quotes/quotes.el"))
+
+(defun goto-note () ; find today's note
+    (interactive)
+    (find-file (note-file)))

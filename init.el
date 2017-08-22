@@ -24,11 +24,13 @@
           "localization"
           "misc-languages"
           "my-clojure"
-          "my-go"
+;          "my-go"
           "my-lisp"
           "my-org-mode"
           "my-python"
           "my-shell"
+          "navigation"
+          "quotes"
           ))
 
 (server-start) ; let terminals open frames in main emacs session
@@ -47,16 +49,3 @@
 ;; off and on.  The machine worked.
 
 ")))
-
-
-(if blank-startup-screen
-    (setq initial-scratch-message "")
-    (let ((todo-file "~/todo/today.org"))
-      (if (file-exists-p todo-file)
-          (progn
-            (split-window-below)
-            (select-next-window)
-            (find-file "~/todo/today.org")
-            (org-shifttab 2)))
-      )
-    )
