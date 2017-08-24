@@ -1,13 +1,11 @@
-; Mac
-(if (eq system-type 'darwin)
-	;; set command key to meta
-	(setq mac-command-key-is-meta t
-		  mac-command-modifier 'meta)
-)
+;; set OS key to meta
 
-; Windows
-;; is this the right test?
-(if (or (eq system-type 'windows-nt)
-		(eq system-type 'ms-dos))
-	; set Windows key to meta
-	(setq w32-lwindow-modifier 'meta))
+(on-mac
+ (setq mac-command-key-is-meta t
+       mac-command-modifier 'meta))
+
+(on-linux
+ (setq x-meta-keysym 'super))
+
+(on-windows
+ (setq w32-lwindow-modifier 'meta))
