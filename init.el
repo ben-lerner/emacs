@@ -35,17 +35,3 @@
 
 (server-start) ; let terminals open frames in main emacs session
 (load "realgud") ; this has something to do with deubggers
-
-(let ((scratch-file "~/quotes/quotes.el"))
-  (if (file-exists-p scratch-file)
-      (load-file scratch-file)
-    (setq initial-scratch-message
-          ";; A novice was trying to fix a broken Lisp machine by turning the
-;; power off and on.
-
-;; Knight, seeing what the student was doing, spoke sternly: 'You
-;; cannot fix a machine by just power-cycling it with no
-;; understanding of what is going wrong.'  Knight turned the machine
-;; off and on.  The machine worked.
-
-")))
