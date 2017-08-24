@@ -11,11 +11,7 @@
 (when (display-graphic-p)
   (tool-bar-mode -1)
   (scroll-bar-mode -1)
-  (menu-bar-mode -1)
-;  (set-window-fringes nil 0 0)
-  )
-
-(setq initial-frame-alist '((fullscreen . maximized)))
+  (menu-bar-mode -1))
 
 (setq ring-bell-function 'ignore) ; turn off bell
 (blink-cursor-mode 0)
@@ -43,44 +39,6 @@
 ;; (add-to-list 'sml/replacer-regexp-list '("^~/go/src" ":go:") t)
 
 ;; pretty lambda
-(defun set-pretty-symbols ()
-  (setq prettify-symbols-alist '())
-  (mapcar
-   (lambda (text-symbol-pair)
-     (push text-symbol-pair prettify-symbols-alist))
-   '(("alpha" . ?α)
-     ("beta" . ?β)
-     ("gamma" . ?γ)
-     ("delta" . ?δ)
-     ("epsilon" . ?ε)
-     ("eta" . ?η)
-     ("theta" . ?θ)
-     ("lambda" . ?λ)
-     ("mu" . ?μ)
-     ("rho" . ?ρ)
-     ("phi" . ?φ)
-     ;; ("<=" . ?≤)
-     ;; (">=" . ?≥)
-     ;; ("!=" . ?≠)
-     ;; ("->" . ?⇾)  ; U+21FE
-     ;; ("<-" . ?⇽)
-     ;; ("==>" . ?⇒)
-     ;; ("<==" . ?⇐)
-     ;; ("((x))" . ?⊗)
-     )))
-
-; all modes; for some reason fundamental-mode-hook doesn't work
-
-(add-hook 'prog-mode-hook 'set-pretty-symbols)
-(add-hook 'term-mode-hook 'set-pretty-symbols)
-(add-hook 'org-mode-hook 'set-pretty-symbols)
-(add-hook 'emacs-lisp-mode-hook ;; display quotes properly
-		  (lambda ()
-			(if (string= (buffer-name) "*scratch*")
-				(prettify-symbols-mode 0))))
-(global-prettify-symbols-mode 1)
-(add-hook 'web-mode-hook (lambda () (prettify-symbols-mode 0)))
-
 ;; misc
 (fringe-mode '(4 . 6))
 (setq show-paren-delay 0)
