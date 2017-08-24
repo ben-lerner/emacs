@@ -24,6 +24,7 @@
           "font"
           "localization"
           "misc-languages"
+          "my-c"
           "my-clojure"
 ;          "my-go"
           "my-lisp"

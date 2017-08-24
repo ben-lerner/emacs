@@ -21,14 +21,14 @@
 (add-hook 'term-mode-hook 'goto-address-mode)
 
 (bind-key* "C-#"
-  (lambda () ;; close window + scroll to bottom of terminal
+  (lambda () ;; close window + scroll to bottom of terminal. for git editor pop-ups
 	(interactive)
     (save-buffer)
 	(server-edit)
 	(end-of-buffer)))
 
-(bind-key* "C-!" 'multi-term)
-(bind-key* "C-@" 'get-term)
+(bind-key* "C-M-'" 'multi-term)
+(bind-key* "C-M-\"" 'get-term)
 
 ;; shell
 (defun is-terminal? (buffer)
@@ -105,3 +105,6 @@
 
 ;; M-d gets overwritten somehow
 (add-hook 'term-mode-hook (lambda () (bind-key "M-d" 'term-send-forward-kill-word term-raw-map))) 
+
+;; todo: what is this?
+(setq explicit-bash-args '("--login" "--init-file" "~/Dropbox/bash_profile" "-i"))
