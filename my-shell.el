@@ -6,7 +6,8 @@
 
 ;; get shell-command (M-!) to execute bash profile
 (setq shell-file-name "bash")
-(setq shell-command-switch "-ic")
+(on-mac
+ (setq shell-command-switch "-ic"))
 
 (remove-hook 'kill-buffer-query-functions 'server-kill-buffer-query-function)
 
@@ -27,7 +28,22 @@
 	(server-edit)
 	(end-of-buffer)))
 
-(bind-key* "C-M-'" 'multi-term)
+(defun term-command (cmd)
+  (term-line-mode)
+  (insert text)
+  (term-char-mode)
+  (term-send-return))
+
+(defun new-term ()
+  (interactive)
+  (let ((dir default-directory))
+    (multi-term)
+    (on-linux
+     (sleep-for 0.5)
+     (term-command (concat "cd " dir))
+     (term-send-raw-string "\C-l"))))
+
+(bind-key* "C-M-'" 'new-term)
 (bind-key* "C-M-\"" 'get-term)
 
 ;; shell
@@ -104,7 +120,7 @@
 
 
 ;; M-d gets overwritten somehow
-(add-hook 'term-mode-hook (lambda () (bind-key "M-d" 'term-send-forward-kill-word term-raw-map))) 
+(add-hook 'term-mode-hook (lambda () (bind-key "M-d" 'term-send-forward-kill-word term-raw-map)))
 
 ;; todo: what is this?
 (setq explicit-bash-args '("--login" "--init-file" "~/Dropbox/bash_profile" "-i"))
