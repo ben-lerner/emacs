@@ -23,10 +23,10 @@
           "extensions"
           "font"
           "localization"
-          "misc-languages"
+;          "misc-languages" ;; speed up startup
           "my-c"
           "my-clojure"
-;          "my-go"
+;          "my-go" ;; speed up startup
           "my-lisp"
           "my-org-mode"
           "my-python"

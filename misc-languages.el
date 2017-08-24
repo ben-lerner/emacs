@@ -11,4 +11,3 @@
 ;; nsis/nsi mode
 (autoload 'nsis-mode "nsis-mode" "NSIS mode" t)
 (add-to-list 'auto-mode-alist '("\\.nsi\\'" . nsis-mode))
-
