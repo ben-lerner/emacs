@@ -16,7 +16,8 @@
 
 ; load files
 (mapcar (lambda (name) (load-file (concat "~/emacs/" name ".el")))
-        '("code"
+        '("elisp-utils" ;; run this first
+          "code"
           "commands"
           "display"
           "extensions"
