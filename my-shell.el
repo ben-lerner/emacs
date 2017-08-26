@@ -30,7 +30,7 @@
 
 (defun term-command (cmd)
   (term-line-mode)
-  (insert text)
+  (insert cmd)
   (term-char-mode)
   (term-send-return))
 
