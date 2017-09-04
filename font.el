@@ -32,7 +32,7 @@
      (dolist (char-regexp alist)
        (set-char-table-range composition-function-table (car char-regexp)
                              `([,(cdr char-regexp) 0 font-shape-gstring])))))
-  
+
   (on-linux (set-default-font "Fira Code-12")))
 
 (defun set-pretty-symbols ()
@@ -43,7 +43,7 @@
        (push text-symbol-pair prettify-symbols-alist))
      list))
   (add-symbols
-   
+
    '(("alpha" . ?α)
      ("beta" . ?β)
      ("gamma" . ?γ)
@@ -58,7 +58,7 @@
      ("pi" . ?π)
      ; ("((x))" . ?⊗)
      ))
-  
+
   (on-linux
    (add-symbols
     '(("<=" . ?≤)
@@ -81,7 +81,8 @@
 
 (add-hook 'emacs-lisp-mode-hook ;; display quotes properly
 		  (lambda ()
-			(if (string= (buffer-name) "*scratch*")
-				(prettify-symbols-mode 0))))
+			(when (string= (buffer-name) "*scratch*")
+              (prettify-symbols-mode 0)
+              (paredit-mode 0))))
 
 (add-hook 'web-mode-hook (lambda () (prettify-symbols-mode 0)))

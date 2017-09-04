@@ -1,16 +1,18 @@
 (require 'org-bullets)
 
+;; todo: move to bind-key
 (add-hook 'org-mode-hook (lambda ()
-						   (local-set-key (kbd "C-<left>") 'org-do-promote)
-						   (local-set-key (kbd "C-<right>") 'org-do-demote)
+						   (local-set-key (kbd "<left>") 'org-do-promote)
+						   (local-set-key (kbd "<right>") 'org-do-demote)
 						   (local-set-key (kbd "M-<left>") 'org-promote-subtree)
 						   (local-set-key (kbd "M-<right>") 'org-demote-subtree)
 						   (local-set-key (kbd "M-n") (kbd "M-5 C-n"))
 						   (local-set-key (kbd "M-p") (kbd "M-5 C-p"))
 						   (local-set-key (kbd "<return>") 'org-meta-return)
-                           (local-set-key (kbd "<S-return>") 'org-return)
-						   (local-set-key (kbd "M-<return>") (kbd "<return> C-<right>"))
-						   (local-set-key (kbd "C-<return>") (kbd "<return> C-<left>"))
+                           (local-set-key (kbd "M-<return>") 'org-return)
+						   ;; (local-set-key (kbd "<C-tab>") 'org-do-promote)
+						   ;; (local-set-key (kbd "<backtab>") 'org-do-demote)
+
 ;                           (linum-mode)
 						   (rainbow-delimiters-mode -1)
                            (org-bullets-mode 1)
@@ -66,13 +68,9 @@
   (interactive)
   (goto-todo-file "todo"))
 
-(defun goto-work-todo ()
+(defun goto-archive ()
   (interactive)
-  (goto-todo-file "work"))
-
-(defun goto-today ()
-  (interactive)
-  (goto-todo-file "today"))
+  (goto-todo-file "archive"))
 
 
 ;; todo: figure out how this works, add more words
