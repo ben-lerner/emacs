@@ -2,20 +2,12 @@
 
 ;; todo: move to bind-key
 (add-hook 'org-mode-hook (lambda ()
-						   (local-set-key (kbd "<left>") 'org-do-promote)
-						   (local-set-key (kbd "<right>") 'org-do-demote)
-						   (local-set-key (kbd "M-<left>") 'org-promote-subtree)
-						   (local-set-key (kbd "M-<right>") 'org-demote-subtree)
-						   (local-set-key (kbd "M-n") (kbd "M-5 C-n"))
-						   (local-set-key (kbd "M-p") (kbd "M-5 C-p"))
-						   (local-set-key (kbd "<return>") 'org-meta-return)
-                           (local-set-key (kbd "M-<return>") 'org-return)
+						   (rainbow-delimiters-mode -1)
+                           (org-bullets-mode 1)
 						   ;; (local-set-key (kbd "<C-tab>") 'org-do-promote)
 						   ;; (local-set-key (kbd "<backtab>") 'org-do-demote)
 
 ;                           (linum-mode)
-						   (rainbow-delimiters-mode -1)
-                           (org-bullets-mode 1)
                            ;; disable changes in org-mode level heights
                            ;; (dolist (face '(org-level-1
                            ;;                 org-level-2
@@ -24,6 +16,19 @@
                            ;;                 org-level-5))
                            ;;   (set-face-attribute face nil :weight 'semi-bold :height 1.0))
 ))
+
+(bind-key "<left>" 'org-do-promote org-mode-map)
+(bind-key "<right>" 'org-do-demote org-mode-map)
+(bind-key "<up>" 'org-shifttab org-mode-map)
+(bind-key "<down>" 'org-cycle org-mode-map)
+(bind-key "<tab>" 'org-do-demote org-mode-map)
+(bind-key "<S-tab>" 'org-do-promote org-mode-map)
+(bind-key "M-<left>" 'org-promote-subtree org-mode-map)
+(bind-key "M-<right>" 'org-demote-subtree org-mode-map)
+(bind-key "M-n" (kbd "M-5 C-n") org-mode-map)
+(bind-key "M-p" (kbd "M-5 C-p") org-mode-map)
+(bind-key "<return>" 'org-meta-return org-mode-map)
+(bind-key "M-<return>" 'org-return org-mode-map)
 
 (setq org-log-done 'time)
 (setq org-ellipsis " ⤵")
