@@ -86,10 +86,6 @@
 (defun note-file ()
   (concat "~/notes/daily/"  (todays-date) ".txt"))
 
-(defun goto-quotes ()
-    (interactive)
-    (find-file "~/quotes/quotes.el"))
-
 (defun goto-note () ; find today's note
     (interactive)
     (find-file (note-file)))

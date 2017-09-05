@@ -5,7 +5,7 @@
 
 (defun todays-date ()
   ;; e.g. 1-15-16.txt
-  (let ((date (seconds-to-time (- (float-time) (* 6 60 60))))) 
+  (let ((date (seconds-to-time (- (float-time) (* 6 60 60)))))
 	     ; what date was it 6 hours ago? up to 6 am
 	(concat (drop-leading-zero (format-time-string "%m" date))
 			"-"
@@ -61,3 +61,7 @@
                          default-quotes))
           2 ; number of quotes
           ))))
+
+(defun goto-quotes ()
+    (interactive)
+    (find-file "~/quotes/quotes.txt"))
