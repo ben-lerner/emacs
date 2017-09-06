@@ -13,7 +13,8 @@
 (setq read-buffer-completion-ignore-case 'true) ; ignore case for buffer names
 
 (global-auto-revert-mode t)
-(setq browse-url-browser-function 'browse-url-chromium)
+(on-mac (setq browse-url-browser-function 'browse-url-default-macosx-browser))
+(on-linux (setq browse-url-browser-function 'browse-url-chromium))
 
 ;; packages
 (when (>= 24 emacs-major-version)
@@ -29,7 +30,7 @@
 (add-to-list 'auto-mode-alist '("\\.yaml\\'" . yaml-mode))
 (add-to-list 'auto-mode-alist '("\\.yaml.erb\\'" . yaml-mode))
 (add-hook 'yaml-mode-hook
-          '(lambda ()          
+          '(lambda ()
              (define-key yaml-mode-map "\C-m" 'newline-and-indent)))
 
 ;; org mode
