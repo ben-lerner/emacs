@@ -109,7 +109,7 @@
 
 (defun todays-date ()
   ;; e.g. 3-18-16.txt
-  (let ((date (seconds-to-time (- (float-time) (* 6 60 60))))) 
+  (let ((date (seconds-to-time (- (float-time) (* 6 60 60)))))
 	     ; what date was it 6 hours ago? up to 6 am
 	(concat (drop-leading-zero (format-time-string "%m" date))
 			"-"
@@ -152,8 +152,6 @@
 (define-key my-tab-minor-mode-map "\M-n" 'forward-paragraph)
 (define-key my-tab-minor-mode-map "\M-p" 'backward-paragraph)
 (define-key my-tab-minor-mode-map (kbd "C-<return>") (kbd "C-x C-s C-c C-a"))
-; kill entire line
-(bind-key* "C-'" (kbd "C-a C-k C-k"))
 
 ;;; global commands
 
@@ -402,7 +400,7 @@
 ;; drop commands
 (unbind-key "C-x C-z") ;; no more accidentally shrinking windows
 
-;; todo: figure out filter 
+;; todo: figure out filter
 (defun real-buffers (buffers)
     (cond ((null buffers) buffers)
           ((real-buffer (buffer-name (car buffers))) (cons (car buffers) (real-buffers (cdr buffers))))

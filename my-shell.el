@@ -43,8 +43,8 @@
      (term-command (concat "cd " dir))
      (term-send-raw-string "\C-l"))))
 
-(bind-key* "C-M-'" 'new-term)
-(bind-key* "C-M-\"" 'get-term)
+(bind-key* "C-'" 'get-term)
+(bind-key* "M-'" 'new-term)
 
 ;; shell
 (defun is-terminal? (buffer)
@@ -82,10 +82,10 @@
   (interactive)
   (let ((term-buffers (remove-if-not 'is-terminal? (buffer-list))))
 	(let ((L (length term-buffers)))
-	  (cond ((eq L 0) (multi-term))
+	  (cond ((eq L 0) (new-term))
 			((eq L 1)
 			 (if (is-terminal? (current-buffer))
-				 (multi-term)
+				 (new-term)
 			     (switch-to-buffer (car term-buffers))))
 			(t (if (is-terminal? (current-buffer))
 				   (switch-to-buffer (next-terminal)) ; next buffer, numerically
