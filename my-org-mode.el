@@ -4,8 +4,6 @@
 (add-hook 'org-mode-hook (lambda ()
 						   (rainbow-delimiters-mode -1)
                            (org-bullets-mode 1)
-						   ;; (local-set-key (kbd "<C-tab>") 'org-do-promote)
-						   ;; (local-set-key (kbd "<backtab>") 'org-do-demote)
 
 ;                           (linum-mode)
                            ;; disable changes in org-mode level heights
@@ -19,8 +17,7 @@
 
 (bind-key "<left>" 'org-do-promote org-mode-map)
 (bind-key "<right>" 'org-do-demote org-mode-map)
-(bind-key "<up>" 'org-shifttab org-mode-map)
-(bind-key "<down>" 'org-cycle org-mode-map)
+(bind-key "C-`" 'org-cycle org-mode-map)
 (bind-key "<tab>" 'org-do-demote org-mode-map)
 (bind-key "<S-tab>" 'org-do-promote org-mode-map)
 (bind-key "M-<left>" 'org-promote-subtree org-mode-map)
