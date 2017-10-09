@@ -41,6 +41,9 @@
 (setq org-ellipsis "▼")
 (setq auto-save-default nil)
 
+;; tables
+(add-hook 'text-mode-hook 'table-recognize)
+
 ;; get goto-address-mode working
 ;; temp:
 (add-hook 'text-mode-hook 'goto-address-mode)
