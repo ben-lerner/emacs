@@ -43,8 +43,8 @@
      (term-command (concat "cd " dir))
      (term-send-raw-string "\C-l"))))
 
-(bind-key* "C-'" 'get-term)
-(bind-key* "M-'" 'new-term)
+(bind-key* "C-'" 'new-term)
+(bind-key* "M-'" 'get-term)
 
 ;; shell
 (defun is-terminal? (buffer)
