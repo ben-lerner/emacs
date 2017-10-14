@@ -17,6 +17,12 @@
 (bind-key  "C-~" 'previous-error)
 (bind-key*  "C-`" 'next-error)
 
+;; undo
+(bind-key "C-/" 'undo-tree-undo)
+(bind-key "M-/" 'undo-tree-redo)
+(unbind-key "C-_")
+(unbind-key "M-_")
+
 ;; for quotes
 (defun right-justify ()
   (interactive)
