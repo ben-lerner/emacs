@@ -44,10 +44,8 @@
 ;; tables
 (add-hook 'text-mode-hook 'table-recognize)
 
-;; get goto-address-mode working
-;; temp:
 (add-hook 'text-mode-hook 'goto-address-mode)
-(add-hook 'programming-mode-hook 'goto-address-mode)
+(add-hook 'prog-mode-hook 'goto-address-mode)
 
 (global-set-key (kbd "C-c C-w") 'goto-address-mode)
 
