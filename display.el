@@ -1,7 +1,6 @@
 ;; theme
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
 (add-to-list 'custom-theme-load-path "~/emacs/packages/themes/")
-(setq-default indent-tabs-mode nil)
 
 (use-package color-theme)
 
@@ -23,8 +22,8 @@
 (setq mouse-drag-copy-region 1) ; automatically copy selected text
 
 (setq backup-inhibited t) ; turn off backups
-(setq default-tab-width 4)
-(setq indent-tabs-mode nil) ; no tabs
+(setq-default tab-width 4)
+(setq-default indent-tabs-mode nil)
 
 
 ;; terminal theme
