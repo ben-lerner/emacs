@@ -25,9 +25,9 @@
       (cdr list)
     (cons (car list) (drop-nth (cdr list) (- n 1)))))
 
-(defun get-n-random (list n) ;; end with empty string for footer separator
+(defun get-n-random (list n)
   (if (or (= n 0) (null list))
-      '("")
+      '()
     (let ((i (random-index (length list))))
       (cons (nth i list)
             (get-n-random (drop-nth list i) (- n 1))))))
@@ -49,17 +49,21 @@
 "      )
 
 (defun make-quote (quote-list)
-  (mapconcat (lambda (x) x) quote-list footer))
+  (concat (mapconcat (lambda (x) x) quote-list footer)
+          footer))
 
 (let ((quotes "~/quotes/quotes.txt")
       (default-quotes "~/emacs/default_quote.txt"))
   (setq initial-scratch-message
         (make-quote
-         (get-n-random
-          (eval-file (if (file-exists-p quotes)
-                         quotes
-                         default-quotes))
-          2 ; number of quotes
+         (append
+          (get-n-random
+           (eval-file
+            (if (file-exists-p quotes)
+              quotes
+              default-quotes))
+           2)
+          '("Positive motivation.")
           ))))
 
 (defun goto-quotes ()
