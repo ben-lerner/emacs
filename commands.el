@@ -1,9 +1,6 @@
 ;; keep other modes from overwriting global commands:
 ;; todo: clean this up to use bind-key
 (use-package bind-key)
-(defvar my-keys-minor-mode-map (make-keymap) "my-keys-minor-mode keymap")
-(defvar my-tab-minor-mode-map (make-keymap) "my-tab-minor-mode keymap")
-
 
 ;; Window splitting
 (bind-key* "C-0" 'delete-window)
@@ -59,30 +56,6 @@
              (toggle-case)
              (backward-char)))
 
-;; scroll by half page
-(defun zz-scroll-half-page (direction)
-  "Scrolls half page up if `direction' is non-nil, otherwise will scroll half page down."
-  (let ((opos (cdr (nth 6 (posn-at-point)))))
-    ;; opos = original position line relative to window
-    (move-to-window-line nil)  ;; Move cursor to middle line
-    (if direction
-        (recenter-top-bottom -1)  ;; Current line becomes last
-      (recenter-top-bottom 0))  ;; Current line becomes first
-    (move-to-window-line opos)))  ;; Restore cursor/point position
-
-(defun zz-scroll-half-page-down ()
-  "Scrolls exactly half page down keeping cursor/point position."
-  (interactive)
-  (zz-scroll-half-page nil))
-
-(defun zz-scroll-half-page-up ()
-  "Scrolls exactly half page up keeping cursor/point position."
-  (interactive)
-  (zz-scroll-half-page t))
-
-(bind-key* "C-v" 'zz-scroll-half-page-down)
-(bind-key* "M-v" 'zz-scroll-half-page-up)
-
 ;; install zone-pgm-rainbow
 ;; random
 (setq zone-programs [zone-pgm-rainbow])
@@ -133,31 +106,12 @@
              (backward-word)
              (capitalize-word 1)))
 
-;; Navigation
-(bind-key* "M-]" 'select-next-window)
-(bind-key* "M-[" 'select-previous-window) ;; *don't* remap C-[
-(use-package transpose-frame)
-
-(bind-key* "C-x t" 'rotate-frame) ; 'transpose'
-(define-key my-keys-minor-mode-map (kbd "M-SPC") (kbd "M-4 SPC"))
-
 ;; better replace and replace-regexp commands
 (bind-key* "C-\\" 'query-replace)
 (bind-key* "M-\\" 'query-replace-regexp)
 
 (bind-key* "C-z" 'zap-up-to-char)
 (bind-key* "M-z" 'go-to-char)
-
-;; find the next/previous instance of token under cursor
-(require 'evil)
-
-(bind-key* "M-N" 'evil-search-word-forward)
-(bind-key* "M-P" 'evil-search-word-backward)
-
-; navigate by paragraphs
-(define-key my-tab-minor-mode-map "\M-n" 'forward-paragraph)
-(define-key my-tab-minor-mode-map "\M-p" 'backward-paragraph)
-(define-key my-tab-minor-mode-map (kbd "C-<return>") (kbd "C-x C-s C-c C-a"))
 
 ;;; global commands
 
@@ -198,48 +152,7 @@
   (next-line)
   (insert header-str)
   (next-line)
-  (setq newline-and-indent temp-newline-and-indent)
-  )
-
-(defun select-next-window ()
-  "Switch to the next window"
-  (interactive)
-  (select-window (next-window)))
-
-(defun select-previous-window ()
-  "Switch to the previous window"
-  (interactive)
-  (select-window (previous-window)))
-
-(defun zap-up-to-char (arg char)
-  "Kill up to, but not including ARGth occurrence of CHAR.
-   Case is ignored if `case-fold-search' is non-nil in the current buffer.
-   Goes backward if ARG is negative; error if CHAR not found.
-   Ignores CHAR at point."
-   (interactive "p\ncZap up to char: ")
-   (let ((direction (if (>= arg 0) 1 -1)))
-     (kill-region (point)
-                  (progn
-                    (forward-char direction)
-                    (unwind-protect
-                        (search-forward (char-to-string char) nil nil arg)
-                      (backward-char direction))
-                    (point)))))
-
-(defun open-next-line (arg)
-  (interactive "p")
-  (end-of-line)
-  (open-line arg)
-  (next-line 1)
-  (when newline-and-indent
-    (indent-according-to-mode)))
-
-(defun open-previous-line (arg)
-  (interactive "p")
-  (beginning-of-line)
-  (open-line arg)
-  (when newline-and-indent
-    (indent-according-to-mode)))
+  (setq newline-and-indent temp-newline-and-indent))
 
 (defun current-line-empty-p ()
   (save-excursion
@@ -276,85 +189,31 @@
 ;;; better new-lines
 (defvar newline-and-indent t)
 
-(defun go-to-char (arg char)
-  "Analagous to zap, but just moves."
-  (interactive "p\ncMove up to char: ")
-  (let ((direction (if (>= arg 0) 1 -1)))
-    (forward-char direction) ;; move to next char if you're already on an instance
-    (search-forward (char-to-string char) nil nil arg)
-    (backward-char direction)))
-
-
 (defun revert-buffer-no-confirm ()
   "Revert buffer without confirmation."
   (interactive)
   (revert-buffer t t))
 
-(defun term-dabbrev-expand ()
-  (interactive)
-  (let ((beg (point)))
-    (dabbrev-expand nil)
-    (kill-region beg (point)))
-  (term-send-raw-string (substring-no-properties (current-kill 0))))
-
-(defun my-dabbrev-expand ()
-  (interactive)
-  (if (string= major-mode "term-mode")
-      (term-dabbrev-expand)
-    (dabbrev-expand nil)))
-
-(global-set-key (kbd "C-<tab>") 'my-dabbrev-expand) ; default
-(define-key my-keys-minor-mode-map (kbd "C-<tab>") 'my-dabbrev-expand)
-(setq dabbrev-case-fold-search nil)
-(define-key my-tab-minor-mode-map (kbd "C-<tab>") 'indent-for-tab-command)
-(define-key my-tab-minor-mode-map (kbd "<tab>") 'my-dabbrev-expand)
-
-(define-key my-keys-minor-mode-map (kbd "C-c C-l")
+(bind-key* (kbd "C-c C-l")
   (lambda ()
 	(interactive)
 	(load-file "~/emacs/init.el")  ; reload .emacs
 	(revert-buffer-no-confirm) ; revert current buffer
 	))
 
-(define-key my-keys-minor-mode-map (kbd "C-q") 'delete-indentation)
-(define-key my-keys-minor-mode-map (kbd "M-^") 'paste-prep-paragraph)
-(define-key my-keys-minor-mode-map (kbd "C-c C-v") 'revert-buffer-no-confirm)
-(define-key my-keys-minor-mode-map (kbd "C-c ]") 'comment-region) ; for scheme mode
-(define-key my-keys-minor-mode-map (kbd "C-c [") 'uncomment-region) ; for scheme mode
-;(define-key my-keys-minor-mode-map (kbd "C-c C-k") (kbd "C-<SPC> M-> C-w")); kill until end of file
-(define-key my-keys-minor-mode-map (kbd "C-c C-q") 'auto-fill-mode)
-(define-key my-keys-minor-mode-map (kbd "C-c C-n") 'linum-mode)
+(bind-key* "C-q" 'delete-indentation)
+(bind-key* "M-^" 'paste-prep-paragraph)
+(bind-key* "C-c C-v" 'revert-buffer-no-confirm)
+(bind-key* "C-c ]" 'comment-region) ; for scheme mode
+(bind-key* "C-c [" 'uncomment-region) ; for scheme mode
+(bind-key* "C-c C-q" 'auto-fill-mode)
+(bind-key* "C-c C-n" 'linum-mode)
 
-(define-key my-keys-minor-mode-map (kbd "M-o") 'open-next-line)
-(define-key my-keys-minor-mode-map (kbd "C-o") 'open-previous-line)
-(define-key my-keys-minor-mode-map (kbd "C-=") 'make-main-header)
-(define-key my-keys-minor-mode-map (kbd "C--") 'make-side-header)
-(define-key my-keys-minor-mode-map (kbd "C-c l") 'nil)
-(define-key my-keys-minor-mode-map (kbd "C-c n") 'nil)
-(define-key my-keys-minor-mode-map (kbd "C-c j") 'nil)
-
-
-(define-minor-mode my-keys-minor-mode
-  "A minor mode so that my key settings aren't overwritten."
-  t " my-keys" 'my-keys-minor-mode-map)
-(define-minor-mode my-tab-minor-mode
-  "A minor mode so that my key settings aren't overwritten."
-  t " autotab" 'my-tab-minor-mode-map)
-
-
-(my-keys-minor-mode 1)
-(my-tab-minor-mode 1)
-(defun no-tab-hook ()
-  (my-tab-minor-mode 0))
-
-(add-hook 'minibuffer-setup-hook 'no-tab-hook)
-(add-hook 'term-mode-hook 'no-tab-hook)
-(add-hook 'org-mode-hook 'no-tab-hook)
-(add-hook 'geiser-repl-mode-hook 'no-tab-hook)
-(add-hook 'cider-repl-mode-hook 'no-tab-hook)
-
-;; org mode
-
+(bind-key* "C-=" 'make-main-header)
+(bind-key* "C--" 'make-side-header)
+(bind-key* "C-c l" 'nil)
+(bind-key* "C-c n" 'nil)
+(bind-key* "C-c j" 'nil)
 
 ;; fun stuff
 (defun add-to-number-at-point (n)

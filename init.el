@@ -33,6 +33,7 @@
           "my-shell"
           "navigation"
           "quotes"
+          "tab-autocomplete"
           ))
 
 (server-start) ; let terminals open frames in main emacs session
