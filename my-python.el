@@ -9,14 +9,16 @@
 
 ;; python debugger
 (add-hook 'python-mode-hook
-		  (lambda () (highlight-lines-matching-regexp "^[ ]*import i?pdb; i?pdb.set_trace()")))
+		  (lambda () (highlight-lines-matching-regexp
+                 "^[ ]*import i?pdb; i?pdb.set_trace()")))
 
 
 (defun add-breakpoint (text)
   "Add a break point"
   (newline-and-indent)
   (insert text)
-  (highlight-lines-matching-regexp "^[ ]*import i?pdb; i?pdb.set_trace()"))
+  (highlight-lines-matching-regexp
+   "^[ ]*import i?pdb; i?pdb.set_trace()"))
 
 (defun ipython-add-breakpoint ()
   (interactive)

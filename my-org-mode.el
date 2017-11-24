@@ -40,9 +40,20 @@
 
 (define-key global-map (kbd "C-c c") 'org-capture)
 
-(setq todo-dir "~/todo/")
+(setq todo-dir "~/todo/personal")
 
-(setq org-agenda-files (my-filter 'file-exists-p (list todo-dir)))
+;; all directories in ~/todo except for "..", ".", "archive", and "notes"
+(setq org-agenda-files
+      (my-filter
+       (lambda (filename)
+         (defun no-match (string)
+           (not (string-match-p (regexp-quote string) filename)))
+         (and
+          (no-match ".") ;; ., .., and files
+          (no-match "archive")
+          (no-match "notes")))
+       (directory-files "~/todo" 't)))
+
 (setq org-default-notes-file (concat todo-dir "todo.org"))
 (setq org-capture-templates
       '(("i" "Inbox" entry (file+headline org-default-notes-file "Inbox")
@@ -82,7 +93,7 @@
              ("CANCELED" . (:foreground "blue" :weight bold))))
 
 (defun note-file ()
-  (concat "~/notes/daily/"  (todays-date) ".txt"))
+  (concat "~/todo/notes/"  (todays-date) ".txt"))
 
 (defun goto-note () ; find today's note
     (interactive)
