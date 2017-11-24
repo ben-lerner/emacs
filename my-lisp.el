@@ -2,7 +2,7 @@
 
 (add-hook 'scheme-mode-hook 'paredit-mode)
 (add-hook 'emacs-lisp-mode-hook 'paredit-mode)
-(global-set-key (kbd "C-c C-p") 'paredit-mode)
+(bind-key* "C-c C-p" 'paredit-mode)
 
 
 ;; scheme/racket
@@ -18,7 +18,7 @@
 (setq geiser-guile-binary "/usr/local/bin/scheme")
 (use-package xscheme)
 
-;; (add-hook 'scheme-mode-hook '(lambda () (local-set-key 
+;; (add-hook 'scheme-mode-hook '(lambda () (local-set-key
 ;; 									 (kbd "C-<return>")
 ;; 									 (kbd "C-3"))))
 
@@ -80,7 +80,7 @@
 	(forward-line 1)
 	(my-uncomment-line))
       (goto-char beg))))
-  
+
 (defun my-toggle-comment-sexp ()
   (interactive)
   (let ((beg (line-beginning-position))
@@ -91,7 +91,7 @@
 		   (<= end (point)))
 		 'my-uncomment-sexp 'my-comment-sexp))))
 
-(global-set-key (kbd "C-M-;") 'my-toggle-comment-sexp) ; comment/uncomment sexp
+(bind-key* "C-M-;" 'my-toggle-comment-sexp) ; comment/uncomment sexp
 ; from http://www.emacswiki.org/emacs/UncommentSexp
 
 ;; mega paredit

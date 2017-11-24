@@ -10,11 +10,7 @@
 (bind-key* "M-N" 'evil-search-word-forward)
 (bind-key* "M-P" 'evil-search-word-backward)
 
-;;;; navigate by paragraphs
-(define-key my-tab-minor-mode-map "\M-n" 'forward-paragraph)
-(define-key my-tab-minor-mode-map "\M-p" 'backward-paragraph)
 (define-key my-tab-minor-mode-map (kbd "C-<return>") (kbd "C-x C-s C-c C-a"))
-
 
 (defun zap-up-to-char (arg char)
   "Kill up to, but not including ARGth occurrence of CHAR.

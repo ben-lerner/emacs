@@ -47,7 +47,7 @@
 (add-hook 'text-mode-hook 'goto-address-mode)
 (add-hook 'prog-mode-hook 'goto-address-mode)
 
-(global-set-key (kbd "C-c C-w") 'goto-address-mode)
+(bind-key* "C-c C-w" 'goto-address-mode)
 
 ;; automake missing dir
 ;;; todo: extend this to work for more than one missing folder
@@ -88,7 +88,7 @@
 
 ;; neotree: tree explorer
 (use-package neotree) ; https://www.emacswiki.org/emacs/NeoTree
-(global-set-key (kbd "C-8") 'neotree-toggle)
+(bind-key* "C-8" 'neotree-toggle)
 (setq neo-smart-open t)
 
 (use-package minimap-mode)

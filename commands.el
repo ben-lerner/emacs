@@ -233,8 +233,8 @@
       (interactive)
 	  (add-to-number-at-point 1))
 
-(global-set-key (kbd "C-c +") 'increment-number-at-point)
-(global-set-key (kbd "C-c -") 'decrement-number-at-point)
+(bind-key* "C-c +" 'increment-number-at-point)
+(bind-key* "C-c -" 'decrement-number-at-point)
 
 (defun w3mext-open-link-or-image-or-url ()
   "Opens the current link or image or current page's uri or any url-like text under cursor in firefox."
@@ -245,7 +245,7 @@
     (browse-url-generic (if url url (car (browse-url-interactive-arg "URL: "))))
     ))
 
-(global-set-key (kbd "C-c b") 'w3mext-open-link-or-image-or-url)
+(bind-key* "C-c b" 'w3mext-open-link-or-image-or-url)
 
 ;; delete current file and kill buffer
 
@@ -260,7 +260,7 @@
         (message "Deleted file %s" filename)
         (kill-buffer)))))
 
-(global-set-key (kbd "C-x C-n") 'nuke-file)
+(bind-key* "C-x C-n" 'nuke-file)
 
 ;; drop commands
 (unbind-key "C-x C-z") ;; no more accidentally shrinking windows

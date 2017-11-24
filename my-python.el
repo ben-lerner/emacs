@@ -1,16 +1,17 @@
 ;; python autocomplete
-(global-set-key (kbd "C-c m")
-				(lambda ()
-				  (interactive)
-				  (insert "if __name__ == '__main__':
-    ")))
+(bind-key "C-c m"
+          (lambda ()
+            (interactive)
+            (insert "if __name__ == '__main__':
+    ")
+            python-mode-map))
 
 
 ;; python debugger
 (add-hook 'python-mode-hook
 		  (lambda () (highlight-lines-matching-regexp "^[ ]*import i?pdb; i?pdb.set_trace()")))
 
-  
+
 (defun add-breakpoint (text)
   "Add a break point"
   (newline-and-indent)
