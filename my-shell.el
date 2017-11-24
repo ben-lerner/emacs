@@ -18,7 +18,7 @@
       (term-char-mode)
     (term-line-mode)))
 
-(define-key my-keys-minor-mode-map (kbd "C-M-L") 'term-toggle-mode)
+(bind-key* "C-M-L" 'term-toggle-mode)
 (add-hook 'term-mode-hook 'goto-address-mode)
 
 (bind-key* "C-#"

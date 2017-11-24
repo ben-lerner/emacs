@@ -77,7 +77,7 @@
   (save-some-buffers nil t)
   (kill-emacs))
 
-(define-key my-keys-minor-mode-map (kbd "C-x C-c") 'my-kill-emacs)
+(bind-key* "C-x C-c" 'my-kill-emacs)
 
 ; deal with buffers that have the same name
 (use-package uniquify)

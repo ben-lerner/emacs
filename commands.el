@@ -194,7 +194,7 @@
   (interactive)
   (revert-buffer t t))
 
-(bind-key* (kbd "C-c C-l")
+(bind-key* "C-c C-l"
   (lambda ()
 	(interactive)
 	(load-file "~/emacs/init.el")  ; reload .emacs
