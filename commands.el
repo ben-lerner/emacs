@@ -281,3 +281,12 @@
                       (car (occur-read-primary-args)))))
 
 ;(bind-key* "M-S-s" (lambda () (interactive) (ag)))
+
+;; lisp Eval
+(defun replace-last-sexp ()
+    (interactive)
+    (let ((value (eval (preceding-sexp))))
+      (kill-sexp -1)
+      (insert (format "%S" value))))
+
+(bind-key* "C-M-e" 'replace-last-sexp)
