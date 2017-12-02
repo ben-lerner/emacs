@@ -53,6 +53,7 @@
           footer))
 
 (let ((quotes "~/quotes/quotes.txt")
+      (perma-quotes "~/quotes/perma-quotes.txt")
       (default-quotes "~/emacs/default_quote.txt"))
   (setq initial-scratch-message
         (make-quote
@@ -63,8 +64,9 @@
               quotes
               default-quotes))
            2)
-          '("Positive motivation.")
-          ))))
+          (if (file-exists-p perma-quotes)
+              (eval-file perma-quotes)
+            '())))))
 
 (defun goto-quotes ()
     (interactive)
