@@ -4,6 +4,9 @@
 
 (bind-key* "M-SPC" (kbd "M-4 SPC"))
 
+(bind-key* "M-n" 'forward-paragraph)
+(bind-key* "M-p" 'backward-paragraph)
+
 ;;;; find the next/previous instance of token under cursor
 (require 'evil)
 
