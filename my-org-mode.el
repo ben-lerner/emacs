@@ -40,7 +40,7 @@
 
 (define-key global-map (kbd "C-c c") 'org-capture)
 
-(setq todo-dir "~/todo/personal/")
+(setq todo-dir "~/todo/")
 
 ;; all directories in ~/todo except for "..", ".", "archive", and "notes"
 (setq org-agenda-files
