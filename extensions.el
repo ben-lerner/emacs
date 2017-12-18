@@ -91,9 +91,6 @@
 (bind-key* "C-8" 'neotree-toggle)
 (setq neo-smart-open t)
 
-(use-package minimap-mode)
-(bind-key* "C-7" 'minimap-mode)
-
 ;;; this is slow
 ;; match shell variables to bash shell
 (use-package exec-path-from-shell)

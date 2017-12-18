@@ -42,7 +42,7 @@
 
 (setq todo-dir "~/todo/")
 
-;; all directories in ~/todo except for "..", ".", "archive", and "notes"
+;; all directories in todo-dir except for "..", ".", "archive", and "notes"
 (setq org-agenda-files
       (my-filter
        (lambda (filename)
@@ -52,7 +52,7 @@
           (no-match ".") ;; ., .., and files
           (no-match "archive")
           (no-match "notes")))
-       (directory-files "~/todo" 't)))
+       (directory-files todo-dir 't)))
 
 (setq org-default-notes-file (concat todo-dir "todo.org"))
 (setq org-capture-templates
