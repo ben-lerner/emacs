@@ -44,15 +44,7 @@
 
 ;; all directories in todo-dir except for "..", ".", "archive", and "notes"
 (setq org-agenda-files
-      (my-filter
-       (lambda (filename)
-         (defun no-match (string)
-           (not (string-match-p (regexp-quote string) filename)))
-         (and
-          (no-match ".") ;; ., .., and files
-          (no-match "archive")
-          (no-match "notes")))
-       (directory-files todo-dir 't)))
+      (list todo-dir))
 
 (setq org-default-notes-file (concat todo-dir "todo.org"))
 (setq org-capture-templates
