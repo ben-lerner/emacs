@@ -30,6 +30,8 @@
   (ANY 2)
   (context 2))
 
+(setq-default cider-repl-display-help-banner nil)
+
 ; (add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode) ;; todo: fixme
 
 ;; add this line to ~/.lein/profiles.clj:
