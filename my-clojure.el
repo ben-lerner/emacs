@@ -36,3 +36,7 @@
 
 ;; add this line to ~/.lein/profiles.clj:
 ;; {:user {:plugins [[cider/cider-nrepl "0.14.0"]]}}
+
+;; cider
+(bind-key "<up>" 'cider-repl-backward-input cider-repl-mode-map)
+(bind-key "<down>" 'cider-repl-forward-input cider-repl-mode-map)
