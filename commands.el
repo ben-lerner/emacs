@@ -4,11 +4,48 @@
 
 ;; Window splitting
 (bind-key* "C-0" 'delete-window)
-(bind-key*  "C-1" 'delete-other-windows)
-(bind-key*  "C-2" 'split-window-below)
-(bind-key*  "C-3" 'split-window-right)
-(bind-key*  "C-+" 'balance-windows)
-(bind-key*  "C-4" (kbd "C-1 C-3 C-3 C-+"))
+(bind-key* "C-1" 'delete-other-windows)
+(bind-key* "C-2" 'split-window-below)
+(bind-key* "C-3" 'split-window-right)
+(bind-key* "C-+" 'balance-windows)
+
+(defun vertical-panes (n)
+  (delete-other-windows)
+  (setq panes 1)
+  (while (< panes n)
+    (split-window-right)
+    (setq panes (1+ panes)))
+  (balance-windows))
+
+(defun doubled-panes (n)
+  (setq n (/ n 2))
+  (vertical-panes n)
+  (defun split-pane ()
+    ;; split current pane, move to next
+    ;; gets back to top-left when all are split
+    (split-window-below)
+    (select-next-window)
+    (select-next-window))
+  (setq split-panes 0)
+  (while (< split-panes n)
+    (split-pane)
+    (setq split-panes (1+ split-panes))))
+
+(bind-key* "C-4"
+           (lambda () ;; four vertical panes - for 4k screen
+             (interactive)
+             (vertical-panes 4))) 
+
+(bind-key* "C-5"
+           (lambda () ;; three vertical panes - for regular screen
+             (interactive)
+             (vertical-panes 3)))
+
+
+(bind-key* "C-6"
+           (lambda () ;; eight panes - for 4k screen
+             (interactive)
+             (doubled-panes 8)))
 
 ;; errors
 (bind-key  "C-~" 'previous-error)
