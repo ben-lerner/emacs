@@ -42,7 +42,7 @@
              (vertical-panes 3)))
 
 
-(bind-key* "C-6"
+(bind-key* "C-8"
            (lambda () ;; eight panes - for 4k screen
              (interactive)
              (doubled-panes 8)))

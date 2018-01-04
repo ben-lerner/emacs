@@ -88,7 +88,7 @@
 
 ;; neotree: tree explorer
 (use-package neotree) ; https://www.emacswiki.org/emacs/NeoTree
-(bind-key* "C-8" 'neotree-toggle)
+(bind-key* "C-9" 'neotree-toggle)
 (setq neo-smart-open t)
 
 ;;; this is slow
