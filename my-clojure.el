@@ -2,22 +2,19 @@
 (require 'cider-mode)
 
 (add-hook 'clojure-mode-hook 'paredit-mode)
-(add-hook 'clojure-mode-hook '(lambda () (local-set-key 
-									 (kbd "C-<return>")
-									 (kbd "C-x 2 C-x C-s C-c C-a"))))
-
-(bind-key "C-c C-k"
-          (lambda ()
-            (interactive)
-            (save-buffer)
-            (cider-load-buffer))
-          cider-mode-map)
 
 ;; must eval buffer before lookup works
 (bind-key "C-." (kbd "C-c C-k M-.") clojure-mode-map)
 
 ;; save; load buffer; set ns; switch to repl
-(bind-key "C-c k" (kbd "C-x C-s  C-c C-k  C-c M-n  C-c C-z") clojure-mode-map)
+(bind-key "C-c C-k"
+          (lambda ()
+            (interactive)
+            (save-buffer)
+            (cider-load-buffer)
+;            (cider-repl-set-ns) ;; todo: fix this
+            (cider-switch-to-repl-buffer))
+          cider-mode-map)
 
 ;; recommended by compojure
 (define-clojure-indent
