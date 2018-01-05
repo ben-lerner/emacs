@@ -1,5 +1,7 @@
 ;; buffer navigation
 (require 'ace-jump-mode)
+(require 'ace-window)
+
 (bind-key* "C-c SPC" 'ace-jump-mode)
 
 (bind-key* "M-SPC" (kbd "M-4 SPC"))
@@ -94,6 +96,7 @@
 
 (bind-key* "M-]" 'select-next-window)
 (bind-key* "M-[" 'select-previous-window) ;; *don't* remap C-[
+(bind-key* "C-M-]" 'ace-window)
 (use-package transpose-frame)
 
 (bind-key* "C-x t" 'rotate-frame) ; 'transpose'
