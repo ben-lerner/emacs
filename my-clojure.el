@@ -4,7 +4,13 @@
 (add-hook 'clojure-mode-hook 'paredit-mode)
 
 ;; must eval buffer before lookup works
-(bind-key "C-." (kbd "C-c C-k M-.") clojure-mode-map)
+(bind-key "C-."
+          (lambda ()
+            (interactive)
+            (save-buffer)
+            (cider-load-buffer)
+            (cider-find-var))
+          clojure-mode-map)
 
 ;; save; load buffer; set ns; switch to repl
 (bind-key "C-c C-k"

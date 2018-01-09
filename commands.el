@@ -327,3 +327,5 @@
       (insert (format "%S" value))))
 
 (bind-key* "C-M-e" 'replace-last-sexp)
+
+(bind-key* "C-]" (kbd "C-a C-k C-k")) ;; kill line
