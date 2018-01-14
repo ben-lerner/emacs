@@ -94,9 +94,21 @@
   (interactive)
   (select-window (previous-window)))
 
-(bind-key* "M-]" 'select-next-window)
-(bind-key* "M-[" 'select-previous-window) ;; *don't* remap C-[
-(bind-key* "C-M-]" 'ace-window)
+(defun ignore-error-wrapper (fn)
+  "Funtion return new function that ignore errors.
+   The function wraps a function with `ignore-errors' macro."
+  (lexical-let ((fn fn))
+    (lambda ()
+      (interactive)
+      (ignore-errors
+        (funcall fn)))))
+
+(bind-key* [s-left] (ignore-error-wrapper 'windmove-left))
+(bind-key* [s-right] (ignore-error-wrapper 'windmove-right))
+(bind-key* [s-up] (ignore-error-wrapper 'windmove-up))
+(bind-key* [s-down] (ignore-error-wrapper 'windmove-down))
+
+(bind-key* "M-]" 'ace-window)
 (use-package transpose-frame)
 
 (bind-key* "C-x t" 'rotate-frame) ; 'transpose'
