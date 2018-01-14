@@ -94,19 +94,9 @@
   (interactive)
   (select-window (previous-window)))
 
-(defun ignore-error-wrapper (fn)
-  "Funtion return new function that ignore errors.
-   The function wraps a function with `ignore-errors' macro."
-  (lexical-let ((fn fn))
-    (lambda ()
-      (interactive)
-      (ignore-errors
-        (funcall fn)))))
-
-(bind-key* [s-left] (ignore-error-wrapper 'windmove-left))
-(bind-key* [s-right] (ignore-error-wrapper 'windmove-right))
-(bind-key* [s-up] (ignore-error-wrapper 'windmove-up))
-(bind-key* [s-down] (ignore-error-wrapper 'windmove-down))
+(when (fboundp 'windmove-default-keybindings)
+  (windmove-default-keybindings)
+  (setq windmove-wrap-around t))
 
 (bind-key* "M-]" 'ace-window)
 (use-package transpose-frame)
