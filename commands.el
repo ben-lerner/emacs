@@ -231,26 +231,19 @@
   (interactive)
   (revert-buffer t t))
 
-(bind-key* "C-c C-l"
-  (lambda ()
-	(interactive)
-	(load-file "~/emacs/init.el")  ; reload .emacs
-	(revert-buffer-no-confirm) ; revert current buffer
-	))
-
 (bind-key* "C-q" 'delete-indentation)
 (bind-key* "M-^" 'paste-prep-paragraph)
 (bind-key* "C-c C-v" 'revert-buffer-no-confirm)
-(bind-key* "C-c ]" 'comment-region) ; for scheme mode
-(bind-key* "C-c [" 'uncomment-region) ; for scheme mode
+(bind-key* "M-;" 'comment-region)
+(bind-key* "M-:" 'uncomment-region)
 (bind-key* "C-c C-q" 'auto-fill-mode)
 (bind-key* "C-c C-n" 'linum-mode)
 
 (bind-key* "C-=" 'make-main-header)
 (bind-key* "C--" 'make-side-header)
-(bind-key* "C-c l" 'nil)
-(bind-key* "C-c n" 'nil)
-(bind-key* "C-c j" 'nil)
+(unbind-key "C-c l" 'nil)
+(unbind-key "C-c n" 'nil)
+(unbind-key "C-c j" 'nil)
 
 ;; fun stuff
 (defun add-to-number-at-point (n)
