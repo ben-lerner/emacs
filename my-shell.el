@@ -18,7 +18,6 @@
       (term-char-mode)
     (term-line-mode)))
 
-(bind-key* "C-M-L" 'term-toggle-mode)
 (add-hook 'term-mode-hook 'goto-address-mode)
 
 (bind-key* "C-#"
