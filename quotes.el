@@ -63,7 +63,7 @@
             (if (file-exists-p quotes)
               quotes
               default-quotes))
-           2)
+           3)
           (if (file-exists-p perma-quotes)
               (eval-file perma-quotes)
             '())))))

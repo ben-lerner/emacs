@@ -98,9 +98,9 @@
   (windmove-default-keybindings)
   (setq windmove-wrap-around t))
 
-(bind-key* "M-]" 'select-next-window)
-(bind-key* "M-[" 'select-previous-window)
-(bind-key* "C-M-]" 'ace-window)
+(bind-key* "C-u" 'select-next-window)
+(bind-key* "M-u" 'select-previous-window)
+(bind-key* "C-]" 'ace-window)
 (use-package transpose-frame)
 
 (bind-key* "C-x t" 'rotate-frame) ; 'transpose'
