@@ -22,6 +22,8 @@
             (cider-switch-to-repl-buffer))
           cider-mode-map)
 
+(bind-key "C-c d" 'cider-debug-defun-at-point)
+
 ;; recommended by compojure
 (define-clojure-indent
   (defroutes 'defun)
