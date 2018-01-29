@@ -234,8 +234,8 @@
 (bind-key* "C-q" 'delete-indentation)
 (bind-key* "M-^" 'paste-prep-paragraph)
 (bind-key* "C-c C-v" 'revert-buffer-no-confirm)
-(bind-key* "M-;" 'comment-region)
-(bind-key* "M-:" 'uncomment-region)
+(bind-key* "C-;" 'comment-region)
+(bind-key* "M-;" 'uncomment-region)
 (bind-key* "C-c C-q" 'auto-fill-mode)
 (bind-key* "C-c C-n" 'linum-mode)
 

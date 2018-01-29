@@ -3,8 +3,6 @@
 (add-hook 'prog-mode-hook 'auto-fill-mode)
 (add-hook 'prog-mode-hook 'show-paren-mode)
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
-(add-hook 'prog-mode-hook 'hs-minor-mode) ;; code collapsing, don't really use this
-(add-hook 'prog-mode-hook '(lambda () (local-set-key (kbd "C-;") 'hs-toggle-hiding)))
 (add-hook 'prog-mode-hook 'linum-mode)
 
 ; web mode
