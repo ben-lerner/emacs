@@ -14,24 +14,17 @@
 			(format-time-string "%y" date))))
 
 
-(defun random-index (n) ;; gives a seeded random index in [0, n)
-  (mod (random (todays-date)) n))
+(defun get-n-random (data n)
+  (mapcar (lambda (i) (nth i data))
+          (random-ints (length data) n)))
 
-(defun get-random-element (list) ;; uses a seed
-  (nth (random-index (length list)) list))
-
-(defun drop-nth (list n)
-  (if (= n 0)
-      (cdr list)
-    (cons (car list) (drop-nth (cdr list) (- n 1)))))
-
-(defun get-n-random (list n)
-  (if (or (= n 0) (null list))
-      '()
-    (let ((i (random-index (length list))))
-      (cons (nth i list)
-            (get-n-random (drop-nth list i) (- n 1))))))
-
+(defun random-ints (n k) ;; give k seeded random integers in [0, n), repeated and de-duped
+  (delete-dups
+   (mapcar (lambda (i)
+             (mod
+              (random (concat (todays-date) (number-to-string i)))
+              n))
+           (number-sequence 1 k))))
 
 (defun read-file (file)
   (with-temp-buffer
@@ -54,7 +47,8 @@
 
 (let ((quotes "~/quotes/quotes.txt")
       (perma-quotes "~/quotes/perma-quotes.txt")
-      (default-quotes "~/emacs/default_quote.txt"))
+      (default-quotes "~/emacs/default_quote.txt")
+      (quotes-per-day 3))
   (setq initial-scratch-message
         (make-quote
          (append
@@ -63,7 +57,7 @@
             (if (file-exists-p quotes)
               quotes
               default-quotes))
-           3)
+           quotes-per-day)
           (if (file-exists-p perma-quotes)
               (eval-file perma-quotes)
             '())))))
