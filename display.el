@@ -25,6 +25,8 @@
 (setq-default tab-width 4)
 (setq-default indent-tabs-mode nil)
 
+(use-package mode-icons)
+(mode-icons-mode)
 
 ;; terminal theme
 (use-package load-theme-buffer-local)
