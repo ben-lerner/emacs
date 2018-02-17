@@ -39,6 +39,15 @@
       telephone-line-secondary-right-separator 'telephone-line-nil)
 (setq telephone-line-height 24
       telephone-line-evil-use-short-tag t)
+(setq telephone-line-lhs
+      '((accent . (telephone-line-vc-segment
+                   telephone-line-erc-modified-channels-segment))
+        (nil    . (telephone-line-buffer-segment))))
+
+(setq telephone-line-rhs
+      '((nil    . (telephone-line-misc-info-segment
+                   telephone-line-major-mode-segment))
+        (accent . (    telephone-line-airline-position-segment))))
 (telephone-line-mode 1)
 
 ;; short directory names
