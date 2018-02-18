@@ -50,21 +50,6 @@
 
 (telephone-line-mode 1)
 
-;; short directory names
-
-
-;; old modal line
-
-;; (load-file "~/emacs/themes/smart-mode-line-powerline-theme.el")
-;; (setq sml/theme 'dark)
-;; (sml/setup)
-;; (setq-default mode-line-front-space
-;;             (append mode-line-front-space
-;;                     '((:eval (format "/%s" (line-number-at-pos (point-max)))))))
-
-;; ;; mode-line abbreviations
-;; (add-to-list 'sml/replacer-regexp-list '("^~/go/src" ":go:") t)
-
 ;; pretty lambda
 ;; misc
 (fringe-mode '(4 . 6))
