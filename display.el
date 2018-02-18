@@ -25,8 +25,8 @@
 (setq-default tab-width 4)
 (setq-default indent-tabs-mode nil)
 
-(use-package mode-icons)
-(mode-icons-mode)
+;; (use-package mode-icons)
+;; (mode-icons-mode)
 
 ;; terminal theme
 (use-package load-theme-buffer-local)
@@ -40,14 +40,14 @@
 (setq telephone-line-height 24
       telephone-line-evil-use-short-tag t)
 (setq telephone-line-lhs
-      '((accent . (telephone-line-vc-segment
-                   telephone-line-erc-modified-channels-segment))
+      '((accent . (telephone-line-vc-segment))
         (nil    . (telephone-line-buffer-segment))))
 
 (setq telephone-line-rhs
       '((nil    . (telephone-line-misc-info-segment
                    telephone-line-major-mode-segment))
-        (accent . (    telephone-line-airline-position-segment))))
+        (accent . (telephone-line-airline-position-segment))))
+
 (telephone-line-mode 1)
 
 ;; short directory names
