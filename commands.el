@@ -231,11 +231,18 @@
   (interactive)
   (revert-buffer t t))
 
+(defun comment-paragraph ()
+  (interactive)
+  (let ((start (point)))
+    (forward-paragraph)
+    (comment-region start (point))))
+
 (bind-key* "C-q" 'delete-indentation)
 (bind-key* "M-^" 'paste-prep-paragraph)
 (bind-key* "C-c C-v" 'revert-buffer-no-confirm)
 (bind-key* "C-;" 'comment-region)
 (bind-key* "M-;" 'uncomment-region)
+(bind-key* "C-M-;" 'comment-paragraph)
 (bind-key* "C-c C-q" 'auto-fill-mode)
 (bind-key* "C-c C-n" 'linum-mode)
 
