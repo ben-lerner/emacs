@@ -8,6 +8,7 @@
 (bind-key* "C-2" 'split-window-below)
 (bind-key* "C-3" 'split-window-right)
 (bind-key* "C-+" 'balance-windows)
+(bind-key* "C-7" 'toggle-frame-fullscreen)
 
 (defun vertical-panes (n)
   (delete-other-windows)
