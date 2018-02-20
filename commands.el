@@ -249,8 +249,8 @@
 (bind-key* "C-c C-v" 'revert-buffer-no-confirm)
 (bind-key* "C-;" 'comment-region)
 (bind-key* "M-;" 'uncomment-region)
-(bind-key* "C-M-;" 'comment-paragraph)
-(bind-key* "C-M-;" 'uncomment-paragraph)
+(bind-key* "C-:" 'comment-paragraph)
+(bind-key* "M-:" 'uncomment-paragraph)
 (bind-key* "C-c C-q" 'auto-fill-mode)
 (bind-key* "C-c C-n" 'linum-mode)
 
