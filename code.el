@@ -21,3 +21,7 @@
 
 (setq-default fill-column 80)
 (setq TeX-PDF-mode t)
+
+
+;; general
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
