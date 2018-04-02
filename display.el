@@ -31,6 +31,19 @@
 ;; terminal theme
 (use-package load-theme-buffer-local)
 
+(defun starts-with (needle haystack)
+  ;; returns 0 if true (which is truthy)
+  ;; nil (false) if false
+  (string-match
+   (concat "^" needle)
+   haystack))
+
+(telephone-line-defsegment* telephone-line-short-vc-segment ()
+  (telephone-line-raw
+   (cond ((not vc-mode) nil)
+         ((starts-with "Git" vc-mode))
+         (t vc-mode))))
+
 ;; nice modal line
 (use-package telephone-line)
 (setq telephone-line-primary-left-separator 'telephone-line-gradient
@@ -40,7 +53,7 @@
 (setq telephone-line-height 24
       telephone-line-evil-use-short-tag t)
 (setq telephone-line-lhs
-      '((accent . (telephone-line-vc-segment))
+      '((accent . (telephone-line-short-vc-segment))
         (nil    . (telephone-line-buffer-segment))))
 
 (setq telephone-line-rhs
