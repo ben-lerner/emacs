@@ -40,11 +40,8 @@
 
 (telephone-line-defsegment* telephone-line-short-vc-segment ()
   (telephone-line-raw
-   (let ((branch
-          (shell-command-to-string
-           "echo -n $(git rev-parse --abbrev-ref HEAD 2>/dev/null)")))
-     (cond ((not (string= "" branch)) branch)
-           (t vc-mode)))))
+   (cond (vc-mode (substring vc-mode 5))  ; drop 'Git: '
+         (t nil))))
 
 ;; nice modal line
 (use-package telephone-line)
