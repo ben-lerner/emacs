@@ -46,3 +46,12 @@
 (bind-key "<up>" 'cider-repl-backward-input cider-repl-mode-map)
 (bind-key "<down>" 'cider-repl-forward-input cider-repl-mode-map)
 (setq cljr-suppress-middleware-warnings t)
+
+;; auto-refresh cider
+(bind-key "C-c C-r" 'cider-refresh clojure-mode-map)
+
+(add-hook 'after-save-hook
+          '(lambda ()
+             (if (and (boundp 'cider-mode)
+                      cider-mode)
+                 (cider-refresh))))
