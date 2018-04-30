@@ -35,7 +35,7 @@
 (bind-key* "C-4"
            (lambda () ;; four vertical panes - for 4k screen
              (interactive)
-             (vertical-panes 4))) 
+             (vertical-panes 4)))
 
 (bind-key* "C-5"
            (lambda () ;; three vertical panes - for regular screen
@@ -86,13 +86,13 @@
       (delete-region (region-beginning) (region-end))
       (insert return-string))))
 
-(bind-key* "M-t" ;; toggle case of char at point
-           (lambda ()
-             (interactive)
-             (set-mark-command nil)
-             (forward-char)
-             (toggle-case)
-             (backward-char)))
+(defun toggle-case-at-point ()
+  (interactive)
+  (set-mark-command nil)
+  (forward-char)
+  (toggle-case))
+
+(bind-key* "M-t" 'toggle-case-at-point)
 
 ;; install zone-pgm-rainbow
 ;; random
