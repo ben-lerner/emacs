@@ -18,8 +18,18 @@
 (setq geiser-guile-binary "/usr/local/bin/scheme")
 (use-package xscheme)
 
-(bind-key "C-p" 'comint-previous-input geiser-repl-mode-map)
-(bind-key "C-n" 'comint-next-input geiser-repl-mode-map)
+(bind-key "C-p"
+          (lambda ()
+            (interactive)
+            (end-of-buffer)
+            (comint-previous-input 1))
+          geiser-repl-mode-map)
+(bind-key "C-n"
+          (lambda ()
+            (interactive)
+            (end-of-buffer)
+            (comint-next-input 1))
+          geiser-repl-mode-map)
 
 ;; fix the PATH variable
 (defun set-exec-path-from-shell-PATH ()
