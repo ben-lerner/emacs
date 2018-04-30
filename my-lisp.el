@@ -18,21 +18,8 @@
 (setq geiser-guile-binary "/usr/local/bin/scheme")
 (use-package xscheme)
 
-;; (add-hook 'scheme-mode-hook '(lambda () (local-set-key
-;; 									 (kbd "C-<return>")
-;; 									 (kbd "C-3"))))
-
-;; clojure
-
-;; things installed locally:
-;; lein-exec for scripting
-
-; for mccarthy annotations
-;; (font-lock-add-keywords 'clojure-mode
-;;   '(("\\<\\(caar\\|car\\|cdr\\|cadr\\|caddr\\|caar\\/cadar\\|cadar\\|caddar\\)\\>" . font-lock-keyword-face)))
-
-
-
+(bind-key "C-p" 'comint-previous-input geiser-repl-mode-map)
+(bind-key "C-n" 'comint-next-input geiser-repl-mode-map)
 
 ;; fix the PATH variable
 (defun set-exec-path-from-shell-PATH ()
