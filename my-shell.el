@@ -6,8 +6,15 @@
 
 ;; get shell-command (M-!) to execute bash profile
 (setq shell-file-name "bash")
+
 (on-mac
  (setq shell-command-switch "-ic"))
+
+(on-linux
+ (defun shell-command-with-profile (cmd)
+   (interactive "sShell command: ")
+   (shell-command (concat "source ~/.bash_profile && " cmd)))
+ (bind-key* "M-!" 'shell-command-with-profile))
 
 (remove-hook 'kill-buffer-query-functions 'server-kill-buffer-query-function)
 
