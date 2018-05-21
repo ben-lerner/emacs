@@ -5,9 +5,10 @@
 (use-package color-theme)
 
 (when (display-graphic-p)
-  (load-theme 'challenger-deep t)
+  ;(load-theme 'challenger-deep t)
   ;(load-theme 'nimbus t)
   ;(load-theme 'deeper-blue t)
+  (load-theme 'doom-peacock t)
   )
 
 ;; disable annoyances
