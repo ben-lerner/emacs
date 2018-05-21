@@ -15,8 +15,10 @@
 
 
 (defun get-n-random (data n)
-  (mapcar (lambda (i) (nth i data))
-          (random-ints (length data) n)))
+  (if (<= n 0)
+      '()
+      (mapcar (lambda (i) (nth i data))
+              (random-ints (length data) n))))
 
 (defun random-ints (n k) ;; give k seeded random integers in [0, n), repeated and de-duped
   (delete-dups
@@ -45,22 +47,25 @@
   (concat (mapconcat (lambda (x) x) quote-list footer)
           footer))
 
-(let ((quotes "~/quotes/quotes.txt")
-      (perma-quotes "~/quotes/perma-quotes.txt")
-      (default-quotes "~/emacs/default_quote.txt")
-      (quotes-per-day 3))
+(let* ((quotes-per-day 3)
+       (quotes-file "~/quotes/quotes.txt")
+       (default-quotes-file "~/emacs/default_quote.txt")
+       (quotes
+        (if (file-exists-p quotes-file)
+            (eval-file quotes-file)
+            (eval-file default-quotes-file)))
+       (perma-quotes-file "~/quotes/perma-quotes.txt")
+       (perma-quotes
+        (if (file-exists-p perma-quotes-file)
+            (eval-file perma-quotes-file)
+            '())))
   (setq initial-scratch-message
         (make-quote
          (append
           (get-n-random
-           (eval-file
-            (if (file-exists-p quotes)
-              quotes
-              default-quotes))
-           quotes-per-day)
-          (if (file-exists-p perma-quotes)
-              (eval-file perma-quotes)
-            '())))))
+           quotes
+           (- quotes-per-day (length perma-quotes)))
+          perma-quotes))))
 
 (defun goto-quotes ()
     (interactive)
