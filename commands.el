@@ -327,8 +327,6 @@
                       (real-buffers (buffer-list))
                       (car (occur-read-primary-args)))))
 
-;(bind-key* "M-S-s" (lambda () (interactive) (ag)))
-
 ;; lisp Eval
 (defun replace-last-sexp ()
     (interactive)

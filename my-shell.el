@@ -123,6 +123,8 @@
 (bind-key "M-f" 'term-send-forward-word term-raw-map)
 (bind-key "M-b" 'term-send-backward-word term-raw-map)
 (bind-key "<M-backspace>" 'term-send-backward-kill-word term-raw-map)
+(bind-key "C-p" 'term-send-up term-raw-map)
+(bind-key "C-n" 'term-send-down term-raw-map)
 
 
 ;; M-d gets overwritten somehow
