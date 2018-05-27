@@ -78,7 +78,6 @@
   (kill-emacs))
 
 (bind-key* "C-x C-c" 'my-kill-emacs)
-(setq kill-whole-line t) ; kill entire line with C-a C-k
 
 
 ; deal with buffers that have the same name

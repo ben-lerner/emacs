@@ -314,7 +314,8 @@
 ;; todo: figure out filter
 (defun real-buffers (buffers)
     (cond ((null buffers) buffers)
-          ((real-buffer (buffer-name (car buffers))) (cons (car buffers) (real-buffers (cdr buffers))))
+          ((real-buffer (buffer-name (car buffers)))
+           (cons (car buffers) (real-buffers (cdr buffers))))
           (t (real-buffers (cdr buffers)))))
 
 (defun real-buffer (buffer) (not (or (string-prefix-p " *" buffer)
@@ -336,3 +337,5 @@
       (insert (format "%S" value))))
 
 (bind-key* "C-M-e" 'replace-last-sexp)
+
+(bind-key* "C-S-k" 'kill-whole-line)
