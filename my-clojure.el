@@ -45,6 +45,8 @@
 ;; cider
 (bind-key "<up>" 'cider-repl-backward-input cider-repl-mode-map)
 (bind-key "<down>" 'cider-repl-forward-input cider-repl-mode-map)
+(bind-key "C-p" 'cider-repl-backward-input cider-repl-mode-map)
+(bind-key "C-n" 'cider-repl-forward-input cider-repl-mode-map)
 (setq cljr-suppress-middleware-warnings t)
 
 ;; auto-refresh cider
