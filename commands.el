@@ -253,7 +253,6 @@
 (bind-key* "C-:" 'comment-paragraph)
 (bind-key* "M-:" 'uncomment-paragraph)
 (bind-key* "C-c C-q" 'auto-fill-mode)
-(bind-key* "C-c C-n" 'linum-mode)
 
 (bind-key* "C-=" 'make-main-header)
 (bind-key* "C--" 'make-side-header)
