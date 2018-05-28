@@ -58,4 +58,4 @@
   (cider-refresh))
 
 ;; set namespace and goto-repl in one command
-(bind-key "C-c C-n" 'set-ns clojure-mode-map)
+(bind-key "C-c C-n" 'set-ns clojure-mode-map)  ;; todo: experiment with clearing repl
