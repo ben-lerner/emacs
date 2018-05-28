@@ -89,3 +89,14 @@
 (defun goto-note () ; find today's note
     (interactive)
     (find-file (note-file)))
+
+(defun constant-height ()
+  "Prevent themes from changing header sizes."
+  (dolist (face '(org-level-1
+                  org-level-2
+                  org-level-3
+                  org-level-4
+                  org-level-5))
+    (set-face-attribute face nil :weight 'semi-bold :height 1.0)))
+
+(add-hook 'org-mode-hook 'constant-height)
