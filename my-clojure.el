@@ -52,15 +52,10 @@
 ;; auto-refresh cider
 (bind-key "C-c C-r" 'cider-refresh clojure-mode-map)
 
-;; (add-hook 'after-save-hook
-;;           '(lambda ()
-;;              (if (and (boundp 'cider-mode)
-;;                       cider-mode)
-;;                  (cider-refresh))))
-
 (defun set-ns ()
   (interactive)
-  (cider-switch-to-repl-buffer (cider-current-ns)))
+  (cider-switch-to-repl-buffer (cider-current-ns))
+  (cider-refresh))
 
 ;; set namespace and goto-repl in one command
 (bind-key "C-c C-n" 'set-ns clojure-mode-map)
