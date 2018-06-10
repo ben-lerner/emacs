@@ -112,5 +112,9 @@
 (bind-key* "M-g M-t" 'goto-todo)
 (bind-key* "M-g M-a" 'goto-archive)
 (bind-key* "M-g M-r" 'cider-jack-in) ; goto-repl
+(bind-key* "M-g M-f"  ;;  like ffap, but without confirmation
+           (lambda ()
+             (interactive)
+             (find-file-at-point (ffap-file-at-point))))
 
 (ido-mode)
