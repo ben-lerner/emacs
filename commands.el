@@ -63,7 +63,7 @@
   (interactive)
   (move-beginning-of-line nil)
   (let ((cur-len (-  (length (thing-at-point 'line t)) 1))) ; drop newline
-    (insert-char ?  (- 80 cur-len))) ; add one for end quote. "? " = space char
+    (insert-char ?  (- 79 cur-len))) ; add one for end quote. "? " = space char
   )
 
 (bind-key* "C-M-j" 'right-justify)
@@ -304,8 +304,6 @@
         (delete-file filename)
         (message "Deleted file %s" filename)
         (kill-buffer)))))
-
-(bind-key* "C-x C-n" 'nuke-file)
 
 ;; drop commands
 (unbind-key "C-x C-z") ;; no more accidentally shrinking windows
