@@ -111,6 +111,17 @@ by using nxml's indentation rules."
 
 (use-package rainbow-delimiters)
 
+(use-package centered-window :ensure t)
+(require 'centered-window-mode)
+(centered-window-mode t)
+; Fix the 'window too small for splitting' error in centered-window-mode.
+; from https://github.com/rnkn/olivetti/issues/12
+(defun split-window-right-ignore (&optional size)
+  (if (car size) size (list (/ (window-total-width) 2))))
+(advice-add 'split-window-right :filter-args
+            'split-window-right-ignore)
+
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
