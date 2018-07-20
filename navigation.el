@@ -106,15 +106,37 @@
 
 ;; file navigation
 
+(defun ffap-with-line ()
+  "Opens the file at point and goes to line-number."
+  (interactive)
+  (let ((fname (ffap-file-at-point)))
+    (if fname
+      (let ((line
+             (save-excursion
+               (goto-char (cadr ffap-string-at-point-region))
+               (and (re-search-backward ":\\([0-9]+\\)"
+                                        (line-beginning-position) t)
+                    (string-to-number (match-string 1))))))
+        ;; (message "file:%s,line:%s" fname line)
+        (when (and (tramp-tramp-file-p default-directory)
+                   (= ?/ (aref fname 0)))
+          ;; if fname is an absolute path in remote machine, it will not return a tramp path,fix it here.
+          (let ((pos (position ?: default-directory)))
+            (if (not pos) (error "failed find first tramp indentifier ':'"))
+            (setf pos (position ?: default-directory :start (1+ pos)))
+            (if (not pos) (error "failed find second tramp indentifier ':'"))
+            (setf fname (concat (substring default-directory 0 (1+ pos)) fname))))
+        (message "fname:%s" fname)
+        (find-file-existing fname)
+        (when line (goto-line line)))
+      (error "File does not exist."))))
+
 (bind-key* "M-g M-n" 'goto-note)
 (bind-key* "M-g M-l" 'goto-log)
 (bind-key* "M-g M-q" 'goto-quotes)
 (bind-key* "M-g M-t" 'goto-todo)
 (bind-key* "M-g M-a" 'goto-archive)
 (bind-key* "M-g M-r" 'cider-jack-in) ; goto-repl
-(bind-key* "M-g M-f"  ;;  like ffap, but without confirmation
-           (lambda ()
-             (interactive)
-             (find-file-at-point (ffap-file-at-point))))
+(bind-key* "M-g M-f" 'ffap-with-line)
 
 (ido-mode)
