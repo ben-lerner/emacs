@@ -139,4 +139,4 @@
 (bind-key* "M-g M-r" 'cider-jack-in) ; goto-repl
 (bind-key* "M-g M-f" 'ffap-with-line)
 
-(ido-mode)
+(ivy-mode)
