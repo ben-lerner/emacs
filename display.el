@@ -8,7 +8,8 @@
   ;(load-theme 'challenger-deep t)
   ;(load-theme 'nimbus t)
   ;(load-theme 'deeper-blue t)
-  (load-theme 'doom-peacock t)
+  ;(load-theme 'doom-peacock t)
+  (load-theme 'grandshell t)
   )
 
 ;; disable annoyances

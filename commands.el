@@ -50,7 +50,7 @@
 
 ;; errors
 (bind-key  "C-~" 'previous-error)
-(bind-key*  "C-`" 'next-error)
+(bind-key  "C-`" 'next-error)
 
 ;; undo
 (bind-key "C-/" 'undo-tree-undo)

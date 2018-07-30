@@ -1,5 +1,4 @@
 ;; Is this slow? Run benchmark-init.el.
-
 (setq blank-startup-screen nil)
 
 ; package repos

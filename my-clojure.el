@@ -59,3 +59,4 @@
 
 ;; set namespace and goto-repl in one command
 (bind-key "C-c C-n" 'set-ns clojure-mode-map)  ;; todo: experiment with clearing repl
+(bind-key "C-`" 'cider-jump-to-compilation-error cider-stacktrace-mode-map)
