@@ -66,7 +66,7 @@
 
 ;; pretty lambda
 ;; misc
-(fringe-mode '(4 . 6))
+; (fringe-mode '(4 . 6))
 (setq show-paren-delay 0)
 (show-paren-mode t)
 (setq-default cursor-in-non-selected-windows nil)
@@ -111,17 +111,6 @@ by using nxml's indentation rules."
 (advice-add #'linum-update-window :after #'linum-update-window-scale-fix)
 
 (use-package rainbow-delimiters)
-
-(use-package centered-window :ensure t)
-(require 'centered-window-mode)
-(centered-window-mode t)
-; Fix the 'window too small for splitting' error in centered-window-mode.
-; from https://github.com/rnkn/olivetti/issues/12
-(defun split-window-right-ignore (&optional size)
-  (if (car size) size (list (/ (window-total-width) 2))))
-(advice-add 'split-window-right :filter-args
-            'split-window-right-ignore)
-
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.

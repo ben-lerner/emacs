@@ -7,6 +7,7 @@
        '(("marmalade" . "https://marmalade-repo.org/packages/")
          ("gnu" . "http://elpa.gnu.org/packages/")
          ("melpa" . "http://melpa.org/packages/")
+         ("melpa-stable" . "http://stable.melpa.org/packages/")
          ("org" . "http://orgmode.org/elpa/")))
 
 (add-to-list 'load-path "~/.emacs.d/elpa/")

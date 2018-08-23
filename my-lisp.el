@@ -2,8 +2,7 @@
 
 (add-hook 'scheme-mode-hook 'paredit-mode)
 (add-hook 'emacs-lisp-mode-hook 'paredit-mode)
-(bind-key* "C-c C-p" 'paredit-mode)
-
+(add-hook 'lisp-mode-hook 'paredit-mode)
 
 ;; scheme/racket
 ;; install mit-scheme:

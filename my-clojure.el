@@ -1,6 +1,9 @@
 (require 'clojure-mode)
 (require 'cider-mode)
 
+;; (use-package cider)
+;;   :pin melpa-stable)
+
 (add-hook 'clojure-mode-hook 'paredit-mode)
 
 ;; must eval buffer before lookup works
@@ -38,9 +41,6 @@
 (setq-default cider-repl-display-help-banner nil)
 
 ; (add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode) ;; todo: fixme
-
-;; add this line to ~/.lein/profiles.clj:
-;; {:user {:plugins [[cider/cider-nrepl "0.14.0"]]}}
 
 ;; cider
 (bind-key "<up>" 'cider-repl-backward-input cider-repl-mode-map)
