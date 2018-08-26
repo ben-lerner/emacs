@@ -28,6 +28,7 @@
           "my-clojure"
 ;          "my-go" ;; speed up startup
           "my-lisp"
+          "my-magit"
           "my-org-mode"
           "my-python"
           "my-shell"

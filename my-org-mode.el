@@ -18,8 +18,6 @@
 (bind-key "<left>" 'org-do-promote org-mode-map)
 (bind-key "<right>" 'org-do-demote org-mode-map)
 (bind-key "C-M-`" 'org-shifttab org-mode-map)
-(bind-key "<tab>" 'org-do-demote org-mode-map)
-(bind-key "<S-tab>" 'org-do-promote org-mode-map)
 (bind-key "M-<left>" 'org-promote-subtree org-mode-map)
 (bind-key "M-<right>" 'org-demote-subtree org-mode-map)
 (bind-key "M-n" (kbd "M-5 C-n") org-mode-map)

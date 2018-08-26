@@ -28,12 +28,10 @@
 (define-key my-tab-minor-mode-map (kbd "C-<tab>") 'indent-for-tab-command)
 (define-key my-tab-minor-mode-map (kbd "<tab>") 'my-dabbrev-expand)
 
-(defun no-tab-hook ()
-  (my-tab-minor-mode 0))
+(defun no-tab-hook () (my-tab-minor-mode 0))
 
 (add-hook 'minibuffer-setup-hook 'no-tab-hook)
 (add-hook 'term-mode-hook 'no-tab-hook)
-(add-hook 'org-mode-hook 'no-tab-hook)
 (add-hook 'geiser-repl-mode-hook 'no-tab-hook)
 (add-hook 'cider-repl-mode-hook 'no-tab-hook)
 
