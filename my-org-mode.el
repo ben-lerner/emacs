@@ -98,3 +98,14 @@
     (set-face-attribute face nil :weight 'semi-bold :height 1.0)))
 
 (add-hook 'org-mode-hook 'constant-height)
+
+;; custom tab behavior
+
+(defun org-tab ()
+  "Indent at the start of a line, autocomplete otherwise."
+  (interactive)
+  (if (string-match-p "^*+ +$" (thing-at-point 'line t))
+      (org-do-demote)
+      (my-dabbrev-expand)))
+
+(bind-key "<tab>" 'org-tab org-mode-map)

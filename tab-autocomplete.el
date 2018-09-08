@@ -34,6 +34,7 @@
 (add-hook 'term-mode-hook 'no-tab-hook)
 (add-hook 'geiser-repl-mode-hook 'no-tab-hook)
 (add-hook 'cider-repl-mode-hook 'no-tab-hook)
+(add-hook 'org-mode-hook 'no-tab-hook)
 
 ;;;; navigate by paragraphs, but not in terminal mode
 (define-key my-tab-minor-mode-map "\M-n" 'forward-paragraph)
