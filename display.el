@@ -42,7 +42,15 @@
 
 (telephone-line-defsegment* telephone-line-short-vc-segment ()
   (telephone-line-raw
-   (cond (vc-mode (substring vc-mode 5))  ; drop 'Git: '
+   (cond (vc-mode
+          (let
+              ((repo
+                (string-trim
+                 (shell-command-to-string
+                  "basename `git rev-parse --show-toplevel`")))
+               (branch (substring vc-mode 5)) ;; drop 'Git: '
+               )
+            (concat repo " " branch)))
          (t nil))))
 
 ;; nice modal line
