@@ -146,5 +146,5 @@
 ;; file autocomplete
 (ivy-mode)
 (setq ivy-use-virtual-buffers t)
-(setq ivy-count-format "(%d/%d) ")
+(setq ivy-count-format "")
 (setq ivy-extra-directories nil)  ;; don't show . and ..
