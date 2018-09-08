@@ -8,3 +8,5 @@
       (magit-stage-file buffer-file-name)))
 
 (bind-key* "C-x C-s" 'save-and-stage-file)
+
+(setq magit-completing-read-function 'ivy-completing-read)
