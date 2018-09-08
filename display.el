@@ -50,7 +50,7 @@
                   "basename `git rev-parse --show-toplevel`")))
                (branch (substring vc-mode 5)) ;; drop 'Git: '
                )
-            (concat repo " " branch)))
+            (concat repo "/" branch)))
          (t nil))))
 
 ;; nice modal line
