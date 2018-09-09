@@ -70,3 +70,6 @@
                               (begin
                                (highlight-indentation-mode 0)
                                (flymake-mode 0))))
+
+(setq python-shell-interpreter "python3")
+(setq python-shell-completion-native-enable nil)
