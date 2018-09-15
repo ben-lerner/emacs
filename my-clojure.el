@@ -70,3 +70,31 @@
            (figwheel-sidecar.repl-api/cljs-repl))")
 
 ;(setq pop-up-windows nil)
+
+;; navigation
+(require 'subr-x) ;; string functions
+
+(defun clj-file-prefix ()
+  "Get the standard file prefix from either source or test."
+  (string-remove-suffix
+   "_test"
+   (file-name-sans-extension buffer-file-name)))
+
+(defun goto-clj-source ()
+  (interactive)
+  (find-file
+   (concat
+    (replace-regexp-in-string "/test/" "/src/" (clj-file-prefix))
+    "."
+    (file-name-extension buffer-file-name))))
+
+(defun goto-clj-test ()
+  (interactive)
+  (find-file
+   (concat
+    (replace-regexp-in-string "/src/" "/test/" (clj-file-prefix))
+    "_test."
+    (file-name-extension buffer-file-name))))
+
+(bind-key "M-g s" 'goto-clj-source clojure-mode-map)
+(bind-key "M-g t" 'goto-clj-test clojure-mode-map)
