@@ -13,3 +13,31 @@
       (c-indent-line))))
 
 (add-hook 'c-mode-common-hook (lambda () (local-set-key "{" 'my-c-mode-insert-lcurly)))
+
+;; navigation
+(require 'subr-x) ;; string functions
+
+(defun c-file-prefix ()
+  "Get the standard file prefix from either the header, source, or test file."
+  (string-remove-suffix
+   "_test"
+   (file-name-sans-extension buffer-file-name)))
+
+(defun goto-c-file (suffix)
+  (find-file (concat (c-file-prefix) suffix)))
+
+(defun goto-c-source ()
+  (interactive)
+  (goto-c-file ".cc"))
+
+(defun goto-c-header ()
+  (interactive)
+  (goto-c-file ".h"))
+
+(defun goto-c-test ()
+  (interactive)
+  (goto-c-file "_test.cc"))
+
+(bind-key "M-g h" 'goto-c-header c-mode-map)
+(bind-key "M-g s" 'goto-c-source c-mode-map)
+(bind-key "M-g t" 'goto-c-test c-mode-map)
