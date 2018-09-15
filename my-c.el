@@ -1,3 +1,5 @@
+(require 'cc-mode)
+
 (add-hook 'c-mode-hook (lambda () (setq comment-start "// " comment-end   "")))
 (add-hook 'c++-mode-hook (lambda () (setq comment-start "// " comment-end   "")))
 
