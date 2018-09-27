@@ -35,7 +35,7 @@
         (cons (car seq) (my-filter pred (cdr seq)))
       (my-filter pred (cdr seq)))))
 
-(define-key global-map (kbd "C-c c") 'org-capture)
+(bind-key* "C-c c" 'org-capture)
 
 (setq todo-dir "~/todo/")
 
@@ -109,3 +109,7 @@
       (my-dabbrev-expand)))
 
 (bind-key "<tab>" 'org-tab org-mode-map)
+
+(bind-key "<backtab>" 'org-do-promote org-mode-map)
+(bind-key "<S-tab>" 'org-do-promote org-mode-map)
+(bind-key "<S-iso-lefttab>" 'org-do-promote org-mode-map)

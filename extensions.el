@@ -29,14 +29,13 @@
 (use-package yaml-mode)
 (add-to-list 'auto-mode-alist '("\\.yaml\\'" . yaml-mode))
 (add-to-list 'auto-mode-alist '("\\.yaml.erb\\'" . yaml-mode))
-(add-hook 'yaml-mode-hook
-          '(lambda ()
-             (define-key yaml-mode-map "\C-m" 'newline-and-indent)))
+(bind-key "C-m" 'newline-and-indent yaml-mode-map)
+
 
 ;; org mode
 (use-package org)
-(define-key global-map "\C-cl" 'org-store-link)
-(define-key global-map "\C-ca" 'org-agenda)
+(bind-key* "C-l" 'org-store-link)
+(bind-key* "C-a" 'org-agenda)
 (setq org-log-done t)
 (setq org-ellipsis "▼")
 (setq auto-save-default nil)

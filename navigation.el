@@ -13,8 +13,6 @@
 (bind-key* "M-N" 'evil-search-word-forward)
 (bind-key* "M-P" 'evil-search-word-backward)
 
-; (define-key my-tab-minor-mode-map (kbd "C-<return>") (kbd "C-x C-s C-c C-a"))
-
 (defun zap-up-to-char (arg char)
   "Kill up to, but not including ARGth occurrence of CHAR.
    Case is ignored if `case-fold-search' is non-nil in the current buffer.

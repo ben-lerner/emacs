@@ -1,9 +1,6 @@
 (require 'clojure-mode)
 (require 'cider-mode)
 
-;; (use-package cider)
-;;   :pin melpa-stable)
-
 (add-hook 'clojure-mode-hook 'paredit-mode)
 
 ;; must eval buffer before lookup works
@@ -61,16 +58,6 @@
 (bind-key "C-c C-n" 'set-ns clojure-mode-map)  ;; todo: experiment with clearing repl
 (bind-key "C-`" 'cider-jump-to-compilation-error cider-stacktrace-mode-map)
 
-;; clojurescript
-(setq cider-cljs-lein-repl
-      ;; automatically start figwheel when running cider-jack-in-clojurescript
-      ;; from markhudnall.com/2016/04/25/starting-figwheel-in-emacs/
-      "(do (require 'figwheel-sidecar.repl-api)
-           (figwheel-sidecar.repl-api/start-figwheel!)
-           (figwheel-sidecar.repl-api/cljs-repl))")
-
-;(setq pop-up-windows nil)
-
 ;; navigation
 (require 'subr-x) ;; string functions
 
@@ -98,3 +85,11 @@
 
 (bind-key "M-g s" 'goto-clj-source clojure-mode-map)
 (bind-key "M-g t" 'goto-clj-test clojure-mode-map)
+
+;; clojurescript
+;; (setq cider-cljs-lein-repl
+;;       ;; automatically start figwheel when running cider-jack-in-clojurescript
+;;       ;; from markhudnall.com/2016/04/25/starting-figwheel-in-emacs/
+;;       "(do (require 'figwheel-sidecar.repl-api)
+;;            (figwheel-sidecar.repl-api/start-figwheel!)
+;;            (figwheel-sidecar.repl-api/cljs-repl))")
