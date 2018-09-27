@@ -22,11 +22,11 @@
 (my-tab-minor-mode 1)
 
 ;; default keybinding
-(global-set-key (kbd "C-<tab>") 'my-dabbrev-expand)
+(bind-key* "C-<tab>" 'my-dabbrev-expand)
 
 ;; for modes without existing tab functionality
-(define-key my-tab-minor-mode-map (kbd "C-<tab>") 'indent-for-tab-command)
-(define-key my-tab-minor-mode-map (kbd "<tab>") 'my-dabbrev-expand)
+(bind-key "C-<tab>" 'indent-for-tab-command my-tab-minor-mode-map)
+(bind-key "<tab>" 'my-dabbrev-expand my-tab-minor-mode-map)
 
 (defun no-tab-hook () (my-tab-minor-mode 0))
 
@@ -37,5 +37,5 @@
 (add-hook 'org-mode-hook 'no-tab-hook)
 
 ;;;; navigate by paragraphs, but not in terminal mode
-(define-key my-tab-minor-mode-map "\M-n" 'forward-paragraph)
-(define-key my-tab-minor-mode-map "\M-p" 'backward-paragraph)
+(bind-key "M-n" 'forward-paragraph my-tab-minor-mode-map)
+(bind-key "M-p" 'backward-paragraph my-tab-minor-mode-map)
