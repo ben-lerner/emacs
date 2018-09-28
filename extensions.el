@@ -34,8 +34,8 @@
 
 ;; org mode
 (use-package org)
-(bind-key* "C-l" 'org-store-link)
-(bind-key* "C-a" 'org-agenda)
+(bind-key* "C-c l" 'org-store-link)
+(bind-key* "C-c a" 'org-agenda)
 (setq org-log-done t)
 (setq org-ellipsis "▼")
 (setq auto-save-default nil)

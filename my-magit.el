@@ -4,7 +4,7 @@
 (defun save-and-stage-file ()
   (interactive)
   (save-buffer)
-  (if (vc-git-responsible-p buffer-file-name)
+  (if (vc-git-registered buffer-file-name)
       (magit-stage-file buffer-file-name)))
 
 (bind-key* "C-x C-s" 'save-and-stage-file)
