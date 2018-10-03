@@ -22,7 +22,7 @@
 (my-tab-minor-mode 1)
 
 ;; default keybinding
-(bind-key* "C-<tab>" 'my-dabbrev-expand)
+(global-set-key (kbd "C-<tab>") 'my-dabbrev-expand)
 
 ;; for modes without existing tab functionality
 (bind-key "C-<tab>" 'indent-for-tab-command my-tab-minor-mode-map)
