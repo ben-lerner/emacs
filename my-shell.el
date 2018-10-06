@@ -132,3 +132,6 @@
 
 ;; todo: what is this?
 (setq explicit-bash-args '("--login" "--init-file" "~/Dropbox/bash_profile" "-i"))
+
+;; Open a shell instead of opening dired-mode
+(add-hook 'dired-mode-hook 'multi-term)

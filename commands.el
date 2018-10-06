@@ -153,10 +153,15 @@
 
 ;;; global commands
 
-(bind-key* "C-x k" 'kill-this-buffer) ; don't ask which buffer
-(setq kill-buffer-query-functions (delq 'process-kill-buffer-query-function
-										kill-buffer-query-functions))
-										  ; don't ask about running process
+;; don't ask about killing running process
+(bind-key* "C-x k"
+           (lambda ()
+             (interactive)
+             (kill-buffer (buffer-name))))
+
+(setq kill-buffer-query-functions
+      (delq 'process-kill-buffer-query-function
+			kill-buffer-query-functions))
 
 ;; UI helpers
 
