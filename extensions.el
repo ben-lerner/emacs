@@ -86,11 +86,6 @@
 (setq uniquify-after-kill-buffer-p t) ; rename after killing uniquified
 (setq uniquify-ignore-buffers-re "^\\*") ; don't muck with special buffers
 
-;; neotree: tree explorer
-(use-package neotree) ; https://www.emacswiki.org/emacs/NeoTree
-(bind-key* "C-9" 'neotree-toggle)
-(setq neo-smart-open t)
-
 ;;; this is slow
 ;; match shell variables to bash shell
 (use-package exec-path-from-shell)
