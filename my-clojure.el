@@ -86,6 +86,16 @@
 (bind-key "M-g s" 'goto-clj-source clojure-mode-map)
 (bind-key "M-g t" 'goto-clj-test clojure-mode-map)
 
+;; more cider
+(setq cider-default-cljs-repl 'figwheel-main)
+
+(defun goto-repl ()
+  (interactive)
+  (with-existing-window
+   (cider-jack-in-clj&cljs)))
+
+(bind-key* "M-g M-r" 'goto-repl)
+
 ;; clojurescript
 ;; (setq cider-cljs-lein-repl
 ;;       ;; automatically start figwheel when running cider-jack-in-clojurescript

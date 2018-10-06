@@ -134,11 +134,6 @@
 (bind-key* "M-g M-q" 'goto-quotes)
 (bind-key* "M-g M-t" 'goto-todo)
 (bind-key* "M-g M-a" 'goto-archive)
-(bind-key* "M-g M-r"
-           (lambda ()
-             (interactive)
-             (with-existing-window
-              (cider-jack-in))))       ; goto-repl
 (bind-key* "M-g M-f" 'ffap-with-line)
 
 ;; file autocomplete
