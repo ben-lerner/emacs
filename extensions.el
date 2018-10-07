@@ -1,6 +1,8 @@
 (require 'exec-path-from-shell)
 (exec-path-from-shell-initialize) ;; emacs gets bash vars
 
+(require 'ag)
+
 ;; spellcheck
 ;; todo: turn on aspell if it exists
 (setq ispell-program-name "aspell")
