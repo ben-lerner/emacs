@@ -1,5 +1,5 @@
 (require 'magit)
-(bind-key "C-c g" 'magit-status)
+(bind-key* "C-c g" 'magit-status)
 
 ;; todo: fix this not to prompt on magit-stage-file
 ;; (defun save-and-stage-file ()
@@ -14,6 +14,7 @@
 
 ;; vdiff
 (require 'vdiff)
+(bind-key* "C-c h" 'vdiff-hydra/body)
 
 (require 'vdiff-magit)
 (define-key magit-mode-map "e" 'vdiff-magit-dwim)
@@ -22,6 +23,7 @@
         '("vdiff dwim" 'vdiff-magit-dwim))
 (setcdr (assoc ?E (plist-get magit-dispatch-popup :actions))
         '("vdiff popup" 'vdiff-magit-popup))
+
 ;; This flag will default to using ediff for merges. vdiff-magit does not yet
 ;; support 3-way merges. Please see the docstring of this variable for more
 ;; information

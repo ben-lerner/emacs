@@ -47,7 +47,7 @@
   (concat (mapconcat (lambda (x) x) quote-list footer)
           footer))
 
-(let* ((quotes-per-day 3)
+(let* ((quotes-per-day 2)
        (quotes-file "~/quotes/quotes.txt")
        (default-quotes-file "~/emacs/default_quote.txt")
        (quotes
@@ -64,7 +64,8 @@
          (append
           (get-n-random
            quotes
-           (- quotes-per-day (length perma-quotes)))
+           quotes-per-day  ;; (- quotes-per-day (length perma-quotes))
+           )
           perma-quotes))))
 
 (defun goto-quotes ()
