@@ -51,6 +51,7 @@
 
 (defun set-ns ()
   (interactive)
+  (save-buffer)
   (cider-switch-to-repl-buffer (cider-current-ns))
   (cider-refresh))
 
