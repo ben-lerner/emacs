@@ -237,26 +237,17 @@
   (interactive)
   (revert-buffer t t))
 
-;; todo: refactor these two
-(defun comment-paragraph ()
+(defun comment-or-uncomment-paragraph ()
   (interactive)
   (let ((start (point)))
     (forward-paragraph)
-    (comment-region start (point))))
-
-(defun uncomment-paragraph ()
-  (interactive)
-  (let ((start (point)))
-    (forward-paragraph)
-    (uncomment-region start (point))))
+    (comment-or-uncomment-region start (point))))
 
 (bind-key* "C-q" 'delete-indentation)
 (bind-key* "M-^" 'paste-prep-paragraph)
 (bind-key* "C-c C-v" 'revert-buffer-no-confirm)
-(bind-key* "C-;" 'comment-region)
-(bind-key* "M-;" 'uncomment-region)
-(bind-key* "C-:" 'comment-paragraph)
-(bind-key* "M-:" 'uncomment-paragraph)
+(bind-key* "M-;" 'comment-or-uncomment-region)
+(bind-key* "M-:" 'comment-or-uncomment-paragraph)
 (bind-key* "C-c C-q" 'auto-fill-mode)
 
 (bind-key* "C-=" 'make-main-header)
