@@ -48,6 +48,22 @@
              (interactive)
              (doubled-panes 8)))
 
+(bind-key* "C-x 4"
+           (lambda () ;; four vertical panes - for 4k screen
+             (interactive)
+             (vertical-panes 4)))
+
+(bind-key* "C-x 5"
+           (lambda () ;; three vertical panes - for regular screen
+             (interactive)
+             (vertical-panes 3)))
+
+
+(bind-key* "C-x 8"
+           (lambda () ;; eight panes - for 4k screen
+             (interactive)
+             (doubled-panes 8)))
+
 ;; errors
 (bind-key  "C-~" 'previous-error)
 (bind-key  "C-`" 'next-error)
