@@ -27,6 +27,7 @@
 ;; for modes without existing tab functionality
 (bind-key "C-<tab>" 'indent-for-tab-command my-tab-minor-mode-map)
 (bind-key "<tab>" 'my-dabbrev-expand my-tab-minor-mode-map)
+(bind-key "M-`" 'my-dabbrev-expand)  ;; for ssh
 
 (defun no-tab-hook () (my-tab-minor-mode 0))
 
