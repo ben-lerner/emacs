@@ -14,21 +14,20 @@
 
 (setq dabbrev-case-fold-search nil)
 
-;; default keybinding
-(bind-key* "M-`" 'my-dabbrev-expand)  ;; for ssh
+(bind-key* "M-." 'my-dabbrev-expand)
 
 ;; minor mode
-(defvar no-nav-minor-mode-map (make-keymap) "no-nav-minor-mode keymap")
+(defvar nav-minor-mode-map (make-keymap) "nav-minor-mode keymap")
 
 (define-minor-mode nav-minor-mode
   "Turn off M-n and M-p for navigation in terminals and repls."
-  t " autotab" 'nav-minor-mode-map  ;; TODO: what is this?
+  t " nav" 'nav-minor-mode-map  ;; TODO: what is "t"?
   ;; Can I do this without a minor mode?
   )
 
-(no-nav-minor-mode 1)
+(nav-minor-mode 1)
 
-(defun no-nav-hook () (no-nav-minor-mode 0))
+(defun no-nav-hook () (nav-minor-mode 0))
 
 (add-hook 'term-mode-hook 'no-nav-hook)
 (add-hook 'geiser-repl-mode-hook 'no-nav-hook)
@@ -36,5 +35,5 @@
 (add-hook 'org-mode-hook 'no-nav-hook)
 
 ;;;; navigate by paragraphs, but not in terminal mode
-(bind-key "M-n" 'forward-paragraph no-nav-minor-mode-map)
-(bind-key "M-p" 'backward-paragraph no-nav-minor-mode-map)
+(bind-key "M-n" 'forward-paragraph nav-minor-mode-map)
+(bind-key "M-p" 'backward-paragraph nav-minor-mode-map)
