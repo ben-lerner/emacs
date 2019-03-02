@@ -10,33 +10,31 @@
   (interactive)
   (if (string= major-mode "term-mode")
       (term-dabbrev-expand)
-    (dabbrev-expand nil)))(setq dabbrev-case-fold-search nil)
+    (dabbrev-expand nil)))
 
-;; minor mode
-(defvar my-tab-minor-mode-map (make-keymap) "my-tab-minor-mode keymap")
-
-(define-minor-mode my-tab-minor-mode
-  "<tab> calls dabbrev-expand. Not used in repls, terminals, etc."
-  t " autotab" 'my-tab-minor-mode-map)
-
-(my-tab-minor-mode 1)
+(setq dabbrev-case-fold-search nil)
 
 ;; default keybinding
-(global-set-key (kbd "C-<tab>") 'my-dabbrev-expand)
+(bind-key* "M-`" 'my-dabbrev-expand)  ;; for ssh
 
-;; for modes without existing tab functionality
-(bind-key "C-<tab>" 'indent-for-tab-command my-tab-minor-mode-map)
-(bind-key "<tab>" 'my-dabbrev-expand my-tab-minor-mode-map)
-(bind-key "M-`" 'my-dabbrev-expand)  ;; for ssh
+;; minor mode
+(defvar no-nav-minor-mode-map (make-keymap) "no-nav-minor-mode keymap")
 
-(defun no-tab-hook () (my-tab-minor-mode 0))
+(define-minor-mode nav-minor-mode
+  "Turn off M-n and M-p for navigation in terminals and repls."
+  t " autotab" 'nav-minor-mode-map  ;; TODO: what is this?
+  ;; Can I do this without a minor mode?
+  )
 
-(add-hook 'minibuffer-setup-hook 'no-tab-hook)
-(add-hook 'term-mode-hook 'no-tab-hook)
-(add-hook 'geiser-repl-mode-hook 'no-tab-hook)
-(add-hook 'cider-repl-mode-hook 'no-tab-hook)
-(add-hook 'org-mode-hook 'no-tab-hook)
+(no-nav-minor-mode 1)
+
+(defun no-nav-hook () (no-nav-minor-mode 0))
+
+(add-hook 'term-mode-hook 'no-nav-hook)
+(add-hook 'geiser-repl-mode-hook 'no-nav-hook)
+(add-hook 'cider-repl-mode-hook 'no-nav-hook)
+(add-hook 'org-mode-hook 'no-nav-hook)
 
 ;;;; navigate by paragraphs, but not in terminal mode
-(bind-key "M-n" 'forward-paragraph my-tab-minor-mode-map)
-(bind-key "M-p" 'backward-paragraph my-tab-minor-mode-map)
+(bind-key "M-n" 'forward-paragraph no-nav-minor-mode-map)
+(bind-key "M-p" 'backward-paragraph no-nav-minor-mode-map)
