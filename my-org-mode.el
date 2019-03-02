@@ -100,15 +100,7 @@
 
 ;; custom tab behavior
 
-(defun org-tab ()
-  "Indent at the start of a line, autocomplete otherwise."
-  (interactive)
-  (if (string-match-p "^*+ +$" (thing-at-point 'line t))
-      (org-do-demote)
-      (my-dabbrev-expand)))
-
-(bind-key "<tab>" 'org-tab org-mode-map)
-
+(bind-key "<tab>" 'org-do-demote org-mode-map)
 (bind-key "<backtab>" 'org-do-promote org-mode-map)
 (bind-key "<S-tab>" 'org-do-promote org-mode-map)
 (bind-key "<S-iso-lefttab>" 'org-do-promote org-mode-map)
