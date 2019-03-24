@@ -141,3 +141,42 @@
 (setq ivy-use-virtual-buffers t)
 (setq ivy-count-format "")
 (setq ivy-extra-directories nil)  ;; don't show . and ..
+
+;; todo: refactor
+;; headers assume .cc
+(defun test-file ()
+  (let ((filename (buffer-file-name)))
+    (cond ((string-match "_test\\." filename) ;; test file
+           filename)
+          ((string-match "\\.h" filename) ;; header file
+           (replace-regexp-in-string "\\.h" "_test.cc" filename))
+          (t  ;; source file
+           (replace-regexp-in-string "\\.\\(.*\\)" "_test.\\1" filename)))))
+
+(defun source-file ()
+  (let ((filename (buffer-file-name)))
+    (cond ((string-match "_test\\." filename) ;; test file
+           (replace-regexp-in-string "_test\\.\\(.*\\)" ".\\1" filename))
+          ((string-match "\\.h" filename) ;; header file
+           (replace-regexp-in-string "\\.h" ".cc" filename))
+          (t  ;; source file
+           filename))))
+
+(defun header-file ()
+  (let ((filename (buffer-file-name)))
+    (cond ((string-match "_test\\." filename) ;; test file
+           (replace-regexp-in-string "_test\\..*" ".h" filename))
+          ((string-match "\\.h" filename) ;; header file
+           filename)
+          (t  ;; source file
+           (replace-regexp-in-string "\\..*" ".h" filename)))))
+
+(bind-key* "M-g s" (lambda ()
+                     (interactive)
+                     (find-file (source-file))))
+(bind-key* "M-g t" (lambda ()
+                     (interactive)
+                     (find-file (test-file))))
+(bind-key* "M-g h" (lambda ()
+                     (interactive)
+                     (find-file (header-file))))
