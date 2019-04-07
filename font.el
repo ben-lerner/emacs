@@ -43,6 +43,7 @@
 (add-hook 'emacs-lisp-mode-hook ;; display quotes properly
 		  (lambda ()
 			(when (string= (buffer-name) "*scratch*")
+              (display-line-numbers-mode 0)
               (prettify-symbols-mode 0)
               (paredit-mode 0))))
 

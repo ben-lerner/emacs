@@ -3,7 +3,7 @@
 (add-hook 'prog-mode-hook 'auto-fill-mode)
 (add-hook 'prog-mode-hook 'show-paren-mode)
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
-(add-hook 'prog-mode-hook 'linum-mode)
+(add-hook 'prog-mode-hook 'display-line-numbers-mode)
 
 ; web mode
 (use-package web-mode)
@@ -13,7 +13,6 @@
 
 (setq web-mode-engines-alist '(("jinja2" . "\\.jhtml\\'")))
 
-
 ;; text
 (add-hook 'text-mode-hook 'auto-fill-mode)
 (add-hook 'text-mode-hook 'rainbow-delimiters-mode)
@@ -21,7 +20,6 @@
 
 (setq-default fill-column 80)
 (setq TeX-PDF-mode t)
-
 
 ;; general
 (add-hook 'before-save-hook 'delete-trailing-whitespace)

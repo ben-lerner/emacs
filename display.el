@@ -109,19 +109,6 @@ by using nxml's indentation rules."
 ;;       (remove 'ansi-color-process-output comint-output-filter-functions))
 ;; (setq font-lock-unfontify-region-function 'xterm-color-unfontify-region)
 
-;; fix line number margin issue when font increases
-(use-package linum)
-(defun linum-update-window-scale-fix (win)
-  "fix linum for scaled text"
-  (set-window-margins win
-          (ceiling (* (if (boundp 'text-scale-mode-step)
-                  (expt text-scale-mode-step
-                    text-scale-mode-amount) 1)
-              (if (car (window-margins))
-                  (car (window-margins)) 1)
-              ))))
-(advice-add #'linum-update-window :after #'linum-update-window-scale-fix)
-
 (use-package rainbow-delimiters)
 
 (custom-set-variables
