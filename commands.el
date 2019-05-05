@@ -346,3 +346,10 @@
 (bind-key* "C-M-e" 'replace-last-sexp)
 
 (bind-key* "C-S-k" 'kill-whole-line)
+
+(defun join-line-no-space ()
+  (interactive)
+  (join-line)
+  (delete-char 1))
+
+(bind-key* "M-q" 'join-line-no-space)
