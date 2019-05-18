@@ -17,18 +17,17 @@
 (setq geiser-guile-binary "/usr/local/bin/scheme")
 (use-package xscheme)
 
-;; (bind-key "C-p"
-;;           (lambda ()
-;;             (interactive)
-;;             (end-of-buffer)
-;;             (comint-previous-input 1))
-;;           geiser-repl-mode-map)
-;; (bind-key "C-n"
-;;           (lambda ()
-;;             (interactive)
-;;             (end-of-buffer)
-;;             (comint-next-input 1))
-;;           geiser-repl-mode-map)
+(defun prev-input ()
+  (interactive)
+  (end-of-buffer)
+  (comint-previous-input 1))
+(defun next-input ()
+  (interactive)
+  (end-of-buffer)
+  (comint-next-input 1))
+
+(bind-key "C-p" 'comint-previous-input geiser-repl-mode-map)
+(bind-key "C-n" 'next-input geiser-repl-mode-map)
 
 ;; fix the PATH variable
 (defun set-exec-path-from-shell-PATH ()
@@ -44,10 +43,7 @@
 (defun my-comment-sexp ()
   "comment sexp at point"
   (interactive)
-  (comment-region (point) (save-excursion
-			    (forward-sexp)
-			    (point))))
-
+  (comment-region (point) (save-excursion (forward-sexp) (point))))
 
 (defun my-uncomment-line ()
   (uncomment-region (line-beginning-position) (line-end-position)))
