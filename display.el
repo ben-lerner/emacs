@@ -1,9 +1,9 @@
 ;; theme
-(add-to-list 'custom-theme-load-path "~/emacs/packages/themes/")
+(add-to-list 'custom-theme-load-path "~/emacs/themes/")
 
 (load-theme
  (if (display-graphic-p)
-     'tron
+     'pomegranate-explosion
      'grandshell)
  t)
 
