@@ -1,11 +1,9 @@
 (require 'org-bullets)
 
-;; todo: move to bind-key
 (add-hook 'org-mode-hook (lambda ()
 						   (rainbow-delimiters-mode -1)
                            (org-bullets-mode 1)
 
-;                           (linum-mode)
                            ;; disable changes in org-mode level heights
                            ;; (dolist (face '(org-level-1
                            ;;                 org-level-2
