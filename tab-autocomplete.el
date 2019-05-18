@@ -14,7 +14,7 @@
 
 (setq dabbrev-case-fold-search nil)
 
-(bind-key* "C-SPC" 'my-dabbrev-expand)
+(bind-key* "S-SPC" 'my-dabbrev-expand)
 
 ;; minor mode
 (defvar nav-minor-mode-map (make-keymap) "nav-minor-mode keymap")

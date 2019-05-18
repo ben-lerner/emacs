@@ -164,6 +164,14 @@
 (bind-key* "C-\\" 'query-replace)
 (bind-key* "M-\\" 'query-replace-regexp)
 
+;; replace and replace-regexp for token at point
+(defun replace-at-point ()
+  (interactive)
+  (let ((from (thing-at-point 'word)))
+    (query-replace from (read-string (concat "Replace \"" from "\" with: ")))))
+
+(bind-key* "C-|" 'replace-at-point)
+
 (bind-key* "C-z" 'zap-up-to-char)
 (bind-key* "M-z" 'go-to-char)
 
