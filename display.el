@@ -1,12 +1,9 @@
 ;; theme
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
 (add-to-list 'custom-theme-load-path "~/emacs/packages/themes/")
-
-(use-package color-theme)
 
 (load-theme
  (if (display-graphic-p)
-     'challenger-deep
+     'tron
      'grandshell)
  t)
 
