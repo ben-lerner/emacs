@@ -1,3 +1,6 @@
+(use-package xscheme)
+(use-package geiser)
+
 ;; paredit
 
 (add-hook 'scheme-mode-hook 'paredit-mode)
@@ -15,7 +18,6 @@
 (setq geiser-repl-startup-time 10000)
 (setq geiser-racket-binary "/Applications/Racket v6.0/bin/racket")
 (setq geiser-guile-binary "/usr/local/bin/scheme")
-(use-package xscheme)
 
 (defun prev-input ()
   (interactive)
@@ -26,8 +28,9 @@
   (end-of-buffer)
   (comint-next-input 1))
 
-(bind-key "C-p" 'comint-previous-input geiser-repl-mode-map)
-(bind-key "C-n" 'next-input geiser-repl-mode-map)
+(with-eval-after-load "geiser-repl"
+  (bind-key "C-p" 'prev-input geiser-repl-mode-map)
+  (bind-key "C-n" 'next-input geiser-repl-mode-map))
 
 ;; fix the PATH variable
 (defun set-exec-path-from-shell-PATH ()

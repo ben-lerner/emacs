@@ -99,6 +99,9 @@ by using nxml's indentation rules."
 
 (add-hook 'nxml-mode-hook (lambda () (bf-pretty-print-xml-region (point-min) (point-max))))
 
+;; disable autocomplete dropdown
+(company-mode 0)
+
 ; enable colors. need 'export TERM=xterm-256color' in bash profile.
 ;; (use-package xterm-color)
 ;; (add-hook 'comint-preoutput-filter-functions 'xterm-color-filter)
@@ -114,7 +117,7 @@ by using nxml's indentation rules."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(inhibit-startup-screen t)
- '(term-default-fg-color "#00e2ff"))
+ '(term-default-fg-color "firebrick"))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
