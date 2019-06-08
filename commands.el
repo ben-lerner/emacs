@@ -360,7 +360,7 @@
   (join-line)
   (delete-char 1))
 
-(bind-key* "M-q" 'join-line-no-space)
+(bind-key* "C-M-q" 'join-line-no-space)
 
 ;; faster keystroke for the most common command
 (bind-key* "C-x C-x" 'save-buffer)
