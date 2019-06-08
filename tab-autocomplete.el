@@ -10,30 +10,33 @@
   (interactive)
   (if (string= major-mode "term-mode")
       (term-dabbrev-expand)
-    (dabbrev-expand nil)))
-
-(setq dabbrev-case-fold-search nil)
-
-(bind-key* "S-SPC" 'my-dabbrev-expand)
+    (dabbrev-expand nil)))(setq dabbrev-case-fold-search nil)
 
 ;; minor mode
-(defvar nav-minor-mode-map (make-keymap) "nav-minor-mode keymap")
+(defvar my-tab-minor-mode-map (make-keymap) "my-tab-minor-mode keymap")
 
-(define-minor-mode nav-minor-mode
-  "Turn off M-n and M-p for navigation in terminals and repls."
-  t " nav" 'nav-minor-mode-map  ;; TODO: what is "t"?
-  ;; Can I do this without a minor mode?
-  )
+(define-minor-mode my-tab-minor-mode
+  "<tab> calls dabbrev-expand. Not used in repls, terminals, etc."
+  t " autotab" 'my-tab-minor-mode-map)
 
-(nav-minor-mode 1)
+(my-tab-minor-mode 1)
 
-(defun no-nav-hook () (nav-minor-mode 0))
+;; default keybinding
+(global-set-key (kbd "C-<tab>") 'my-dabbrev-expand)
 
-(add-hook 'term-mode-hook 'no-nav-hook)
-(add-hook 'geiser-repl-mode-hook 'no-nav-hook)
-(add-hook 'cider-repl-mode-hook 'no-nav-hook)
-(add-hook 'org-mode-hook 'no-nav-hook)
+;; for modes without existing tab functionality
+(bind-key "C-<tab>" 'indent-for-tab-command my-tab-minor-mode-map)
+(bind-key "<tab>" 'my-dabbrev-expand my-tab-minor-mode-map)
+(bind-key "M-`" 'my-dabbrev-expand)  ;; for ssh
+
+(defun no-tab-hook () (my-tab-minor-mode 0))
+
+(add-hook 'minibuffer-setup-hook 'no-tab-hook)
+(add-hook 'term-mode-hook 'no-tab-hook)
+(add-hook 'geiser-repl-mode-hook 'no-tab-hook)
+(add-hook 'cider-repl-mode-hook 'no-tab-hook)
+(add-hook 'org-mode-hook 'no-tab-hook)
 
 ;;;; navigate by paragraphs, but not in terminal mode
-(bind-key "M-n" 'forward-paragraph nav-minor-mode-map)
-(bind-key "M-p" 'backward-paragraph nav-minor-mode-map)
+(bind-key "M-n" 'forward-paragraph my-tab-minor-mode-map)
+(bind-key "M-p" 'backward-paragraph my-tab-minor-mode-map)
