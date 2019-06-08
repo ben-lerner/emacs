@@ -99,7 +99,6 @@ by using nxml's indentation rules."
 
 (add-hook 'nxml-mode-hook (lambda () (bf-pretty-print-xml-region (point-min) (point-max))))
 
-(use-package centered-window-mode)
 (centered-window-mode 1)
 
 ;; disable autocomplete dropdown
