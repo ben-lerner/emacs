@@ -22,4 +22,7 @@
 (setq TeX-PDF-mode t)
 
 ;; general
-(add-hook 'before-save-hook 'delete-trailing-whitespace)
+(add-hook 'before-save-hook
+          '(lambda ()
+             (if (derived-mode-p 'prog-mode)
+                 (delete-trailing-whitespace))))

@@ -8,9 +8,13 @@
 
 (defun my-dabbrev-expand ()
   (interactive)
-  (if (string= major-mode "term-mode")
-      (term-dabbrev-expand)
-    (dabbrev-expand nil)))(setq dabbrev-case-fold-search nil)
+  (if (= (current-column) 0)
+      (indent-for-tab-command)  ;; no autocomplete at start of column
+    (if (string= major-mode "term-mode")
+        (term-dabbrev-expand)
+      (dabbrev-expand nil))))
+
+(setq dabbrev-case-fold-search nil)
 
 ;; minor mode
 (defvar my-tab-minor-mode-map (make-keymap) "my-tab-minor-mode keymap")
