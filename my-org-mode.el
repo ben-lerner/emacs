@@ -65,8 +65,17 @@
   (goto-todo-file "log"))
 
 (defun goto-todo ()
+  ;; go to open todo file if it exists, otherwise open generic one
+  ;; assumes there's only one todo.org open
   (interactive)
-  (goto-todo-file "todo"))
+  (let ((todo-file
+         (car
+          (seq-filter
+           (lambda (filename) (string-suffix-p "todo.org" filename))
+           (mapcar 'buffer-file-name (buffer-list))))))
+    (if todo-file
+      (switch-to-buffer (find-buffer-visiting todo-file))
+      (goto-todo-file "todo"))))
 
 (defun goto-archive ()
   (interactive)
