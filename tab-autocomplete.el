@@ -1,6 +1,4 @@
-;; dabbrev-expand for terminals
 (defun term-dabbrev-expand ()
-  (interactive)
   (let ((beg (point)))
     (dabbrev-expand nil)
     (kill-region beg (point)))
@@ -8,11 +6,11 @@
 
 (defun my-dabbrev-expand ()
   (interactive)
-  (if (= (current-column) 0)
-      (indent-for-tab-command)  ;; no autocomplete at start of column
-    (if (string= major-mode "term-mode")
-        (term-dabbrev-expand)
-      (dabbrev-expand nil))))
+  (cond
+   ;; no autocomplete at start of line
+   ((= (current-column) 0) (indent-for-tab-command))
+   ((string= major-mode "term-mode") (term-dabbrev-expand))
+   (t (dabbrev-expand nil))))
 
 (setq dabbrev-case-fold-search nil)
 
@@ -26,12 +24,12 @@
 (my-tab-minor-mode 1)
 
 ;; default keybinding
-(global-set-key (kbd "C-<tab>") 'my-dabbrev-expand)
+(bind-key* "C-<tab>" 'my-dabbrev-expand)
 
 ;; for modes without existing tab functionality
 (bind-key "C-<tab>" 'indent-for-tab-command my-tab-minor-mode-map)
 (bind-key "<tab>" 'my-dabbrev-expand my-tab-minor-mode-map)
-(bind-key "M-`" 'my-dabbrev-expand)  ;; for ssh
+(bind-key* "M-`" 'my-dabbrev-expand)  ;; for ssh
 
 (defun no-tab-hook () (my-tab-minor-mode 0))
 
