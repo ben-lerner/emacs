@@ -4,11 +4,16 @@
     (kill-region beg (point)))
   (term-send-raw-string (substring-no-properties (current-kill 0))))
 
+(defun line-at-point ()
+  ;; get current line, up to where point is
+  (substring (thing-at-point 'line 't) 0 (current-column)))
+
 (defun my-dabbrev-expand ()
   (interactive)
   (cond
    ;; no autocomplete at start of line
-   ((= (current-column) 0) (indent-for-tab-command))
+   ;; "start" includes whitespace and, for org-mode-, asterisks
+   ((string-match "^ *\\**$" (line-at-point)) (indent-for-tab-command))
    ((string= major-mode "term-mode") (term-dabbrev-expand))
    (t (dabbrev-expand nil))))
 
@@ -37,7 +42,6 @@
 (add-hook 'term-mode-hook 'no-tab-hook)
 (add-hook 'geiser-repl-mode-hook 'no-tab-hook)
 (add-hook 'cider-repl-mode-hook 'no-tab-hook)
-(add-hook 'org-mode-hook 'no-tab-hook)
 
 ;;;; navigate by paragraphs, but not in terminal mode
 (bind-key "M-n" 'forward-paragraph my-tab-minor-mode-map)

@@ -1,0 +1,5 @@
+* $DIREXPAND for C-x C-f and file displays
+* dired mode?
+* refactor goto
+* ediff
+* in ido-complete list, shot prefix match first
