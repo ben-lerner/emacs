@@ -13,7 +13,10 @@
   (cond
    ;; no autocomplete at start of line
    ;; "start" includes whitespace and, for org-mode-, asterisks
-   ((string-match "^ *\\**$" (line-at-point)) (indent-for-tab-command))
+   ((string-match "^ *\\** *$" (line-at-point))
+    (if (string= major-mode "org-mode")
+        (org-do-demote)
+        (indent-for-tab-command)))
    ((string= major-mode "term-mode") (term-dabbrev-expand))
    (t (dabbrev-expand nil))))
 
