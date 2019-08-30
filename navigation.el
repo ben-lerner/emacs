@@ -135,6 +135,7 @@
 (bind-key* "M-g M-t" 'goto-todo)
 (bind-key* "M-g M-a" 'goto-archive)
 (bind-key* "M-g M-f" 'ffap-with-line)
+(bind-key* "M-g M-b" 'browse-url-of-file)
 
 ;; file autocomplete
 (ivy-mode)
