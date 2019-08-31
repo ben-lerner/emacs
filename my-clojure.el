@@ -18,7 +18,7 @@
             (interactive)
             (save-buffer)
             (cider-load-buffer)
-          ; (cider-repl-set-ns) ;; todo: fix this
+            (cider-repl-set-ns (cider-current-ns))
             (cider-switch-to-repl-buffer))
           cider-mode-map)
 
