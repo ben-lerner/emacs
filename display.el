@@ -3,15 +3,9 @@
 
 (load-theme
  (if (display-graphic-p)
-     'pomegranate-explosion
+     'cyberpunk-2019
      'grandshell)
  t)
-
-;; other themes
-;; 'nimbus
-;; 'deeper-blue
-;; 'doom-peacock
-;; 'grandshell
 
 ;; disable annoyances
 (when (display-graphic-p)
@@ -117,7 +111,7 @@ by using nxml's indentation rules."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(inhibit-startup-screen t)
- '(term-default-fg-color "firebrick"))
+ '(term-default-fg-color "green"))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
