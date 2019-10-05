@@ -59,8 +59,8 @@
  `(font-lock-doc-face ((t (:foreground "#7FDEFF" :italic t))))
  `(font-lock-comment-face ((t (:foreground
                                ;; "#CBEBFF" ;; bright comments
-                               ;; "818AB1" ;; medium bright
-                               "5C598A"  ;; dark
+                               ;; "#818AB1" ;; medium bright
+                               "#5C598A"  ;; dark
                                :background nil
                                :italic t))))
  `(font-lock-string-face ((t (:foreground "#7FDEFF"))))
