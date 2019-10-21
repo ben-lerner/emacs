@@ -6,6 +6,7 @@
 ;; spellcheck
 ;; todo: turn on aspell if it exists
 (setq ispell-program-name "aspell")
+(setq ispell-silently-savep t)  ;; don't confirm when saving new words
 ;; installed from aspell.net/win32/ on windows; install aspell and english dict
 ;  directory defined per local system
 
