@@ -57,8 +57,7 @@
 (setq telephone-line-height 24
       telephone-line-evil-use-short-tag t)
 (setq telephone-line-lhs
-      '((accent . (telephone-line-short-vc-segment))
-        (nil    . (telephone-line-buffer-segment))))
+      '((accent . (telephone-line-short-vc-segment))))
 
 (setq telephone-line-rhs
       '((nil    . (telephone-line-misc-info-segment
