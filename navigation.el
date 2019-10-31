@@ -133,7 +133,6 @@
 (bind-key* "M-g M-l" 'goto-log)
 (bind-key* "M-g M-q" 'goto-quotes)
 (bind-key* "M-g M-t" 'goto-todo)
-(bind-key* "M-g M-a" 'goto-archive)
 (bind-key* "M-g M-f" 'ffap-with-line)
 (bind-key* "M-g M-b" 'browse-url-of-file)
 
@@ -172,12 +171,12 @@
           (t  ;; source file
            (replace-regexp-in-string "\\..*" ".h" filename)))))
 
-(bind-key* "M-g s" (lambda ()
+(bind-key* "M-g M-s" (lambda ()
                      (interactive)
                      (find-file (source-file))))
-(bind-key* "M-g t" (lambda ()
+(bind-key* "M-g M-t" (lambda ()
                      (interactive)
                      (find-file (test-file))))
-(bind-key* "M-g h" (lambda ()
+(bind-key* "M-g M-h" (lambda ()
                      (interactive)
                      (find-file (header-file))))

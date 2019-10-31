@@ -43,8 +43,8 @@
                 (string-trim
                  (shell-command-to-string
                   "basename `git rev-parse --show-toplevel`")))
-               (branch (substring vc-mode 5)) ;; drop 'Git: '
-               )
+                ;; drop 'Git: '
+               (branch (substring vc-mode 5)))
             (concat repo "/" branch)))
          (t nil))))
 
