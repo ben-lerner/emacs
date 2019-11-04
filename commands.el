@@ -364,3 +364,4 @@
 
 ;; faster keystroke for the most common command
 (bind-key* "C-x C-x" 'save-buffer)
+(unbind-key "C-x C-s")
