@@ -57,11 +57,11 @@
 (setq telephone-line-height 24
       telephone-line-evil-use-short-tag t)
 (setq telephone-line-lhs
-      '((accent . (telephone-line-short-vc-segment))))
+      '((accent . (telephone-line-short-vc-segment))
+        (nil . (telephone-line-buffer-segment))))
 
 (setq telephone-line-rhs
-      '((nil    . (telephone-line-misc-info-segment
-                   telephone-line-major-mode-segment))
+      '((nil    . (telephone-line-misc-info-segment))
         (accent . (telephone-line-airline-position-segment))))
 
 (telephone-line-mode 1)
