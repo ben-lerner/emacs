@@ -36,7 +36,7 @@
 
 ;; for modes without existing tab functionality
 (bind-key "C-<tab>" 'indent-for-tab-command my-tab-minor-mode-map)
-(bind-key "\t" 'my-dabbrev-expand my-tab-minor-mode-map)
+(bind-key "TAB" 'my-dabbrev-expand my-tab-minor-mode-map)
 
 (defun no-tab-hook () (my-tab-minor-mode 0))
 
