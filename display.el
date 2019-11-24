@@ -1,9 +1,10 @@
 ;; theme
 (add-to-list 'custom-theme-load-path "~/emacs/themes/")
 
+;; old themes: cyberpunk-2019
 (load-theme
  (if (display-graphic-p)
-     'cyberpunk-2019
+     'gruvbox-dark-medium
      'grandshell)
  t)
 
