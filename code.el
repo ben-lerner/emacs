@@ -1,10 +1,18 @@
 ;;; program mode hooks
-(add-hook 'prog-mode-hook '(lambda () (local-set-key (kbd "RET") 'newline-and-indent)))
+(add-hook 'prog-mode-hook
+          '(lambda ()
+             (local-set-key (kbd "RET") 'newline-and-indent)
+             (auto-fill-mode)
+             (show-paren-mode)
+             (rainbow-delimiters-mode)
+             (display-line-numbers-mode)
+             (set-fringe-style '(0 . nil))  ;; compensate for how wide display-line-numbers-mode is
+             ))
 (add-hook 'prog-mode-hook 'auto-fill-mode)
 (add-hook 'prog-mode-hook 'show-paren-mode)
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
-;(add-hook 'prog-mode-hook 'display-line-numbers-mode)  ;; looks bad in gruvbox
-(add-hook 'prog-mode-hook 'linum-mode)
+(add-hook 'prog-mode-hook 'display-line-numbers-mode)
+(add-hook 'prog-mode-hook 'display-line-numbers-mode)
 
 ; web mode
 (use-package web-mode)

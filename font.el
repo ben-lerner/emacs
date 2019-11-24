@@ -44,6 +44,7 @@
 		  (lambda ()
 			(when (string= (buffer-name) "*scratch*")
               (display-line-numbers-mode 0)
+              (fringe-mode nil)
               (prettify-symbols-mode 0)
               (paredit-mode 0))))
 

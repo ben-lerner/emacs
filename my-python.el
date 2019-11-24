@@ -46,14 +46,8 @@
   (insert "c")
   (realgud:send-input) )
 
-
-(eval-after-load "python-mode"
-  '(begin
-    (bind-key "C-c C-c" 'ipdb-debug python-mode-map)
-    (bind-key "C-c C-b" 'ipython-add-breakpoint python-mode-map)
-    (bind-key "C-c C-i C-b" 'python-add-breakpoint python-mode-map)
-    (bind-key "C-." 'elpy-goto-definition python-mode-map)
-    (bind-key "C-," 'xref-pop-marker-stack python-mode-map)))
+(bind-key "C-c C-c" 'ipdb-debug python-mode-map)
+(bind-key "C-c C-b" 'ipython-add-breakpoint python-mode-map)
 
 ;; elpy mode
 ;; run: pip install jedi flake8 importmagic autopep8
