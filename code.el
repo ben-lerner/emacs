@@ -3,7 +3,8 @@
 (add-hook 'prog-mode-hook 'auto-fill-mode)
 (add-hook 'prog-mode-hook 'show-paren-mode)
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
-(add-hook 'prog-mode-hook 'display-line-numbers-mode)
+;(add-hook 'prog-mode-hook 'display-line-numbers-mode)  ;; looks bad in gruvbox
+(add-hook 'prog-mode-hook 'linum-mode)
 
 ; web mode
 (use-package web-mode)
