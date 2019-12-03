@@ -94,7 +94,7 @@ by using nxml's indentation rules."
 (add-hook 'nxml-mode-hook (lambda () (bf-pretty-print-xml-region (point-min) (point-max))))
 
 ;; disable autocomplete dropdown
-(company-mode 0)
+;(company-mode 0)
 
 ; enable colors. need 'export TERM=xterm-256color' in bash profile.
 ;; (use-package xterm-color)

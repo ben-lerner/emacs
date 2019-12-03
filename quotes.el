@@ -1,32 +1,15 @@
-(defun drop-leading-zero (s)
-  (if (string= (substring s 0 1) "0")
-	  (substring s 1)
-	  s))
-
-(defun todays-date ()
-  ;; e.g. 1-15-16.txt
-  (let ((date (seconds-to-time (- (float-time) (* 6 60 60)))))
-	     ; what date was it 6 hours ago? up to 6 am
-	(concat (drop-leading-zero (format-time-string "%m" date))
-			"-"
-			(drop-leading-zero (format-time-string "%d" date))
-			"-"
-			(format-time-string "%y" date))))
-
-
 (defun get-n-random (data n)
   (if (<= n 0)
       '()
       (mapcar (lambda (i) (nth i data))
               (random-ints (length data) n))))
 
-(defun random-ints (n k) ;; give k seeded random integers in [0, n), repeated and de-duped
-  (delete-dups
-   (mapcar (lambda (i)
-             (mod
-              (random (concat (todays-date) (number-to-string i)))
-              n))
-           (number-sequence 1 k))))
+(defun random-ints (n k) ;; generates k unique random ints in [0, n)
+  (if (or (<= k 0) (<= n 0))
+      '()
+    (let ((rest (random-ints n (- k 1)))
+          (new (random n)))
+      (delete-dups (cons new rest)))))
 
 (defun read-file (file)
   (with-temp-buffer

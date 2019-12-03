@@ -1,3 +1,5 @@
+(require 'python-mode)
+
 ;; python autocomplete
 (bind-key "C-c m"
           (lambda ()

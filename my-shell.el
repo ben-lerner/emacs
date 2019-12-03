@@ -1,5 +1,6 @@
 (use-package multi-term)
 
+
 (setq multi-term-program "/bin/bash")
 
 ;; todo: move all shell code here

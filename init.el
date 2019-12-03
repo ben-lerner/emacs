@@ -1,3 +1,5 @@
+;; Set .emacs to (load "~/emacs/init.el")
+
 ;; Is this slow? Run benchmark-init.el.
 (setq blank-startup-screen nil)
 
