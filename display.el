@@ -1,4 +1,5 @@
 ;; theme
+(require 'python)
 (add-to-list 'custom-theme-load-path "~/emacs/themes/")
 
 ;; old themes: cyberpunk-2019
@@ -43,11 +44,14 @@
               ((repo
                 (string-trim
                  (shell-command-to-string
-                  "basename `git rev-parse --show-toplevel`")))
+                  (concat
+                   "cd " default-directory "; "
+                   "basename `git rev-parse --show-toplevel`"))))
                 ;; drop 'Git: '
                (branch (substring vc-mode 5)))
             (concat repo "/" branch)))
          (t nil))))
+
 
 ;; nice modal line
 (use-package telephone-line)
