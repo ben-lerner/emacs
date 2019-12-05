@@ -91,6 +91,5 @@
 
 ;;; this is slow
 ;; match shell variables to bash shell
-(use-package exec-path-from-shell)
 (when (memq window-system '(mac ns))
   (exec-path-from-shell-initialize))

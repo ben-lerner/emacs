@@ -137,10 +137,9 @@
 (bind-key* "M-g M-b" 'browse-url-of-file)
 
 ;; file autocomplete
-(ivy-mode)
-(setq ivy-use-virtual-buffers t)
-(setq ivy-count-format "")
-(setq ivy-extra-directories nil)  ;; don't show . and ..
+(helm-mode 1)
+(bind-key* "C-x C-f" 'helm-find-files)
+(bind-key* "M-x" 'helm-M-x)
 
 ;; todo: refactor
 ;; headers assume .cc
