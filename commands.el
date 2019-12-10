@@ -173,6 +173,7 @@
 (bind-key* "C-|" 'replace-at-point)
 
 (bind-key* "C-z" 'zap-up-to-char)
+(bind-key* "C-S-z" 'zap-past-char)
 (bind-key* "M-z" 'go-to-char)
 
 ;;; global commands

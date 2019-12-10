@@ -28,6 +28,17 @@
                       (backward-char direction))
                     (point)))))
 
+(defun zap-past-char (arg char)
+  "Kill up to and including ARGth occurrence of CHAR. "
+   (interactive "p\ncZap past char: ")
+   (let ((direction (if (>= arg 0) 1 -1)))
+     (kill-region (point)
+                  (progn
+                    (forward-char direction)
+                    (unwind-protect
+                        (search-forward (char-to-string char) nil nil arg))
+                    (point)))))
+
 (defun go-to-char (arg char)
   "Analagous to zap, but just moves."
   (interactive "p\ncMove up to char: ")
