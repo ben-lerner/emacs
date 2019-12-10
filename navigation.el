@@ -149,8 +149,13 @@
 
 ;; file autocomplete
 (helm-mode 1)
+
+(setq helm-ff-skip-boring-files 't)
+(setq helm-ff-skip-git-ignored-files 't)
+
 (bind-key* "C-x C-f" 'helm-find-files)
 (bind-key* "M-x" 'helm-M-x)
+(bind-key* "C-x b" 'helm-buffers-list)
 
 ;; todo: refactor
 ;; headers assume .cc
