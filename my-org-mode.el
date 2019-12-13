@@ -21,6 +21,9 @@
 (bind-key "M-n" (kbd "M-5 C-n") org-mode-map)
 (bind-key "M-p" (kbd "M-5 C-p") org-mode-map)
 (bind-key "M-i" 'org-cycle org-mode-map)
+(bind-key "RET" 'org-meta-return org-mode-map)
+(bind-key "M-RET" 'org-return org-mode-map)
+(bind-key "C-RET" 'org-return org-mode-map)
 
 (setq org-log-done 'time)
 (setq org-ellipsis " ⤵")
