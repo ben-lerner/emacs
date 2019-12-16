@@ -1,6 +1,5 @@
 (use-package multi-term)
 
-
 (setq multi-term-program "/bin/bash")
 
 ;; todo: move all shell code here
@@ -130,6 +129,3 @@
 
 ;; M-d gets overwritten somehow
 (add-hook 'term-mode-hook (lambda () (bind-key "M-d" 'term-send-forward-kill-word term-raw-map)))
-
-;; todo: what is this?
-(setq explicit-bash-args '("--login" "--init-file" "~/Dropbox/bash_profile" "-i"))
