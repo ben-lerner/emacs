@@ -39,5 +39,4 @@
           "tab-autocomplete"
           ))
 
-(server-start) ; let terminals open frames in main emacs session
 (load "realgud") ; this has something to do with deubggers
