@@ -156,6 +156,7 @@
 (bind-key* "C-x C-f" 'helm-find-files)
 (bind-key* "M-x" 'helm-M-x)
 (bind-key* "C-x b" 'helm-buffers-list)
+(bind-key "<tab>" 'helm-ff-RET helm-map)
 
 ;; todo: refactor
 ;; headers assume .cc
