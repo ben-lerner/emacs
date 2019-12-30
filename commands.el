@@ -192,15 +192,15 @@
 
 ; outline line (=== above and below)
 
-(defun make-main-header ()
+(defun main-header ()
   (interactive)
   (make-header ?=))
 
-(defun make-side-header ()
+(defun side-header ()
   (interactive)
   (make-header ?-))
 
-(defun make-header (header-char)
+(defun make-double-header (header-char)
   (interactive)
   (setq temp-newline-and-indent newline-and-indent)
   (setq newline-and-indent ())
@@ -217,6 +217,23 @@
   (previous-line)
   (insert header-str)
   (next-line)
+  (next-line)
+  (insert header-str)
+  (next-line)
+  (setq newline-and-indent temp-newline-and-indent))
+
+(defun make-header (header-char)
+  (interactive)
+  (setq temp-newline-and-indent newline-and-indent)
+  (setq newline-and-indent ())
+
+  (open-next-line 1) ; do this first to make sure newline is present when
+					 ; counting length
+  (previous-line)
+
+  (setq L (- (length (thing-at-point 'line)) 1))
+  (setq header-str (make-string L header-char))
+
   (next-line)
   (insert header-str)
   (next-line)
@@ -275,8 +292,8 @@
 (bind-key* "M-:" 'comment-or-uncomment-paragraph)
 (bind-key* "C-c C-q" 'auto-fill-mode)
 
-(bind-key* "C-=" 'make-main-header)
-(bind-key* "C--" 'make-side-header)
+(bind-key* "C-_" 'main-header)  ; markdown h1
+(bind-key* "C--" 'side-header)  ; markdown h2
 (unbind-key "C-c l" 'nil)
 (unbind-key "C-c n" 'nil)
 (unbind-key "C-c j" 'nil)
