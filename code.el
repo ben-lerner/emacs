@@ -27,7 +27,7 @@
 (add-hook 'text-mode-hook 'rainbow-delimiters-mode)
 (add-hook 'text-mode-hook 'flyspell-mode)
 
-(setq-default fill-column 120)
+(setq-default fill-column 80)
 (setq TeX-PDF-mode t)
 
 ;; general
