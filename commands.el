@@ -176,6 +176,21 @@
 (bind-key* "M-z" 'go-to-char)
 
 ;;; global commands
+;; more intuitive M-f and M-S_f behavior: stops at start of word/sexp, not before
+(bind-key* "M-f" 'forward-to-word)
+
+(defun forward-to-sexp ()
+  (interactive)
+  (let ((start (point)))
+    (forward-sexp)
+    (backward-sexp)
+    (when (>= start (point))  ;; at the beginning of sexp or in a token, so the above is a no-op
+      (forward-sexp)
+      (forward-sexp)
+      (backward-sexp))))
+
+(bind-key* "C-M-f" 'forward-to-sexp)
+
 
 ;; don't ask about killing running process
 (bind-key* "C-x k"
