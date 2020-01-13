@@ -35,3 +35,6 @@
           '(lambda ()
              (if (derived-mode-p 'prog-mode)
                  (delete-trailing-whitespace))))
+;; use 2-space tabs
+(setq default-tab-width 2)
+(add-hook 'python-mode-hook '(λ () (setq python-indent 2)))
