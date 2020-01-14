@@ -177,7 +177,8 @@
 
 ;;; global commands
 ;; more intuitive M-f and M-S_f behavior: stops at start of word/sexp, not before
-(bind-key* "M-f" 'forward-to-word)
+(global-set-key (kbd "M-f") 'forward-to-word)
+(bind-key* "M-F" 'forward-word)
 
 (defun forward-to-sexp ()
   (interactive)
@@ -190,7 +191,7 @@
       (backward-sexp))))
 
 (bind-key* "C-M-f" 'forward-to-sexp)
-
+(bind-key* "C-M-F" 'forward-sexp)
 
 ;; don't ask about killing running process
 (bind-key* "C-x k"

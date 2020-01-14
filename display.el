@@ -71,7 +71,6 @@
 
 (telephone-line-mode 1)
 
-;; pretty lambda
 ;; misc
 ; (fringe-mode '(4 . 6))
 (setq show-paren-delay 0)
