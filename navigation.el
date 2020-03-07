@@ -158,6 +158,7 @@
 (bind-key* "C-x b" 'helm-buffers-list)
 (bind-key "<tab>" 'helm-ff-RET helm-map)
 
+;; rotate-file
 ;; todo: refactor
 ;; headers assume .cc
 (defun test-file ()
@@ -187,12 +188,26 @@
           (t  ;; source file
            (replace-regexp-in-string "\\..*" ".h" filename)))))
 
-(bind-key* "M-g M-s" (lambda ()
-                     (interactive)
-                     (find-file (source-file))))
-(bind-key* "M-g M-t" (lambda ()
-                     (interactive)
-                     (find-file (test-file))))
-(bind-key* "M-g M-h" (lambda ()
-                     (interactive)
-                     (find-file (header-file))))
+;; Find header, source, and test files.
+(defun related-files (filename)
+  ;; drop extension and _test, then find all files in the directory containing
+  ;; the filename, and sort by length. This returns [header, source, test].
+  (let ((file-prefix
+         (file-name-sans-extension
+          (replace-regexp-in-string "_test\\." "." filename))))
+    (cl-sort (directory-files default-directory nil (concat "^" file-prefix) 't)
+             '< :key 'length)))
+
+;; Returns the element after cur-item. Wraps around if needed.
+(defun next-item (item-list cur-item)
+    (elt item-list
+         (% (+ (cl-position cur-item item-list) 1) (length item-list))))
+
+(bind-key* "M-g M-o"
+           (lambda ()
+             (interactive)
+             (let* ((file (file-name-nondirectory (buffer-file-name)))
+                    (files (related-files file)))
+               (if (= (length files) 1)
+                   (message "No related files found.")
+                 (find-file (next-item files file))))))

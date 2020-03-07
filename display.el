@@ -5,8 +5,11 @@
 ;; old themes: cyberpunk-2019
 (load-theme
  (if (display-graphic-p)
-     'gruvbox-dark-medium
-     'grandshell)
+;     'gruvbox-dark-medium
+;     'grandshell
+     'sanityinc-solarized-dark
+     'sanityinc-solarized-dark
+     )
  t)
 
 ;; disable annoyances

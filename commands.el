@@ -387,13 +387,14 @@
 (bind-key* "C-M-e" 'replace-last-sexp)
 
 (bind-key* "C-S-k" 'kill-whole-line)
+(bind-key* "M-k" 'kill-paragraph)
 
-(defun join-line-no-space ()
+(defun join-line-with-space ()
   (interactive)
   (join-line)
-  (delete-char 1))
+  (insert " "))
 
-(bind-key* "C-M-q" 'join-line-no-space)
+(bind-key* "C-M-q" 'join-line-with-space)
 
 ;; faster keystroke for the most common command
 (bind-key* "C-x C-x" 'save-buffer)
