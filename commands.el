@@ -399,3 +399,15 @@
 ;; faster keystroke for the most common command
 (bind-key* "C-x C-x" 'save-buffer)
 (unbind-key "C-x C-s")
+
+;; Run pdflatex on current buffer; defined in bash_scripts
+(defun ltx ()
+  (interactive)
+  (let ((temp-buffer "*latex-output*"))
+    (with-output-to-temp-buffer
+     temp-buffer
+     (shell-command "ltx"
+                    temp-buffer  ;; stdout
+                    "*Mesages*"  ;; stderr
+                    ))
+    (pop-to-buffer temp-buffer)))
