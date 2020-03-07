@@ -123,7 +123,8 @@
               (throw 'done t)))
         (paredit-forward-slurp-sexp))))
 
-
+;; fix if indentation
+(put 'if 'lisp-indent-function nil)
 
 ;; error on startup?
 

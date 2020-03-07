@@ -203,11 +203,13 @@
     (elt item-list
          (% (+ (cl-position cur-item item-list) 1) (length item-list))))
 
-(bind-key* "M-g M-o"
-           (lambda ()
-             (interactive)
-             (let* ((file (file-name-nondirectory (buffer-file-name)))
-                    (files (related-files file)))
-               (if (= (length files) 1)
-                   (message "No related files found.")
-                 (find-file (next-item files file))))))
+(bind-key*
+ "M-g M-o"
+ (lambda ()
+   (interactive)
+   (let* ((file (file-name-nondirectory
+                 (buffer-file-name)))
+          (files (related-files file)))
+     (if (= (length files) 1)
+         (message "No related files found.")
+         (find-file (next-item files file))))))
