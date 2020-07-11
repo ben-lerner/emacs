@@ -403,6 +403,7 @@
 ;; Run pdflatex on current buffer; defined in bash_scripts
 (defun ltx ()
   (interactive)
+  (save-buffer)
   (let ((temp-buffer "*latex-output*"))
     (with-output-to-temp-buffer
      temp-buffer

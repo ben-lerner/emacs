@@ -7,8 +7,8 @@
  (if (display-graphic-p)
 ;     'gruvbox-dark-medium
 ;     'grandshell
-     'sanityinc-solarized-dark
-     'sanityinc-solarized-dark
+;     'sanityinc-solarized-dark
+     'brin
      )
  t)
 

@@ -1,5 +1,5 @@
 (require 'magit)
-(bind-key* "C-c g" 'magit-status)
+(bind-key* "C-c C-g" 'magit-status)
 
 ;; todo: fix this not to prompt on magit-stage-file
 ;; (defun save-and-stage-file ()
