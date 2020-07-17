@@ -1,3 +1,5 @@
+;; TODO: Update all of this to work like a real REPL.
+
 ;; python autocomplete
 (bind-key "C-c m"
           (lambda ()
@@ -23,10 +25,6 @@
 (defun ipython-add-breakpoint ()
   (interactive)
   (add-breakpoint "import ipdb; ipdb.set_trace()"))
-
-(defun python-add-breakpoint ()
-  (interactive)
-  (add-breakpoint "import pdb; pdb.set_trace()"))
 
 (defun ipdb-run-string (filepath)
   ;; returns text to run ipdb
@@ -65,5 +63,5 @@
                                (highlight-indentation-mode 0)
                                (flymake-mode 0))))
 
-(setq python-shell-interpreter "python3")
+(setq python-shell-interpreter "ipython3")
 (setq python-shell-completion-native-enable nil)

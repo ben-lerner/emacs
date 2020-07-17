@@ -93,3 +93,37 @@
 ;; match shell variables to bash shell
 (when (memq window-system '(mac ns))
   (exec-path-from-shell-initialize))
+
+
+;; ivy
+(require 'ivy)
+(require 'counsel)
+(ivy-mode 1)
+(setq ivy-use-virtual-buffers t)
+(setq enable-recursive-minibuffers t)
+
+(setq ivy-re-builds-alist
+      '((swiper . ivy--regex-plus)
+        (t      . ivy--regex-fuzzy)))
+
+(bind-key* "C-s" 'swiper)
+(bind-key* "C-r" 'swiper-backward)
+(bind-key* "M-x" 'counsel-M-x)
+(bind-key* "C-x C-f" 'counsel-find-file)
+
+;; todo - try these functions and add good ones
+;; (bind-key* "C-c C-r" 'ivy-resume)
+;; (bind-key* "<f6>" 'ivy-resume)
+;; (bind-key* "<f1> f" 'counsel-describe-function)
+;; (bind-key* "<f1> v" 'counsel-describe-variable)
+;; (bind-key* "<f1> o" 'counsel-describe-symbol)
+;; (bind-key* "<f1> l" 'counsel-find-library)
+;; (bind-key* "<f2> i" 'counsel-info-lookup-symbol)
+;; (bind-key* "<f2> u" 'counsel-unicode-char)
+;; (bind-key* "C-c g" 'counsel-git)
+;; (bind-key* "C-c j" 'counsel-git-grep)
+;; (bind-key* "C-c k" 'counsel-ag)
+;; (bind-key* "C-x l" 'counsel-locate)
+;; (bind-key* "C-S-o" 'counsel-rhythmbox)
+
+(define-key minibuffer-local-map (kbd  "C-r") 'counsel-minibuffer-history)

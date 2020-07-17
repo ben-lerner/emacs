@@ -412,3 +412,8 @@
                     "*Mesages*"  ;; stderr
                     ))
     (pop-to-buffer temp-buffer)))
+
+;; don't prompt for directory on ag
+(defun grp (string)
+  (interactive (list (ag/read-from-minibuffer "Search for")))
+  (ag/search string default-directory))

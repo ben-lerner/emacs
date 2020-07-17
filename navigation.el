@@ -147,17 +147,6 @@
 (bind-key* "M-g M-f" 'ffap-with-line)
 (bind-key* "M-g M-b" 'browse-url-of-file)
 
-;; file autocomplete
-(helm-mode 1)
-
-(setq helm-ff-skip-boring-files 't)
-(setq helm-ff-skip-git-ignored-files 't)
-
-(bind-key* "C-x C-f" 'helm-find-files)
-(bind-key* "M-x" 'helm-M-x)
-(bind-key* "C-x b" 'helm-buffers-list)
-(bind-key "<tab>" 'helm-ff-RET helm-map)
-
 ;; rotate-file
 ;; todo: refactor
 ;; headers assume .cc
