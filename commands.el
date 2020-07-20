@@ -417,3 +417,16 @@
 (defun grp (string)
   (interactive (list (ag/read-from-minibuffer "Search for")))
   (ag/search string default-directory))
+
+(defun kill-buffers-in-dir (dirname)
+  "Kill all buffers in dirname."
+  (interactive "sdirname: ")
+  (let ((buffers
+         (remove-if-not
+          (lambda (buffer)
+            (string-prefix-p dirname (buffer-file-name buffer)))
+          (buffer-list))))
+    (if (= (length buffers) 1)
+        (message "Killing 1 buffer")
+        (message "Killing %s buffers" (length buffers)))
+    (mapc 'kill-buffer buffers)))
