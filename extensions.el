@@ -106,10 +106,13 @@
       '((swiper . ivy--regex-plus)
         (t      . ivy--regex-fuzzy)))
 
-(bind-key* "C-s" 'swiper)
-(bind-key* "C-r" 'swiper-backward)
+(global-set-key (kbd "C-s") 'swiper)
+(global-set-key (kbd "C-r") 'swiper-backward)
 (bind-key* "M-x" 'counsel-M-x)
 (bind-key* "C-x C-f" 'counsel-find-file)
+(bind-key "C-s" 'ivy-next-line swiper-map)
+(bind-key "C-r" 'ivy-previous-line swiper-map)
+
 
 ;; todo - try these functions and add good ones
 ;; (bind-key* "C-c C-r" 'ivy-resume)
