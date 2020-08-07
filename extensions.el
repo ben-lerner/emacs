@@ -130,3 +130,5 @@
 ;; (bind-key* "C-S-o" 'counsel-rhythmbox)
 
 (define-key minibuffer-local-map (kbd  "C-r") 'counsel-minibuffer-history)
+
+(electric-pair-mode)  ;; insert matching parens and type through matches
