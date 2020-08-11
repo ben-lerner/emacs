@@ -37,7 +37,7 @@
 
 (bind-key* "C-c c" 'org-capture)
 
-(setq todo-dir "~/todo/")
+(setq todo-dir "~/Dropbox/todo/")
 
 ;; all directories in todo-dir except for "..", ".", "archive", and "notes"
 (setq org-agenda-files

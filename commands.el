@@ -413,6 +413,8 @@
                     ))
     (pop-to-buffer temp-buffer)))
 
+(bind-key "C-c C-b" 'ltx latex-mode-map)
+
 ;; don't prompt for directory on ag
 (defun grp (string)
   (interactive (list (ag/read-from-minibuffer "Search for")))

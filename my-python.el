@@ -1,4 +1,8 @@
-;; TODO: Update all of this to work like a real REPL.
+;; TODO: Update all of this to work like a real REPL
+
+(setq python-shell-interpreter-args "--simple-prompt -i")
+(bind-key "C-p" 'comint-previous-matching-input-from-input inferior-python-mode-map)
+(bind-key "C-n" 'comint-next-matching-input-from-input inferior-python-mode-map)
 
 ;; python autocomplete
 (bind-key "C-c m"
@@ -44,8 +48,9 @@
   (insert "c")
   (realgud:send-input) )
 
-(bind-key "C-c C-c" 'ipdb-debug python-mode-map)
-(bind-key "C-c C-b" 'ipython-add-breakpoint python-mode-map)
+(bind-key "C-c C-c" 'python-shell-send-buffer python-mode-map)
+;; (bind-key "C-c C-c" 'ipdb-debug python-mode-map)
+;; (bind-key "C-c C-b" 'ipython-add-breakpoint python-mode-map)
 
 ;; elpy mode
 ;; run: pip install jedi flake8 importmagic autopep8
