@@ -1,5 +1,7 @@
 (require 'cc-mode)
 
+(add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
+
 (add-hook 'c-mode-hook (lambda () (setq comment-start "// " comment-end   "")))
 (add-hook 'c++-mode-hook (lambda () (setq comment-start "// " comment-end   "")))
 
