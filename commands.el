@@ -400,22 +400,6 @@
 (bind-key* "C-x C-x" 'save-buffer)
 (unbind-key "C-x C-s")
 
-(require 'tex-mode)
-;; Run pdflatex on current buffer; defined in bash_scripts
-(defun ltx ()
-  (interactive)
-  (save-buffer)
-  (let ((temp-buffer "*latex-output*"))
-    (with-output-to-temp-buffer
-     temp-buffer
-     (shell-command "ltx"
-                    temp-buffer  ;; stdout
-                    "*Mesages*"  ;; stderr
-                    ))
-    (pop-to-buffer temp-buffer)))
-
-(bind-key "C-c C-c" 'ltx tex-mode-map)
-
 ;; don't prompt for directory on ag
 (defun grp (string)
   (interactive (list (ag/read-from-minibuffer "Search for")))

@@ -17,3 +17,5 @@
     (pop-to-buffer temp-buffer)))
 
 (bind-key "C-c C-c" 'ltx tex-mode-map)
+
+(add-hook 'latex-mode-hook (lambda () (electric-pair-mode 0)))

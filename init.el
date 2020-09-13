@@ -29,6 +29,7 @@
           "my-c"
           "my-clojure"
 ;          "my-go" ;; speed up startup
+          "my-latex"
           "my-lisp"
           "my-org-mode"
           "my-python"
