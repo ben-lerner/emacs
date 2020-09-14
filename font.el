@@ -1,5 +1,5 @@
 (when (window-system)
-  (set-default-font "Fira Code 12"))
+  (set-frame-font "Fira Code 12"))
 
 (defun set-pretty-symbols ()
   (setq-local old-symbols-alist prettify-symbols-alist)
