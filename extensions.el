@@ -132,3 +132,4 @@
 (define-key minibuffer-local-map (kbd  "C-r") 'counsel-minibuffer-history)
 
 (electric-pair-mode)  ;; insert matching parens and type through matches
+(global-undo-tree-mode)
