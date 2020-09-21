@@ -152,12 +152,7 @@
 ;; spelling
 (bind-key* "C-c p" 'ispell-word)
 
-;; set "capitalize-word" to move to beginning of current word
-(bind-key* "M-c"
-           (lambda ()
-             (interactive)
-             (backward-word)
-             (capitalize-word 1)))
+(bind-key* "M-c" 'centered-window-mode)
 
 ;; better replace and replace-regexp commands
 (bind-key* "C-\\" 'query-replace)

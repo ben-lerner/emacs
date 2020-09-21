@@ -14,7 +14,9 @@
       temp-buffer  ;; stdout
       "*Mesages*"  ;; stderr
       ))
-    (pop-to-buffer temp-buffer)))
+    (pop-to-buffer temp-buffer)
+    (help-mode)  ;; with-output-to-temp-buffer should use help-mode by default, but doesn't
+    ))
 
 (bind-key "C-c C-c" 'ltx tex-mode-map)
 
