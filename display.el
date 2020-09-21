@@ -8,7 +8,8 @@
 ;     'gruvbox-dark-medium
 ;     'grandshell
 ;     'sanityinc-solarized-dark
-     'brin
+;     'brin
+     'tron-legacy
      )
  t)
 

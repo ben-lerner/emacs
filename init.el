@@ -14,7 +14,8 @@
 
 (add-to-list 'load-path "~/.emacs.d/elpa/")
 (add-to-list 'load-path "~/emacs/packages/")
-(package-initialize)
+
+(setq byte-compile-warnings '(cl-functions))
 
 ; load files
 (mapcar (lambda (name) (load-file (concat "~/emacs/" name ".el")))
@@ -40,4 +41,5 @@
           "tab-autocomplete"
           ))
 
+(cd "~")
 (load "realgud") ; this has something to do with deubggers

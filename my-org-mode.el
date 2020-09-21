@@ -90,7 +90,7 @@
              ("CANCELED" . (:foreground "blue" :weight bold))))
 
 (defun note-file ()
-  (concat "~/todo/notes/"  (todays-date) ".txt"))
+  (concat "~/todo/notes/"  (todays-date) ".org"))
 
 (defun goto-note () ; find today's note
     (interactive)
