@@ -90,12 +90,7 @@
 ;; more cider
 (setq cider-default-cljs-repl 'figwheel-main)
 
-(defun goto-repl ()
-  (interactive)
-  (with-existing-window
-   (cider-jack-in-clj&cljs)))
-
-(bind-key* "M-g M-r" 'goto-repl)
+(bind-key* "M-g M-r" 'cider-jack-in)
 
 ;; clojurescript
 ;; (setq cider-cljs-lein-repl
