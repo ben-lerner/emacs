@@ -413,4 +413,12 @@
         (message "Killing %s buffers" (length buffers)))
     (mapc 'kill-buffer buffers)))
 
-(bind-key "M-y" 'counsel-yank-pop)
+;; mimic regular yank-pop's replace
+(defun counsel-yank-pop-with-replace ()
+  (interactive)
+  (when (eq last-command 'yank)
+    (undo)
+    (undo))
+  (counsel-yank-pop))
+
+(bind-key "M-y" 'counsel-yank-pop-with-replace)
