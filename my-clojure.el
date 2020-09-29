@@ -91,11 +91,3 @@
 (setq cider-default-cljs-repl 'figwheel-main)
 
 (bind-key* "M-g M-r" 'cider-jack-in)
-
-;; clojurescript
-;; (setq cider-cljs-lein-repl
-;;       ;; automatically start figwheel when running cider-jack-in-clojurescript
-;;       ;; from markhudnall.com/2016/04/25/starting-figwheel-in-emacs/
-;;       "(do (require 'figwheel-sidecar.repl-api)
-;;            (figwheel-sidecar.repl-api/start-figwheel!)
-;;            (figwheel-sidecar.repl-api/cljs-repl))")

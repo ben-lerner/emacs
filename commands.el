@@ -412,3 +412,5 @@
         (message "Killing 1 buffer")
         (message "Killing %s buffers" (length buffers)))
     (mapc 'kill-buffer buffers)))
+
+(bind-key "M-y" 'counsel-yank-pop)
