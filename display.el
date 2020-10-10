@@ -9,7 +9,8 @@
 ;     'grandshell
 ;     'sanityinc-solarized-dark
 ;     'brin
-     'tron-legacy
+;     'tron-legacy
+     'doom-laserwave
      )
  t)
 
