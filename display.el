@@ -11,6 +11,7 @@
 ;     'brin
 ;     'tron-legacy
      'doom-laserwave
+;    later - doom-gruvbox
      )
  t)
 
