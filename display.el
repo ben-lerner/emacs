@@ -2,17 +2,14 @@
 (require 'python)
 (add-to-list 'custom-theme-load-path "~/emacs/themes/")
 
-;; old themes: cyberpunk-2019
 (load-theme
- (if (display-graphic-p)
-;     'gruvbox-dark-medium
-;     'grandshell
-;     'sanityinc-solarized-dark
-;     'brin
-;     'tron-legacy
-     'doom-laserwave
-;    later - doom-gruvbox
-     )
+ ;; 'gruvbox-dark-medium
+ ;; 'grandshell
+ ;; 'sanityinc-solarized-dark
+ ;; 'brin
+ ;; 'tron-legacy
+ 'doom-laserwave
+ ;; 'doom-gruvbox
  t)
 
 ;; disable annoyances
