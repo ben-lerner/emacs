@@ -4,7 +4,8 @@
       (mapcar (lambda (i) (nth i data))
               (random-ints (length data) n))))
 
-(defun random-ints (n k) ;; generates k unique random ints in [0, n)
+(defun random-ints (n k)
+  ;; generates up to k unique random ints in [0, n)
   (if (or (<= k 0) (<= n 0))
       '()
     (let ((rest (random-ints n (- k 1)))

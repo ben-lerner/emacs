@@ -1,9 +1,4 @@
 ;; buffer navigation
-(require 'ace-jump-mode)
-(require 'ace-window)
-
-(bind-key* "C-c SPC" 'ace-jump-mode)
-
 (bind-key* "M-n" 'forward-paragraph)
 (bind-key* "M-p" 'backward-paragraph)
 
@@ -107,7 +102,6 @@
 
 (bind-key* "C-u" 'select-next-window)
 (bind-key* "M-u" 'select-previous-window)
-(bind-key* "C-]" 'ace-window)
 (use-package transpose-frame)
 
 (bind-key* "C-x t" 'rotate-frame) ; 'transpose'

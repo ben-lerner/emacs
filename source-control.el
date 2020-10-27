@@ -12,6 +12,8 @@
 
 (setq magit-completing-read-function 'ivy-completing-read)
 
+(require 'gitignore-mode)
+
 ;; vdiff
 (require 'vdiff)
 (bind-key* "C-c h" 'vdiff-hydra/body)
