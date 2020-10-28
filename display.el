@@ -27,18 +27,12 @@
 (setq-default tab-width 4)
 (setq-default indent-tabs-mode nil)
 
-;; (use-package mode-icons)
-;; (mode-icons-mode)
-
 ;; terminal theme
 (use-package load-theme-buffer-local)
 
-(defun starts-with (needle haystack)
-  ;; returns 0 if true (which is truthy)
-  ;; nil (false) if false
-  (string-match
-   (concat "^" needle)
-   haystack))
+
+;; nice modal line
+(use-package telephone-line)
 
 (telephone-line-defsegment* telephone-line-short-vc-segment ()
   (telephone-line-raw
@@ -55,9 +49,6 @@
             (concat repo "/" branch)))
          (t nil))))
 
-
-;; nice modal line
-(use-package telephone-line)
 (setq telephone-line-primary-left-separator 'telephone-line-gradient
       telephone-line-secondary-left-separator 'telephone-line-nil
       telephone-line-primary-right-separator 'telephone-line-gradient
@@ -75,7 +66,6 @@
 (telephone-line-mode 1)
 
 ;; misc
-; (fringe-mode '(4 . 6))
 (setq show-paren-delay 0)
 (show-paren-mode t)
 (setq-default cursor-in-non-selected-windows nil)
@@ -98,16 +88,6 @@ by using nxml's indentation rules."
 
 
 (add-hook 'nxml-mode-hook (lambda () (bf-pretty-print-xml-region (point-min) (point-max))))
-
-;; disable autocomplete dropdown
-;(company-mode 0)
-
-; enable colors. need 'export TERM=xterm-256color' in bash profile.
-;; (use-package xterm-color)
-;; (add-hook 'comint-preoutput-filter-functions 'xterm-color-filter)
-;; (setq comint-output-filter-functions
-;;       (remove 'ansi-color-process-output comint-output-filter-functions))
-;; (setq font-lock-unfontify-region-function 'xterm-color-unfontify-region)
 
 (use-package rainbow-delimiters)
 
