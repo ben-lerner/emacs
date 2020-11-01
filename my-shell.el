@@ -71,9 +71,11 @@
 	  (car L)
 	(next-in-list n (cdr L))))
 
+(require 'cl-lib)
+
 (defun next-terminal ()
   "Next terminal name, numerically. Assumes we're in a terminal."
-  (let ((term-buffers (remove-if-not 'is-terminal? (buffer-list)))
+  (let ((term-buffers (cl-remove-if-not 'is-terminal? (buffer-list)))
 		(n (term-number (current-buffer))))
 	(let ((term-numbers (sort (mapcar 'term-number term-buffers) '<)))
 	  (term-name
@@ -86,7 +88,7 @@
   "Cycle through terminal buffers. If none exist, or we're visiting the only
   one, create one."
   (interactive)
-  (let ((term-buffers (remove-if-not 'is-terminal? (buffer-list))))
+  (let ((term-buffers (cl-remove-if-not 'is-terminal? (buffer-list))))
 	(let ((L (length term-buffers)))
 	  (cond ((eq L 0) (new-term))
 			((eq L 1)

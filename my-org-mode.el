@@ -67,6 +67,10 @@
   (interactive)
   (goto-todo-file "log"))
 
+(defun goto-work-log ()
+  (interactive)
+  (goto-todo-file "work-log"))
+
 (defun goto-todo ()
   ;; go to open todo file if it exists, otherwise open generic one
   ;; assumes there's only one todo.org open
@@ -95,6 +99,13 @@
 (defun goto-note () ; find today's note
     (interactive)
     (find-file (note-file)))
+
+(bind-key* "M-g M-n" 'goto-note)
+(bind-key* "M-g M-l" 'goto-log)
+(bind-key* "M-g M-w" 'goto-work-log)
+(bind-key* "M-g M-q" 'goto-quotes)
+(bind-key* "M-g M-t" 'goto-todo)
+
 
 (defun constant-height ()
   "Prevent themes from changing header sizes."

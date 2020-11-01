@@ -400,11 +400,13 @@
   (interactive (list (ag/read-from-minibuffer "Search for")))
   (ag/search string default-directory))
 
+(require 'cl-lib)
+
 (defun kill-buffers-in-dir (dirname)
   "Kill all buffers in dirname."
   (interactive "sdirname: ")
   (let ((buffers
-         (remove-if-not
+         (cl-remove-if-not
           (lambda (buffer)
             (string-prefix-p dirname (buffer-file-name buffer)))
           (buffer-list))))

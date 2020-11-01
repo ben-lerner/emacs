@@ -134,10 +134,6 @@
         (when line (goto-line line)))
       (error "File does not exist."))))
 
-(bind-key* "M-g M-n" 'goto-note)
-(bind-key* "M-g M-l" 'goto-log)
-(bind-key* "M-g M-q" 'goto-quotes)
-(bind-key* "M-g M-t" 'goto-todo)
 (bind-key* "M-g M-f" 'ffap-with-line)
 (bind-key* "M-g M-b" 'browse-url-of-file)
 
