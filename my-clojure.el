@@ -91,3 +91,14 @@
 (setq cider-default-cljs-repl 'figwheel-main)
 
 (bind-key* "M-g M-r" 'cider-jack-in)
+
+(use-package html-to-hiccup)
+;; use html-to-hiccup-convert-region
+
+(defun hiccupify ()
+  (interactive)
+  (html-to-hiccup-convert-region (region-beginning) (region-end))
+  ;; fix comments from [:comment] syntax
+  (while (re-search-forward "\\[:comment \" \\(.*?\\) \"\\]")
+    (replace-match ";; \\1
+")))
