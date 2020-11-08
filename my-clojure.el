@@ -102,3 +102,6 @@
   (while (re-search-forward "\\[:comment \" \\(.*?\\) \"\\]")
     (replace-match ";; \\1
 ")))
+
+
+(add-hook 'cider-repl-mode-hook #'paredit-mode)
