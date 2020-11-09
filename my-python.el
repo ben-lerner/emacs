@@ -61,7 +61,6 @@
   (package-refresh-contents)
   (package-install 'elpy))
 
-(package-initialize)
 (elpy-enable)
 (add-hook 'python-mode-hook (lambda ()
                               (begin
