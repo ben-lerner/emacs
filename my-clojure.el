@@ -105,4 +105,4 @@
 
 
 (add-hook 'cider-repl-mode-hook #'paredit-mode)
-(add-hook 'cider-repl-mode-hook #'rainbow-delimeters-mode)
+(add-hook 'cider-repl-mode-hook #'rainbow-delimiters-mode)

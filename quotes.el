@@ -31,7 +31,7 @@
   (concat (mapconcat (lambda (x) x) quote-list footer)
           footer))
 
-(let* ((quotes-per-day 3)
+(let* ((quotes-per-day 4)
        (quotes-file "~/quotes/quotes.txt")
        (default-quotes-file "~/emacs/default_quote.txt")
        (quotes
