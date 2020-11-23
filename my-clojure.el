@@ -4,22 +4,14 @@
 (add-hook 'clojure-mode-hook 'paredit-mode)
 
 ;; must eval buffer before lookup works
-(bind-key "M-."
-          (lambda ()
-            (interactive)
-            (save-buffer)
-            (cider-load-buffer)
-            (cider-find-var))
-          clojure-mode-map)
+(bind-key "M-." 'cider-find-var cider-mode-map)
 
 ;; save; load buffer; set ns; switch to repl
 (bind-key "C-c C-k"
           (lambda ()
             (interactive)
             (save-buffer)
-            (cider-load-buffer)
-            (cider-repl-set-ns (cider-current-ns))
-            (cider-switch-to-repl-buffer))
+            (cider-load-buffer-and-switch-to-repl-buffer t))
           cider-mode-map)
 
 (bind-key "C-c d" 'cider-debug-defun-at-point)
@@ -107,18 +99,39 @@
 (add-hook 'cider-repl-mode-hook #'paredit-mode)
 (add-hook 'cider-repl-mode-hook #'rainbow-delimiters-mode)
 
-(string-prefix-p "foobarr" "foobar")
+(defun repl-exists? ()
+  (cl-remove-if-not
+   (lambda (haystack) (string-prefix-p "*nrepl-server" haystack))
+   (mapcar #'buffer-name (buffer-list))))
 
-(nil? "foo")
+(defun eval-clj-buffer ()
+  (cider-load-buffer)
+  (cider-repl-set-ns (cider-current-ns)))
 
-(defun autostart-repl ()
-  ;; Starts repl if one doesn't exist.
-  (when (not
-         (cl-remove-if-not
-          (lambda (haystack) (string-prefix-p "*cider-drepl" haystack))
-          (mapcar #'buffer-name (buffer-list))))
-    (cider-jack-in-clj nil)))
+(defun my-clj-file? ()
+  ;; Checks if a file should be evaluated. Excludes read-only files and .jar
+  ;; files; this is meant to avoid extra evals and prompts when using goto-def.
+  (and (not buffer-read-only)
+       (not (string-match-p "jar:" buffer-file-name))))
+
+(defun autoeval-clj-file ()
+  ;; Starts repl if one doesn't exist, then evalute the current file so goto-def
+  ;; works. The file's evaluated through cider-connected-hook when starting a
+  ;; new repl.
+  ;; Skip read-only buffers (e.g. when browsing definitions.)
+  (when (my-clj-file?)
+    (if (repl-exists?)
+        (eval-clj-buffer)
+        (cider-jack-in-clj nil))))
 
 ;; automatically start cider, don't go to it
 (setq cider-repl-pop-to-buffer-on-connect nil)
-(add-hook 'clojure-mode-hook 'autostart-repl)
+(add-hook 'clojure-mode-hook 'autoeval-clj-file)
+
+(add-hook 'cider-connected-hook
+          (lambda ()
+            (cider-switch-to-last-clojure-buffer)
+            (eval-clj-buffer)))
+
+;; don't prompt for find-var symbol
+(setq cider-prompt-for-symbol nil)
