@@ -135,3 +135,7 @@
 
 ;; don't prompt for find-var symbol
 (setq cider-prompt-for-symbol nil)
+
+(require 'flycheck-clj-kondo)
+(add-hook 'clojure-mode-hook 'flycheck-mode)
+;; See instructions for building cache in new projects.
