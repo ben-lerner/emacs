@@ -4,7 +4,7 @@
 (add-hook 'clojure-mode-hook 'paredit-mode)
 
 ;; must eval buffer before lookup works
-(bind-key "C-."
+(bind-key "M-."
           (lambda ()
             (interactive)
             (save-buffer)
@@ -106,3 +106,19 @@
 
 (add-hook 'cider-repl-mode-hook #'paredit-mode)
 (add-hook 'cider-repl-mode-hook #'rainbow-delimiters-mode)
+
+(string-prefix-p "foobarr" "foobar")
+
+(nil? "foo")
+
+(defun autostart-repl ()
+  ;; Starts repl if one doesn't exist.
+  (when (not
+         (cl-remove-if-not
+          (lambda (haystack) (string-prefix-p "*cider-drepl" haystack))
+          (mapcar #'buffer-name (buffer-list))))
+    (cider-jack-in-clj nil)))
+
+;; automatically start cider, don't go to it
+(setq cider-repl-pop-to-buffer-on-connect nil)
+(add-hook 'clojure-mode-hook 'autostart-repl)
