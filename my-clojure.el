@@ -5,6 +5,9 @@
 
 ;; must eval buffer before lookup works
 (bind-key "M-." 'cider-find-var cider-mode-map)
+(unbind-key "M-?" paredit-mode-map)
+(bind-key "M-?" 'cljr-find-usages cider-mode-map)
+(setq cljr-warn-on-eval nil)
 
 ;; save; load buffer; set ns; switch to repl
 (bind-key "C-c C-k"
