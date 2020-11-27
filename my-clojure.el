@@ -115,6 +115,7 @@
   ;; Checks if a file should be evaluated. Excludes read-only files and .jar
   ;; files; this is meant to avoid extra evals and prompts when using goto-def.
   (and (not buffer-read-only)
+       (not (string-suffix-p "deps.edn" buffer-file-name))
        (not (string-match-p "jar:" buffer-file-name))))
 
 (defun autoeval-clj-file ()
