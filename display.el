@@ -10,10 +10,8 @@
  ;; 'tron-legacy
  ;; 'doom-laserwave <- cyberpunk one
  ;; 'doom-gruvbox
- 'graham  ;; custom set strings to #e3aa7f with M-x customize-face
+ 'graham  ;; custom set strings and docstrings to #e3aa7f with M-x customize-face
  t)
-
-(set-face-attribute )
 
 ;; disable annoyances
 (when (display-graphic-p)

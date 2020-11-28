@@ -1,5 +1,6 @@
 (require 'clojure-mode)
 (require 'cider-mode)
+(require 'paredit)
 
 (add-hook 'clojure-mode-hook 'paredit-mode)
 
