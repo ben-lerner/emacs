@@ -63,8 +63,7 @@
 
 (elpy-enable)
 (add-hook 'python-mode-hook (lambda ()
-                              (begin
-                               (highlight-indentation-mode 0)
+                              ((highlight-indentation-mode 0)
                                (flymake-mode 0))))
 
 (setq python-shell-interpreter "ipython3")
