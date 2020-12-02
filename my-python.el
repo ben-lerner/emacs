@@ -62,9 +62,5 @@
   (package-install 'elpy))
 
 (elpy-enable)
-(add-hook 'python-mode-hook (lambda ()
-                              ((highlight-indentation-mode 0)
-                               (flymake-mode 0))))
-
 (setq python-shell-interpreter "ipython3")
 (setq python-shell-completion-native-enable nil)
