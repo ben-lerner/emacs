@@ -24,7 +24,7 @@
 (global-prettify-symbols-mode 1)
 
 (add-hook 'prog-mode-hook 'set-pretty-symbols)
-(add-hook 'term-mode-hook 'set-pretty-symbols)
+(add-hook 'vterm-mode-hook 'set-pretty-symbols)
 (add-hook 'c-mode-common-hook 'set-pretty-symbols)
 
 (add-hook 'emacs-lisp-mode-hook ;; display quotes properly

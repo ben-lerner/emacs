@@ -17,7 +17,6 @@
     (if (string= major-mode "org-mode")
         (org-do-demote)
         (indent-for-tab-command)))
-   ((string= major-mode "term-mode") (term-dabbrev-expand))
    (t (dabbrev-expand nil))))
 
 (setq dabbrev-case-fold-search nil)
@@ -41,7 +40,7 @@
 (defun no-tab-hook () (my-tab-minor-mode 0))
 
 (add-hook 'minibuffer-setup-hook 'no-tab-hook)
-(add-hook 'term-mode-hook 'no-tab-hook)
+(add-hook 'vterm-mode-hook 'no-tab-hook)
 (add-hook 'geiser-repl-mode-hook 'no-tab-hook)
 (add-hook 'cider-repl-mode-hook 'no-tab-hook)
 

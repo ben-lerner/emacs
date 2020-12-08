@@ -6,11 +6,10 @@
 ; package repos
 (require 'package)
  (setq package-archives
-       '(("marmalade" . "https://marmalade-repo.org/packages/")
-         ("gnu" . "http://elpa.gnu.org/packages/")
-         ("melpa" . "http://melpa.org/packages/")
-         ("melpa-stable" . "http://stable.melpa.org/packages/")
-         ("org" . "http://orgmode.org/elpa/")))
+       '(; ("marmalade" . "https://marmalade-repo.org/packages/")  ;; cert expired
+         ("gnu" . "https://elpa.gnu.org/packages/")
+         ("melpa" . "https://melpa.org/packages/")
+         ("org" . "https://orgmode.org/elpa/")))
 
 (add-to-list 'load-path "~/.emacs.d/elpa/")
 (add-to-list 'load-path "~/emacs/packages/")
