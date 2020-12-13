@@ -92,7 +92,7 @@ by using nxml's indentation rules."
 
 (use-package rainbow-delimiters)
 
-(setq-default fill-column 100)
+(setq-default fill-column 90)
 
 ;; these are already in .emacs
 ;; (custom-set-variables

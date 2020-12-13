@@ -143,5 +143,7 @@
 
 (require 'flycheck-clj-kondo)
 (add-hook 'clojure-mode-hook 'flycheck-mode)
+
+(bind-key* "C-c n" 'flycheck-next-error)
 ;; See instructions for building cache in new projects.
 (setq cider-stacktrace-default-filters '(project))
