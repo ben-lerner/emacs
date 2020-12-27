@@ -11,6 +11,7 @@
 ;; (bind-key* "C-x C-s" 'save-and-stage-file)
 
 (setq magit-completing-read-function 'ivy-completing-read)
+(add-to-list 'magit-no-confirm 'stage-all-changes)
 
 (require 'gitignore-mode)
 

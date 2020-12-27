@@ -37,7 +37,6 @@
                  (delete-trailing-whitespace))))
 ;; use 2-space tabs
 (setq default-tab-width 2)
-(add-hook 'python-mode-hook '(λ () (setq python-indent 2)))
 (setq web-mode-markup-indent-offset 2)
 (setq web-mode-css-indent-offset 2)
 (setq web-mode-code-indent-offset 2)

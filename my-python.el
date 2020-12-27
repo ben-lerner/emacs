@@ -54,13 +54,13 @@
 
 ;; elpy mode
 ;; run: pip install jedi flake8 importmagic autopep8
-(unless (package-installed-p 'elpy)
-  (require 'package)
-  (add-to-list 'package-archives
-               '("elpy" . "https://jorgenschaefer.github.io/packages/"))
-  (package-refresh-contents)
-  (package-install 'elpy))
+;; (unless (package-installed-p 'elpy)
+;;   (require 'package)
+;;   (add-to-list 'package-archives
+;;                '("elpy" . "https://jorgenschaefer.github.io/packages/"))
+;;   (package-refresh-contents)
+;;   (package-install 'elpy))
 
-(elpy-enable)
+;(elpy-enable)
 (setq python-shell-interpreter "ipython3")
 (setq python-shell-completion-native-enable nil)
