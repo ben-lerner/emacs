@@ -20,6 +20,12 @@
 
 (bind-key "C-c d" 'cider-debug-defun-at-point)
 
+;; macroexpand
+;; cider-macroexpand-(1|all) don't work for some reason
+(bind-key* "C-c RET" 'cider-macroexpand-1-inplace)
+(bind-key* "C-c M-m" 'cider-macroexpand-all-inplace)
+
+
 ;; recommended by compojure
 (define-clojure-indent
   (defroutes 'defun)
