@@ -407,5 +407,3 @@
     (undo)
     (undo))
   (counsel-yank-pop))
-
-(bind-key "M-y" 'counsel-yank-pop-with-replace)

@@ -12,6 +12,7 @@
 
 (setq magit-completing-read-function 'ivy-completing-read)
 (add-to-list 'magit-no-confirm 'stage-all-changes)
+(setq magit-commit-ask-to-stage 'stage)
 
 (require 'gitignore-mode)
 
