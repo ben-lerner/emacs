@@ -9,6 +9,12 @@
 (unbind-key "M-?" paredit-mode-map)
 (bind-key "M-?" 'cljr-find-usages cider-mode-map)
 (setq cljr-warn-on-eval nil)
+(setq cider-show-error-buffer 'except-in-repl)
+
+;; Pipe eval-fn to repl and show output there
+(setq cider-invert-insert-eval-p t)
+(setq cider-switch-to-repl-after-insert-p nil)
+;; Use with 'cider-insert-defun-in-repl, C-c C-j d
 
 ;; save; load buffer; set ns; switch to repl
 (bind-key "C-c C-k"
