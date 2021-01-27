@@ -10,7 +10,8 @@
  ;; 'tron-legacy
  ;; 'doom-laserwave <- cyberpunk one
  ;; 'doom-gruvbox
- 'graham  ;; custom set strings and docstrings to #e3aa7f with M-x customize-face
+ ;; 'graham  ;; custom set strings and docstrings to #e3aa7f with M-x customize-face
+ 'fogus
  t)
 
 ;; disable annoyances
@@ -116,3 +117,12 @@ by using nxml's indentation rules."
 ;;  '(rainbow-delimiters-depth-7-face ((t (:foreground "purple"))))
 ;;  '(rainbow-delimiters-depth-8-face ((t (:foreground "violet red"))))
 ;;  '(rainbow-delimiters-depth-9-face ((t (:foreground "firebrick")))))
+ ;; '(rainbow-delimiters-depth-1-face ((t (:foreground "#0ff"))))
+ ;; '(rainbow-delimiters-depth-2-face ((t (:foreground "#0ef"))))
+ ;; '(rainbow-delimiters-depth-3-face ((t (:foreground "#0cf"))))
+ ;; '(rainbow-delimiters-depth-4-face ((t (:foreground "#0bf"))))
+ ;; '(rainbow-delimiters-depth-5-face ((t (:foreground "#0af"))))
+ ;; '(rainbow-delimiters-depth-6-face ((t (:foreground "#09f"))))
+ ;; '(rainbow-delimiters-depth-7-face ((t (:foreground "#08f"))))
+ ;; '(rainbow-delimiters-depth-8-face ((t (:foreground "#07f"))))
+ ;; '(rainbow-delimiters-depth-9-face ((t (:foreground "#06f"))))
