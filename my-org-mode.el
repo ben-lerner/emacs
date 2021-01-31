@@ -124,3 +124,4 @@
 (bind-key "<backtab>" 'org-do-promote org-mode-map)
 (bind-key "<S-tab>" 'org-do-promote org-mode-map)
 (bind-key "<S-iso-lefttab>" 'org-do-promote org-mode-map)
+(add-hook 'org-mode-hook (lambda () (electric-pair-mode 0)))

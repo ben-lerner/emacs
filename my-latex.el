@@ -21,3 +21,4 @@
 (bind-key "C-c C-c" 'ltx tex-mode-map)
 
 (add-hook 'latex-mode-hook (lambda () (electric-pair-mode 0)))
+(add-hook 'text-mode-hook (lambda () (electric-pair-mode 0)))
