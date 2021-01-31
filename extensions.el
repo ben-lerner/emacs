@@ -35,6 +35,7 @@
 
 
 ;; org mode
+;;; todo - move this to my-org-mode.el
 (use-package org)
 (bind-key* "C-c l" 'org-store-link)
 (bind-key* "C-c a" 'org-agenda)
@@ -106,6 +107,11 @@
 
 (bind-key* "M-x" 'counsel-M-x)
 (bind-key* "C-x C-f" 'counsel-find-file)
+
+(setq ivy-sort-matches-functions-alist
+      '((t . nil)
+        (ivy-switch-buffer . ivy-sort-function-buffer)
+        (counsel-find-file . ivy-sort-function-buffer)))
 
 ;; todo - try these functions and add good ones
 ;; (bind-key* "C-c C-r" 'ivy-resume)
