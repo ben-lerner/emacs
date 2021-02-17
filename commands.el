@@ -27,24 +27,24 @@
 
 (bind-key* "C-1" 'delete-other-windows)
 (bind-key* "C-2" 'split-window-right)
-(bind-key* "C-@" 'split-window-below)
+(bind-key* "C-3" 'split-window-below)
 (bind-key* "C-=" 'balance-windows)
 (bind-key* "C-7" 'toggle-frame-fullscreen)
 (bind-key* "C-0" 'delete-window)
 
-(bind-key* "C-3"
+(bind-key* "C-6"
            (lambda () ;; three vertical panes
              (interactive)
              (vertical-panes 3)))
 
 (bind-key* "C-x 1" 'delete-other-windows)
 (bind-key* "C-x 2" 'split-window-right)
-(bind-key* "C-x @" 'split-window-below)
+(bind-key* "C-x 3" 'split-window-below)
 (bind-key* "C-x =" 'balance-windows)
 (bind-key* "C-x 7" 'toggle-frame-fullscreen)
 (bind-key* "C-x 0" 'delete-window)
 
-(bind-key* "C-x 3"
+(bind-key* "C-x 6"
            (lambda () ;; three vertical panes
              (interactive)
              (vertical-panes 3)))
