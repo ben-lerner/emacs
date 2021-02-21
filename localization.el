@@ -2,7 +2,8 @@
 
 (on-mac
  (setq mac-command-key-is-meta t
-       mac-command-modifier 'meta))
+       mac-command-modifier 'meta
+       mac-option-modifier 'meta))
 
 (on-linux
  (setq x-meta-keysym 'super))

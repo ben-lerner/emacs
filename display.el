@@ -20,6 +20,13 @@
   (scroll-bar-mode -1)
   (menu-bar-mode -1))
 
+
+;; Keep emacs from flickering while searching.
+(setq-default
+ isearch-allow-scroll t
+ lazy-highlight-cleanup nil
+ lazy-highlight-initial-delay 0)
+
 (setq ring-bell-function 'ignore) ; turn off bell
 (blink-cursor-mode 0)
 
