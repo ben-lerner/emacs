@@ -159,3 +159,4 @@
 (bind-key* "C-c n" 'flycheck-next-error)
 ;; See instructions for building cache in new projects.
 (setq cider-stacktrace-default-filters '(project))
+(bind-key* "C-x C-l" 'cider-inspect-last-result)

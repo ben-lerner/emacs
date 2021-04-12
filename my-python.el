@@ -4,6 +4,9 @@
 (bind-key "C-p" 'comint-previous-matching-input-from-input inferior-python-mode-map)
 (bind-key "C-n" 'comint-next-matching-input-from-input inferior-python-mode-map)
 
+;; python formatting
+(add-hook 'python-mode-hook 'python-black-on-save-mode)
+
 ;; python autocomplete
 (bind-key "C-c m"
           (lambda ()

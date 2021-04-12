@@ -6,12 +6,12 @@
  ;; 'gruvbox-dark-medium
  ;; 'grandshell
  ;; 'sanityinc-solarized-dark
- ;; 'brin
+ 'brin
  ;; 'tron-legacy
- ;; 'doom-laserwave <- cyberpunk one
+ ;; 'doom-laserwave ;; cyberpunk one
  ;; 'doom-gruvbox
  ;; 'graham  ;; custom set strings and docstrings to #e3aa7f with M-x customize-face
- 'fogus
+ ;; 'fogus - blue
  t)
 
 ;; disable annoyances

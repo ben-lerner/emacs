@@ -9,7 +9,7 @@
      temp-buffer
      (shell-command
       (if (string-match "/distributed-systems-for-everyone/" default-directory)
-          "cd ..; bash make.sh && open -g book.pdf"  ;; -g = don't change window focus
+          "cd ~/distributed-systems-for-everyone/; bash make.sh && open -g book.pdf"  ;; -g = don't change window focus
           "ltx")
       temp-buffer  ;; stdout
       "*Mesages*"  ;; stderr

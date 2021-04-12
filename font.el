@@ -1,5 +1,5 @@
 (add-to-list 'default-frame-alist
-             '(font . "Hack-13"))
+             '(font . "Hack-14"))
 
 (defun set-pretty-symbols ()
   (setq-local prettify-symbols-alist
