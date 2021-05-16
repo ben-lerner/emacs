@@ -25,6 +25,7 @@
 (bind-key "M-RET" 'org-return org-mode-map)
 (bind-key "C-RET" 'org-return org-mode-map)
 
+(setq org-startup-folder 't)
 (setq org-log-done 'time)
 (setq org-ellipsis " ⤵")
 
