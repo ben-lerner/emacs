@@ -5,11 +5,13 @@
 
 ; package repos
 (require 'package)
+(package-initialize)
  (setq package-archives
        '(; ("marmalade" . "https://marmalade-repo.org/packages/")  ;; cert expired
          ("gnu" . "https://elpa.gnu.org/packages/")  ;; currently down?
          ("melpa" . "https://melpa.org/packages/")
-         ("org" . "https://orgmode.org/elpa/")))
+         ("org" . "https://orgmode.org/elpa/")
+         ))
 
 (add-to-list 'load-path "~/.emacs.d/elpa/")
 (add-to-list 'load-path "~/emacs/packages/")
