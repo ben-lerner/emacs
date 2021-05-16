@@ -7,7 +7,7 @@
 (require 'package)
  (setq package-archives
        '(; ("marmalade" . "https://marmalade-repo.org/packages/")  ;; cert expired
-         ("gnu" . "https://elpa.gnu.org/packages/")
+         ("gnu" . "https://elpa.gnu.org/packages/")  ;; currently down?
          ("melpa" . "https://melpa.org/packages/")
          ("org" . "https://orgmode.org/elpa/")))
 
@@ -40,5 +40,6 @@
           "tab-autocomplete"
           ))
 
+(setq debug-on-error nil)
 (cd "~")
 (load "realgud") ; this has something to do with deubggers

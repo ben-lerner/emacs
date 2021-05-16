@@ -1,6 +1,26 @@
+;; autoformatting
 (use-package python-black
   :demand t
   :after python)
+
+(add-hook 'python-mode-hook 'python-black-on-save-mode)
+
+;; autocomplete and refactoring
+(use-package lsp-jedi
+  :ensure t
+  :config
+  (with-eval-after-load "lps-mode"
+    (add-to-list 'lsp-disabled-clients 'pyls)
+    (add-to-list 'lsp-enabled-clients 'jedi)))
+
+
+
+
+
+
+
+
+
 
 ;; repl
 (setq python-shell-interpreter-args "--simple-prompt -i")
@@ -8,8 +28,8 @@
 (bind-key "C-n" 'comint-next-matching-input-from-input inferior-python-mode-map)
 (bind-key "C-c C-c" 'python-shell-send-buffer python-mode-map)
 
-;; formatting
-(add-hook 'python-mode-hook 'python-black-on-save-mode)
+
+
 
 ;; some autocomplete
 (bind-key "C-c m"
