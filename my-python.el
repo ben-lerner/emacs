@@ -4,6 +4,7 @@
   :after python)
 
 (add-hook 'python-mode-hook 'python-black-on-save-mode)
+(remove-hook 'python-mode 'flycheck-mode)
 
 ;; autocomplete and refactoring
 (use-package lsp-mode
@@ -37,26 +38,14 @@
 (bind-key "C-n" 'comint-next-matching-input-from-input inferior-python-mode-map)
 (bind-key "C-c C-c" 'python-shell-send-buffer python-mode-map)
 
-;; save compilation exit code
-(defvar compilation-exit-code nil "The last exit code from running 'compilation.")
-(defun save-compilation-code (status_ code message)
-  (setq compilation-exit-code code)
-  (cons message code))
-(setq compilation-exit-message-function 'save-compilation-code)
-
 ;; testing
-
-
 (defun python-test ()
     ;; run pytype. If that passes, run unit tests.
     (interactive)
     (save-buffer)
-    (compile "env - i pytest . "))
-
-
+    (compile "pytype . && echo && echo pytype passed, running unit tests && ipython3 -m unittest discover"))
 
 (bind-key "C-c C-t" 'python-test python-mode-map)
-
 
 ;; some autocomplete
 (bind-key "C-c m"
@@ -83,6 +72,9 @@
 
 (elpy-enable)
 
+
+
 (setq python-shell-interpreter "ipython3"
       python-shell-completion-native-enable nil
+      python-shell-interpreter-args "-c exec('__import(\\'readline\\')') -i)"
       elpy-shell-echo-output 't)
