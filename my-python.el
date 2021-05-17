@@ -49,7 +49,7 @@
     ;; run pytype. If that passes, run unit tests.
     (interactive)
     (save-buffer)
-    (compile "pytype . && echo && echo pytype passed, running unit tests && python3 -m unittest discover"))
+    (compile "pytype . && python3 -m unittest discover"))
 
 (bind-key "C-c C-t" 'python-test python-mode-map)
 
