@@ -24,6 +24,8 @@
                          (require 'lsp-python-ms)
                          (lsp))))
 
+(setq lsp-headerline-breadcrumb-enable nil)  ;; disable breadcrumb at the top
+(setq lsp-completion-provider :none)         ;; disable stupid autocomplete pop-up
 
 ;; repl
 (setq python-shell-interpreter-args "--simple-prompt -i")
