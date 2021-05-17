@@ -6,20 +6,23 @@
 (add-hook 'python-mode-hook 'python-black-on-save-mode)
 
 ;; autocomplete and refactoring
-(use-package lsp-jedi
+(use-package lsp-mode
+  :hook
+  ((python-mode . lsp)))
+
+;; (use-package lsp-jedi
+;;   :ensure t
+;;   :config
+;;   (with-eval-after-load "lps-mode"
+;;     (add-to-list 'lsp-disabled-clients 'pyls)
+;;     (add-to-list 'lsp-enabled-clients 'jedi)))
+
+(use-package lsp-python-ms
   :ensure t
-  :config
-  (with-eval-after-load "lps-mode"
-    (add-to-list 'lsp-disabled-clients 'pyls)
-    (add-to-list 'lsp-enabled-clients 'jedi)))
-
-
-
-
-
-
-
-
+  :init (setq lsp-python-ms-auto-install-server t)
+  :hook (python-mode . (lambda ()
+                         (require 'lsp-python-ms)
+                         (lsp))))
 
 
 ;; repl

@@ -131,4 +131,5 @@
 (define-key minibuffer-local-map (kbd  "C-r") 'counsel-minibuffer-history)
 
 (electric-pair-mode)  ;; insert matching parens and type through matches
+(with-eval-after-load 'undo-tree (defun undo-tree-overridden-undo-bindings-p () nil))
 (global-undo-tree-mode)
