@@ -39,11 +39,17 @@
 (bind-key "C-c C-c" 'python-shell-send-buffer python-mode-map)
 
 ;; testing
+(require 'ansi-color)
+(defun my/ansi-colorize-buffer ()
+  (let ((buffer-read-only nil))
+    (ansi-color-apply-on-region (point-min) (point-max))))
+(add-hook 'compilation-filter-hook 'my/ansi-colorize-buffer)
+
 (defun python-test ()
     ;; run pytype. If that passes, run unit tests.
     (interactive)
     (save-buffer)
-    (compile "pytype . && echo && echo pytype passed, running unit tests && ipython3 -m unittest discover"))
+    (compile "pytype . && echo && echo pytype passed, running unit tests && python3 -m unittest discover"))
 
 (bind-key "C-c C-t" 'python-test python-mode-map)
 
