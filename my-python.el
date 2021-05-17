@@ -24,6 +24,10 @@
                          (require 'lsp-python-ms)
                          (lsp))))
 
+(use-package elpy
+  :bind (:map elpy-mode-map
+              ("C-c C-t" . nil)))
+
 (setq lsp-headerline-breadcrumb-enable nil)  ;; disable breadcrumb at the top
 (setq lsp-completion-provider :none)         ;; disable stupid autocomplete pop-up
 
@@ -33,7 +37,25 @@
 (bind-key "C-n" 'comint-next-matching-input-from-input inferior-python-mode-map)
 (bind-key "C-c C-c" 'python-shell-send-buffer python-mode-map)
 
+;; save compilation exit code
+(defvar compilation-exit-code nil "The last exit code from running 'compilation.")
+(defun save-compilation-code (status_ code message)
+  (setq compilation-exit-code code)
+  (cons message code))
+(setq compilation-exit-message-function 'save-compilation-code)
 
+;; testing
+
+
+(defun python-test ()
+    ;; run pytype. If that passes, run unit tests.
+    (interactive)
+    (save-buffer)
+    (compile "env - i pytest . "))
+
+
+
+(bind-key "C-c C-t" 'python-test python-mode-map)
 
 
 ;; some autocomplete
