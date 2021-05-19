@@ -27,7 +27,9 @@
 
 (use-package elpy
   :bind (:map elpy-mode-map
-              ("C-c C-t" . nil)))
+              (("C-c C-t" . nil)
+               ("C-c C-b" . nil)
+               ("C-c ]" . elpy-nav-expand-to-indentation))))
 
 (setq lsp-headerline-breadcrumb-enable nil)  ;; disable breadcrumb at the top
 (setq lsp-completion-provider :none)         ;; disable stupid autocomplete pop-up
@@ -82,5 +84,4 @@
 
 (setq python-shell-interpreter "ipython3"
       python-shell-completion-native-enable nil
-      python-shell-interpreter-args "-c exec('__import(\\'readline\\')') -i)"
-      elpy-shell-echo-output 't)
+      elpy-shell-echo-output nil)
