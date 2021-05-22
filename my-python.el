@@ -1,3 +1,5 @@
+(require 'python)
+
 ;; autoformatting
 (use-package python-black
   :demand t
@@ -23,6 +25,7 @@
   :init (setq lsp-python-ms-auto-install-server t)
   :hook (python-mode . (lambda ()
                          (require 'lsp-python-ms)
+                         (highlight-indentation-mode -1)
                          (lsp))))
 
 (use-package elpy
@@ -33,12 +36,20 @@
 
 (setq lsp-headerline-breadcrumb-enable nil)  ;; disable breadcrumb at the top
 (setq lsp-completion-provider :none)         ;; disable stupid autocomplete pop-up
+(setq lsp-diagnostic-package :none)          ;; disable flycheck
+(setq lsp-enable-on-type-formatting nil)     ;; changes your code as you type, line by line. Who would want this??
 
 ;; repl
-(setq python-shell-interpreter-args "--simple-prompt -i")
+(setq python-shell-interpreter "ipython3"
+      python-shell-interpreter-args "--simple-prompt -i"
+      python-shell-completion-native-enable nil
+      elpy-shell-echo-output nil)
+
 (bind-key "C-p" 'comint-previous-matching-input-from-input inferior-python-mode-map)
 (bind-key "C-n" 'comint-next-matching-input-from-input inferior-python-mode-map)
 (bind-key "C-c C-c" 'python-shell-send-buffer python-mode-map)
+
+
 
 ;; testing
 (require 'ansi-color)
@@ -81,7 +92,6 @@
 (elpy-enable)
 
 
-
-(setq python-shell-interpreter "ipython3"
-      python-shell-completion-native-enable nil
-      elpy-shell-echo-output nil)
+;; Don't treat ## as code cells
+(setq elpy-shell-codecell-beginning-regexp nil)
+(setq elpy-shell-cell-boundary-regexp nil)

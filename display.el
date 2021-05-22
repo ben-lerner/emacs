@@ -1,17 +1,17 @@
 ;; theme
-(require 'python)
 (add-to-list 'custom-theme-load-path "~/emacs/themes/")
 
 (load-theme
  ;; 'gruvbox-dark-medium
  ;; 'grandshell
  ;; 'sanityinc-solarized-dark
- 'brin
+ ;; 'brin
  ;; 'tron-legacy
  ;; 'doom-laserwave ;; cyberpunk one
  ;; 'doom-gruvbox
  ;; 'graham  ;; custom set strings and docstrings to #e3aa7f with M-x customize-face
  ;; 'fogus - blue
+ 'curry-on
  t)
 
 ;; disable annoyances

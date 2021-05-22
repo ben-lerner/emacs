@@ -5,13 +5,12 @@
 
 ; package repos
 (require 'package)
+(setq package-archives
+      '(; ("marmalade" . "https://marmalade-repo.org/packages/")  ;; cert expired
+        ("gnu" . "https://elpa.gnu.org/packages/")  ;; currently down?
+        ("melpa" . "https://melpa.org/packages/")
+        ("org" . "https://orgmode.org/elpa/")))
 (package-initialize)
- (setq package-archives
-       '(; ("marmalade" . "https://marmalade-repo.org/packages/")  ;; cert expired
-         ("gnu" . "https://elpa.gnu.org/packages/")  ;; currently down?
-         ("melpa" . "https://melpa.org/packages/")
-         ("org" . "https://orgmode.org/elpa/")
-         ))
 
 (add-to-list 'load-path "~/.emacs.d/elpa/")
 (add-to-list 'load-path "~/emacs/packages/")
@@ -42,6 +41,5 @@
           "tab-autocomplete"
           ))
 
-(setq debug-on-error nil)
 (cd "~")
 (load "realgud") ; this has something to do with deubggers
